@@ -14,6 +14,16 @@
 #include "GXPath.hpp"
 #include "Display.hpp"
 
+
+
+static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
+{
+    if( notification == GBRunLoopSourceCanRead)
+    {
+        GBRunLoopStop( GBRunLoopSourceGetRunLoop(source));
+    }
+}
+
 int main(int argc, const char * argv[])
 {
     Display disp;
@@ -61,12 +71,16 @@ int main(int argc, const char * argv[])
     }
     
 
+    GBRunLoop* runLoop = GBRunLoopInit();
+    
+    GBFDSource* input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
+    GBRunLoopAddSource(runLoop, input);
+    GBRunLoopRun(runLoop);
+    
+    GBRelease(runLoop);
     
     Introspection(true);
 
-    while (1)
-    {
-
-    }
+    
     return 0;
 }
