@@ -13,6 +13,11 @@
 #include <vector>
 
 
+#ifdef TARGET_RASPBERRY_PI
+    #include <bcm_host.h>
+    #include <EGL/egl.h>
+#endif
+
 #include "../../GX/GXGeometry.hpp"
 
 #ifdef USE_OPENMAXIL

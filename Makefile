@@ -7,12 +7,11 @@ CXXFLAGS+= -DTARGET_RASPBERRY_PI -I/opt/vc/include/
 LDFLAGS+= -L/opt/vc/lib/ -lOpenVG  -lGLESv2 -lEGL -lbcm_host
 
 
-CORE_SRC = $(wildcard Core/*.cpp)
+CORE_SRC    = $(wildcard Core/*.cpp)
+GX_SRC      = $(wildcard GX/*.cpp)
+DISPLAY_SRC = $(wildcard Display/*.cpp)
 
-GX_SRC =  $(wildcard GX/*.cpp)
-
-
-src = $(CORE_SRC) $(GX_SRC) CoreTest/GXTestMain.cpp
+src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC) CoreTest/GXTestMain.cpp
 obj = $(src:.cpp=.o)
 
 
