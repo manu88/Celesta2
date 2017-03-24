@@ -11,19 +11,19 @@
 
 #include <iostream>
 #include <vector>
+#include "AbstractDisplayImpl.hpp"
 
-
-class DisplayImplRPI
+class DisplayImplRPI : public AbstractDisplayImpl
 {
 public:
     DisplayImplRPI();
     ~DisplayImplRPI();
     
 
-    bool init();
-    bool deInit();
+    bool init() final override;
+    bool deInit() final override;
     
-    void update();
+    bool update() final override;
 private:  /* attributes */
     
 

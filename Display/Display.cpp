@@ -8,27 +8,37 @@
 
 #include "Display.hpp"
 
+#ifdef TARGET_RASPBERRY_PI
+#include "DisplayImplRPI.hpp"
+#endif
 
-Display::Display()
+Display::Display():
+_impl(nullptr)
 {
-    
+#ifdef TARGET_RASPBERRY_PI
+    _impl = new DisplayImplRPI();
+#endif
 }
 
 Display::~Display()
 {
+    if( _impl)
+    {
+        delete _impl;
+    }
     
 }
 
 bool Display::init()
 {
-    return _impl.init();
+    return _impl->init();
 }
 bool Display::deInit()
 {
-    return _impl.deInit();
+    return _impl->deInit();
 }
 
 void Display::update()
 {
-    _impl.update();
+    _impl->update();
 }

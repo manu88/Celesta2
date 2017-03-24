@@ -85,11 +85,12 @@ bool DisplayImplRPI::deInit()
     return false;
 }
 
-void DisplayImplRPI::update()
+bool DisplayImplRPI::update()
 {
 //    assert(vgGetError() == VG_NO_ERROR);
 	eglSwapBuffers(state->display, state->surface);
 //	assert(eglGetError() == EGL_SUCCESS);
+    return true;
 }
 
 /* **** */

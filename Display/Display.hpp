@@ -11,7 +11,7 @@
 
 #include "../Core/CLElement.hpp"
 #include "impl/DisplayImplRPI.hpp"
-
+#include "impl/AbstractDisplayImpl.hpp"
 class Display : public virtual CLElement
 {
 public:
@@ -22,7 +22,7 @@ public:
     bool deInit();
     void update();
 private:
-    DisplayImplRPI _impl;
+    AbstractDisplayImpl *_impl;
 };
 
 #endif /* Display_hpp */
