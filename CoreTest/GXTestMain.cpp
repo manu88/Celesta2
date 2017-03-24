@@ -15,6 +15,7 @@
 #include "Display.hpp"
 
 
+GXElement win1;
 GXElement child2;
 Display disp;
 
@@ -79,18 +80,18 @@ int main(int argc, const char * argv[])
     mainElement.setBounds( b );
     assert(mainElement.getBounds() == b);
     
-    GXElement child1;
-    child1.setBounds(  makeRect(100, 50, 200, 150) );
-    child1.setZPos(0);
-    child1.setBackgroundColor(makeColor(0,255,0));
+    
+    win1.setBounds(  makeRect(100, 50, 200, 150) );
+    win1.setZPos(0);
+    win1.setBackgroundColor(makeColor(0,255,0));
 
     
     child2.setBounds(  makeRect(140, 80, 170, 100) );
     child2.setZPos(1);
     child2.setBackgroundColor(makeColor(0,0,255));
 
-    mainElement.addChild(&child1);
-    mainElement.addChild(&child2);
+    mainElement.addChild(&win1);
+    win1.addChild(&child2);
     
     GXRenderer renderer;
     renderer.setDisplayedElement(&mainElement);

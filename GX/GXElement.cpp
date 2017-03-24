@@ -149,12 +149,6 @@ void GXElement::printInfos(std::ostream &stream) const
     if( !_children.empty())
     {
         stream << " Child " << _children.size() <<   std::endl;
-        
-        
-        for (auto const child : _children)
-        {
-            stream << "     " ;
-        }
     }
     stream << std::endl;
 }
