@@ -30,6 +30,10 @@ public:
     
     void setSize( const GXSize &size);
     
+    void moveTo( const GXPoint & );
+    void moveOf( int dX , int dY);
+    void moveTo( int x  , int y);
+    
     // 1 atop 0
     void setZPos( int );
     int  getZPos() const;

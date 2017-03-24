@@ -39,6 +39,25 @@ const GXRect& GXElement::getBounds() const
     return _bounds;
 }
 
+/* **** **** **** **** **** **** **** **** **** **** */
+
+void GXElement::moveTo( const GXPoint &point )
+{
+    setBounds( makeRect(point, getBounds().size));
+}
+
+void GXElement::moveOf( int dX , int dY)
+{
+    moveTo( makePoint( _bounds.origin.x + dX, _bounds.origin.y + dY)); // call ElementChanged!
+}
+
+void GXElement::moveTo( int x , int y)
+{
+    moveTo( makePoint(x, y)); // call ElementChanged!
+}
+
+/* **** **** **** **** **** **** **** **** **** **** */
+
 void GXElement::setSize( const GXSize &size)
 {
     setBounds( makeRect(_bounds.origin, size ) );
