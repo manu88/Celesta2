@@ -14,6 +14,7 @@
 
 class GXRenderer : public GXElement
 {
+    
 public:
     GXRenderer();
     ~GXRenderer();
@@ -21,6 +22,11 @@ public:
     bool setDisplayedElement(GXElement*);
     
     bool update();
+    
+    GXElement* getRootElement() const
+    {
+        return _rootElement;
+    }
     
 private:
     GXElement* _rootElement;

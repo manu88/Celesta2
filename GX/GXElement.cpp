@@ -8,7 +8,8 @@
 
 #include <algorithm>
 #include "GXElement.hpp"
-
+#include "GXColors.hpp"
+#include "GXPath.hpp"
 
 GXElement::GXElement():
 _bounds( makeRectNULL() ),
@@ -87,6 +88,12 @@ void GXElement::sortChildren()
 void GXElement::paint(const GXRect &rect)
 {
     printInfos( std::cout );
+    
+    GXPath path( getBounds());
+    path.addRect(path.getBoundingRect());
+    path.setFillColor(makeColor(0, 0, 255 ));
+    path.fill();
+    
 }
 
 void GXElement::printInfos(std::ostream &stream) const

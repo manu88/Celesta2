@@ -61,8 +61,16 @@ bool Display::deInit()
 bool Display::update()
 {
     DEBUG_ASSERT(_impl);
+    if( !_renderer)
+        return false;
     
-    return _impl->update();
+    if(_renderer->update())
+    {
+        return _impl->update();
+    }
+    
+    
+    return false;
 }
 
 void Display::setRenderer(GXRenderer* renderer )

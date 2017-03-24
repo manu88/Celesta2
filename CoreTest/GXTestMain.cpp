@@ -46,16 +46,23 @@ int main(int argc, const char * argv[])
     GXRenderer renderer;
     renderer.setDisplayedElement(&mainElement);
     renderer.setBounds(  makeRect(0, 0, 1920, 1080) );
-    renderer.update();
+    
+    
+    disp.setRenderer(&renderer);
 
-    GXPath path( makeRect(200, 300, 400, 200));
-    path.addRect(path.getBoundingRect());
-    path.setFillColor(makeColor(0, 0, 255 ));
-    path.fill();
+    
+    if( !disp.update() )
+    {
+        std::cout << "Error update Display " << std::endl;
+    }
+    
 
-    disp.update();
     
     Introspection(true);
 
+    while (1)
+    {
+
+    }
     return 0;
 }

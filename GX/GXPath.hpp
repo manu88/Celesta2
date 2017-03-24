@@ -23,17 +23,17 @@
 #ifndef ____GXPath__
 #define ____GXPath__
 
-#include <iostream>
-#include <stdio.h>
 
 //#include "GXTransformations.h"
 
-#include "GXColors.hpp"
+
 #include "GXGeometry.hpp"
 #include "GXCurve.hpp"
-
+#include "GXColors.hpp"
 
 #include "GXDefs.hpp"
+
+
 
 /* **** **** **** **** **** */
 
