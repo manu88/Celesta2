@@ -29,19 +29,32 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
 
             
             bool update = false;
-            if( buf[0] == 'a')
+            if( buf[0] == 'q')
             {
                 printf("move <- \n");
-                child2.moveOf(-10 , 0);
+                win1.moveOf(-10 , 0);
                 update = true;
             }
-            else  if( buf[0] == 'z')
+            else  if( buf[0] == 'd')
 	    {
                 printf("move -> \n");
-                child2.moveOf(10 , 0);
+                win1.moveOf(10 , 0);
                 update = true;
             }
-            else  if( buf[0] == 'q')
+	    else  if( buf[0] == 'z')
+            {
+                printf("move -> \n");
+                win1.moveOf(0 , 10);
+                update = true;
+            }
+            else  if( buf[0] == 's')
+            {
+                printf("move -> \n");
+                win1.moveOf(0 , -10);
+                update = true;
+            }
+
+            else  if( buf[0] == 'p')
             {
                 printf("Send quit \n");
                 GBRunLoopStop( GBRunLoopSourceGetRunLoop(source));
@@ -86,7 +99,7 @@ int main(int argc, const char * argv[])
     win1.setBackgroundColor(makeColor(0,255,0));
 
     
-    child2.setBounds(  makeRect(140, 80, 170, 100) );
+    child2.setBounds(  makeRect(0, 0, 170, 100) );
     child2.setZPos(1);
     child2.setBackgroundColor(makeColor(0,0,255));
 

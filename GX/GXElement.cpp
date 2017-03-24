@@ -115,8 +115,8 @@ void GXElement::paint(const GXRect &rect)
 {
     printInfos( std::cout );
     
-    GXPath path( getBounds());
-    path.addRect(makeRect(makePointNULL(), getBounds().size));
+    GXPath path( rect);
+    path.addRect(makeRect(makePointNULL(), rect.size));
     path.setFillColor( _backgroundColor );
     path.fill();
     path.clear();
@@ -127,7 +127,9 @@ void GXElement::paint(const GXRect &rect)
         
         for (auto const child : _children)
         {
-            child->paint(child->getBounds());
+            const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
+            printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height); 
+	    child->paint( b );
         }
     }
 }
