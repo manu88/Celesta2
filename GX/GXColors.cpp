@@ -6,7 +6,7 @@
 //
 //
 
-
+#include <stddef.h>
 #include "GXColors.hpp"
 
 

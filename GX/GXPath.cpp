@@ -10,7 +10,7 @@
 
 
 #include <assert.h>
-
+#include <GroundBase.hpp>
 #include "GXPath.hpp"
 
 #include <math.h>

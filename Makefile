@@ -3,6 +3,11 @@ CXX = g++
 LDFLAGS  = -L/usr/local/lib/ -lGroundBase -lGroundBase-cpp
 CXXFLAGS = -std=c++11 -I/usr/local/include/GroundBase/ -ICore/ -IGX/
 
+CXXFLAGS+= -DTARGET_RASPBERRY_PI -I/opt/vc/include/
+LDFLAGS+= -L/opt/vc/lib/ -lOpenVG  -lGLESv2 
+#-lEGL
+
+
 CORE_SRC = $(wildcard Core/*.cpp)
 
 GX_SRC =  $(wildcard GX/*.cpp)
