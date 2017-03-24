@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		591CF4D41E85530C009279BA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D31E85530C009279BA /* main.cpp */; };
+		591CF4D71E855784009279BA /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D51E855784009279BA /* Element.cpp */; };
 		5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
 		5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
 		5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
@@ -47,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		591CF4D31E85530C009279BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		591CF4D51E855784009279BA /* Element.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Element.cpp; sourceTree = "<group>"; };
+		591CF4D61E855784009279BA /* Element.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Element.hpp; sourceTree = "<group>"; };
 		5923E87F1E82B91F00587675 /* Celesta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Celesta; sourceTree = BUILT_PRODUCTS_DIR; };
 		5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GroundBase-cpp.xcodeproj"; path = "../FlyLab/GroundBase-cpp/GroundBase-cpp.xcodeproj"; sourceTree = "<group>"; };
 		5923E8981E82B97300587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/Celesta-awrmxhgwyxveadawcvgctxqmlhsd/Build/Products/Debug/libGroundBase.dylib"; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				5923E8C01E82C96E00587675 /* FileSystem.hpp */,
 				5923E8A81E82C0A400587675 /* CLApplication.cpp */,
 				5923E8A91E82C0A400587675 /* CLApplication.hpp */,
+				591CF4D51E855784009279BA /* Element.cpp */,
+				591CF4D61E855784009279BA /* Element.hpp */,
 				5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */,
 				5923E8BA1E82C3C400587675 /* CLApplicationDelegate.hpp */,
 			);
@@ -216,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				591CF4D71E855784009279BA /* Element.cpp in Sources */,
 				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
