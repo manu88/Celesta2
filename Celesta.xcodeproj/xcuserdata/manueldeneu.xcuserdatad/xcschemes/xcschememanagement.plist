@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GXTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>591CF4E11E855D06009279BA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5923E87E1E82B91F00587675</key>
 		<dict>
 			<key>primary</key>
