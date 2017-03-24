@@ -10,7 +10,7 @@
 #define Display_hpp
 
 #include "../Core/CLElement.hpp"
-#include "impl/DisplayImpl.hpp"
+#include "impl/DisplayImplRPI.hpp"
 
 class Display : public virtual CLElement
 {
@@ -22,7 +22,7 @@ public:
     bool deInit();
     
 private:
-    DisplayImpl _impl;
+    DisplayImplRPI _impl;
 };
 
 #endif /* Display_hpp */
