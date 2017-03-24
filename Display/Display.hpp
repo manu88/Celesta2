@@ -20,6 +20,9 @@ public:
     
     bool init();
     bool deInit();
+    
+private:
+    DisplayImpl _impl;
 };
 
 #endif /* Display_hpp */

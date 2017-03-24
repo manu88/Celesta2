@@ -29,10 +29,9 @@ COMXCore DisplayImpl::s_OMX = COMXCore();
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** */
 
-DisplayImpl::DisplayImpl( DisplayController *controller ) :
+DisplayImpl::DisplayImpl() :
 
 _displayInitOk ( false ),
-_controller    ( controller ),
 _currentMode   ( DisplayInformations::makeInvalid() )
 {
 #ifdef TARGET_RASPBERRY_PI
@@ -533,7 +532,7 @@ bool DisplayImpl::screenShot(const std::string &tofile) const
  */
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** */
 
-bool DisplayImpl::initPlateform()
+bool DisplayImpl::initPlatform()
 {
     bool ret = false;
     
@@ -556,7 +555,7 @@ bool DisplayImpl::initPlateform()
     return ret && s_EGLInitialized;
 }
 
-bool DisplayImpl::deInitPlateform()
+bool DisplayImpl::deInitPlatform()
 {
     
     return true;

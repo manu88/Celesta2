@@ -135,17 +135,14 @@ typedef enum
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */
 
-class DisplayController; // forward
-
-
 class DisplayImpl
 {
-
-    DisplayImpl( DisplayController *controller);
+public:
+    DisplayImpl();
     ~DisplayImpl();
     
-    static bool initPlateform();
-    static bool deInitPlateform();
+    static bool initPlatform();
+    static bool deInitPlatform(); // does nothing
 
     static void initializeEGL();    
     
@@ -187,7 +184,6 @@ class DisplayImpl
 private:  /* attributes */
     
     bool _displayInitOk;
-    DisplayController *_controller;
     
     DisplayInformations _currentMode;
     

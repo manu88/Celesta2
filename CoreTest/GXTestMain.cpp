@@ -12,10 +12,21 @@
 #include "GXElement.hpp"
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
-
+#include "Display.hpp"
 
 int main(int argc, const char * argv[])
 {
+    Display disp;
+    if(disp.init())
+    {
+        std::cout << "Display init OK " << std::endl;
+    }
+    else
+    {
+        std::cout << "Display init Error " << std::endl;
+    }
+    
+    
     GXElement mainElement;
     
     const GXRect b = makeRect(0, 0, 1920, 1080);
