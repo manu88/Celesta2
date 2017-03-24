@@ -9,8 +9,6 @@
 #ifndef __DisplayImpl__
 #define __DisplayImpl__
 
-#include <iostream>
-#include <vector>
 #include "AbstractDisplayImpl.hpp"
 
 class DisplayImplRPI : public AbstractDisplayImpl
@@ -24,7 +22,7 @@ public:
     bool deInit() final override;
     
     bool update() final override;
-private:  /* attributes */
+private:
     
 
 

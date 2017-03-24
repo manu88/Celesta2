@@ -6,22 +6,38 @@
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
 
+
+#include <GroundBase.hpp>
 #include "Display.hpp"
 
 #ifdef TARGET_RASPBERRY_PI
 #include "impl/DisplayImplRPI.hpp"
+#else
+#include "../Dummies/DisplayImplDum.hpp"
 #endif
 
+#include "impl/AbstractDisplayImpl.hpp"
+#include "GXRenderer.hpp"
+
+
 Display::Display():
-_impl(nullptr)
+_impl(nullptr),
+_renderer(nullptr)
 {
 #ifdef TARGET_RASPBERRY_PI
     _impl = new DisplayImplRPI();
+#else
+    _impl = new DisplayImplDummy();
 #endif
+    
+    
+    DEBUG_ASSERT(_impl);
 }
 
 Display::~Display()
 {
+    DEBUG_ASSERT(_impl);
+    
     if( _impl)
     {
         delete _impl;
@@ -31,14 +47,25 @@ Display::~Display()
 
 bool Display::init()
 {
+    DEBUG_ASSERT(_impl);
+        
     return _impl->init();
 }
 bool Display::deInit()
 {
+    DEBUG_ASSERT(_impl);
+    
     return _impl->deInit();
 }
 
-void Display::update()
+bool Display::update()
 {
-    _impl->update();
+    DEBUG_ASSERT(_impl);
+    
+    return _impl->update();
+}
+
+void Display::setRenderer(GXRenderer* renderer )
+{
+    _renderer = renderer;
 }

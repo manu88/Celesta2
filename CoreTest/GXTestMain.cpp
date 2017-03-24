@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <assert.h>
-
+#include <GroundBase.hpp>
 #include "GXElement.hpp"
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
@@ -54,9 +54,8 @@ int main(int argc, const char * argv[])
     path.fill();
 
     disp.update();
-while(1)
-{
-}
+    
+    Introspection(true);
 
     return 0;
 }

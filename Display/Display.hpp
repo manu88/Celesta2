@@ -10,19 +10,28 @@
 #define Display_hpp
 
 #include "../Core/CLElement.hpp"
-#include "impl/DisplayImplRPI.hpp"
-#include "impl/AbstractDisplayImpl.hpp"
+
+
+
+class AbstractDisplayImpl;
+class GXRenderer;
+
 class Display : public virtual CLElement
 {
 public:
     Display();
     ~Display();
     
+    void setRenderer(GXRenderer* );
+    
     bool init();
     bool deInit();
-    void update();
+    bool update();
+    
 private:
     AbstractDisplayImpl *_impl;
+    
+    GXRenderer *_renderer;
 };
 
 #endif /* Display_hpp */

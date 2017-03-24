@@ -26,6 +26,7 @@
 		591CF5001E856914009279BA /* GXColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FE1E856914009279BA /* GXColors.cpp */; };
 		591CF5051E857260009279BA /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF5031E857260009279BA /* Display.cpp */; };
 		591CF50D1E859578009279BA /* AbstractDisplayImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */; };
+		591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */; };
 		5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
 		5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
 		5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
@@ -96,6 +97,8 @@
 		591CF5091E857338009279BA /* DisplayImplRPI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DisplayImplRPI.hpp; sourceTree = "<group>"; };
 		591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractDisplayImpl.cpp; sourceTree = "<group>"; };
 		591CF50C1E859578009279BA /* AbstractDisplayImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbstractDisplayImpl.hpp; sourceTree = "<group>"; };
+		591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisplayImplDum.cpp; path = Dummies/DisplayImplDum.cpp; sourceTree = SOURCE_ROOT; };
+		591CF50F1E8599DE009279BA /* DisplayImplDum.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DisplayImplDum.hpp; path = Dummies/DisplayImplDum.hpp; sourceTree = SOURCE_ROOT; };
 		5923E87F1E82B91F00587675 /* Celesta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Celesta; sourceTree = BUILT_PRODUCTS_DIR; };
 		5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GroundBase-cpp.xcodeproj"; path = "../FlyLab/GroundBase-cpp/GroundBase-cpp.xcodeproj"; sourceTree = "<group>"; };
 		5923E8981E82B97300587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/Celesta-awrmxhgwyxveadawcvgctxqmlhsd/Build/Products/Debug/libGroundBase.dylib"; sourceTree = "<group>"; };
@@ -183,10 +186,21 @@
 			path = Display/impl;
 			sourceTree = "<group>";
 		};
+		591CF5111E8599E1009279BA /* Dummies */ = {
+			isa = PBXGroup;
+			children = (
+				591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */,
+				591CF50F1E8599DE009279BA /* DisplayImplDum.hpp */,
+			);
+			name = Dummies;
+			path = CoreTest;
+			sourceTree = "<group>";
+		};
 		5923E8761E82B91F00587675 = {
 			isa = PBXGroup;
 			children = (
 				5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */,
+				591CF5111E8599E1009279BA /* Dummies */,
 				591CF4D21E85530C009279BA /* CoreTest */,
 				591CF5061E857267009279BA /* Display */,
 				5923E8891E82B94300587675 /* Core */,
@@ -340,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				591CF4FA1E855EF0009279BA /* GXRenderer.cpp in Sources */,
+				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
 				591CF4E31E855D06009279BA /* CLElement.cpp in Sources */,
 				591CF5051E857260009279BA /* Display.cpp in Sources */,
 				591CF4E41E855D06009279BA /* StringOperations.cpp in Sources */,
