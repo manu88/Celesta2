@@ -12,7 +12,7 @@
     #include <bcm_host.h>
 #endif
 
-
+#include "shapes.h"
 #include "DisplayImpl.hpp"
 #include "../../GX/GXDefs.hpp"
 
@@ -52,131 +52,10 @@ bool DisplayImpl::initDisplay()
 {
 #ifdef TARGET_RASPBERRY_PI
 
-    uint32_t screen_width  = 0;
-	uint32_t screen_height = 0;
-    
-	int32_t success = 0;
-	EGLBoolean result;
-	EGLint num_config;
-    
-    
-    //	VC_RECT_T dst_rect; // GX_EL
-    //	VC_RECT_T src_rect;
-    
-    VC_RECT_T  dst_rect; // rpi
-    VC_RECT_T  src_rect; // rpi
-    
-    DISPMANX_ELEMENT_HANDLE_T   element; // rpi
-    
-	EGLint attribute_list[] =
-    {
-        EGL_SAMPLES,			0,
-		EGL_RED_SIZE, 8,
-		EGL_GREEN_SIZE, 8,
-		EGL_BLUE_SIZE, 8,
-		EGL_ALPHA_SIZE, 8,
-		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-		EGL_NONE
-	};
-    
-    attribute_list[1] = 4; // anti-aliasing 4x
-
-	// get an EGL display connection
-	_EGLdisplay = eglGetDisplay( EGL_DEFAULT_DISPLAY );
-	assert( _EGLdisplay != EGL_NO_DISPLAY );
-    
-	// initialize the EGL display connection
-	result = eglInitialize( _EGLdisplay, NULL, NULL);
-	assert(EGL_FALSE != result);
-    
-	EGLConfig config;
-    
-	// get an appropriate EGL frame buffer configuration
-	result = eglChooseConfig( _EGLdisplay, attribute_list, &config, 1, &num_config);
-	assert( EGL_FALSE != result );
-    
-	// create an EGL rendering context
-	_context = eglCreateContext( _EGLdisplay, config, EGL_NO_CONTEXT, NULL);
-	assert( _context != EGL_NO_CONTEXT );
-    
-	// create an EGL window surface
-	success = graphics_get_display_size(0 /* LCD */ , &screen_width,&screen_height);
-    
-	assert( success >= 0 );
-    /* 
-     On raspberry PI, this assertion usualy means bcm_host_init() was not called priori to this :
-     Don't forget to create an instance of ScopedPlateformConfig at the app startup! 
-     */
-    
-    int oriX = 0;
-    int oriY = 0;
-    
-    
-	dst_rect.x = oriX;
-	dst_rect.y = oriY;
-	dst_rect.width  = screen_width;
-	dst_rect.height = screen_height;
-    
-
-    
-	src_rect.x = oriX;
-	src_rect.y = oriY;
-	src_rect.width = screen_width << 16;
-	src_rect.height =screen_height << 16;
-    
-    
-    /* Partie déjà dans GXScene*/
-	DISPMANX_DISPLAY_HANDLE_T dispman_display; // GXScene
-	DISPMANX_UPDATE_HANDLE_T dispman_update;   // GXScene
-    
-	dispman_display = vc_dispmanx_display_open(0 /* LCD */ );
-	dispman_update = vc_dispmanx_update_start(0);
-    
-    
-    //VC_DISPMANX_ALPHA_T alpha = { DISPMANX_FLAGS_ALPHA_FIXED_ALL_PIXELS, 0xff, 0 };
-	element = vc_dispmanx_element_add( dispman_update,
-                                      dispman_display,
-                                      0 ,
-                                      &dst_rect,
-                                      0 /*src */ ,
-                                      &src_rect,
-                                      DISPMANX_PROTECTION_NONE,
-                                      0 /*alpha */ ,
-                                      0 /*clamp */ ,
-                                      (DISPMANX_TRANSFORM_T) 0 /*transform */
-                                      );
-    
-	_nativewindow.element = element;
-	_nativewindow.width = screen_width;
-	_nativewindow.height = screen_height;
-    
-	vc_dispmanx_update_submit_sync( dispman_update );
-    /**/
-    
-    
-	_surface = eglCreateWindowSurface( _EGLdisplay, config, &_nativewindow, NULL);
-	assert( _surface != EGL_NO_SURFACE);
-    
-	// preserve the buffers on swap
-	result = eglSurfaceAttrib( _EGLdisplay, _surface, EGL_SWAP_BEHAVIOR, EGL_BUFFER_PRESERVED );
-	assert(EGL_FALSE != result);
-    
-	// connect the context to the surface
-	result = eglMakeCurrent( _EGLdisplay, _surface, _surface, _context );
-	assert(EGL_FALSE != result);
-    
-	// set up screen ratio
-	glViewport(0, 0, (GLsizei) screen_width, (GLsizei) screen_height);
-    
-    
-	glMatrixMode( GL_PROJECTION );
-	glLoadIdentity();
-    
-	float ratio = (float) screen_width / (float) screen_height;
-	glFrustumf(-ratio, ratio, -1.0f, 1.0f, 1.0f, 10.0f/*10.0f*/);
-    
-#endif /* TARGET_RASPBERRY_PI */
-    
+int width = 0;
+int  height = 0;
+init(&width, &height); 
+#endif    
     return true;
 }
 
@@ -616,7 +495,6 @@ bool DisplayImpl::deInitPlatform()
      
      */
     
-    self->_controller->displayChangeNotification( ( DisplayNotification ) reason );
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** *****/
