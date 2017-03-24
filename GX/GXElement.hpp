@@ -11,8 +11,8 @@
 
 #include <iostream>
 #include <vector>
-#include "../Core/CLElement.hpp"
 #include "GXGeometry.hpp"
+#include "../Core/CLElement.hpp"
 
 class GXElement : public virtual CLElement
 {
