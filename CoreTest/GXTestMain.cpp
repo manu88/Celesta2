@@ -53,6 +53,16 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
                 win1.moveOf(0 , -10);
                 update = true;
             }
+            else if( buf[0] == 't')
+            {
+                win1.removeChild( &child2);
+                update = true;
+            }
+            else if( buf[0] == 'g')
+            {
+                win1.addChild( &child2);
+                update = true;
+            }
 
             else  if( buf[0] == 'p')
             {

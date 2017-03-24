@@ -58,6 +58,7 @@ public:
     }
     
     bool addChild( GXElement* );
+    bool removeChild(GXElement *);
     
     void printInfos( std::ostream &stream) const;
 protected:
@@ -76,6 +77,10 @@ private:
 
     GXElement*  _parent;
     GXChildList _children;
+    
+    /**/
+    bool _needsUpdate;
+    
 };
 
 #endif /* GXElement_hpp */

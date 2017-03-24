@@ -15,7 +15,8 @@ GXElement::GXElement():
 _bounds( makeRectNULL() ),
 _zOrder( 0 ),
 _backgroundColor( makeColor(0,0,0)),
-_parent( nullptr )
+_parent( nullptr ),
+_needsUpdate(false)
 {
     
 }
@@ -91,6 +92,20 @@ bool GXElement::addChild( GXElement* element )
     
     sortChildren();
     return true;
+}
+
+bool GXElement::removeChild(GXElement *element)
+{
+    if( !element)
+        return false;
+    
+    if(_children.erase(std::remove( _children.begin(), _children.end(), element), _children.end()) != _children.end())
+    {
+        sortChildren();
+        return true;
+    }
+    
+    return false;
 }
 
 struct layer_comparor
