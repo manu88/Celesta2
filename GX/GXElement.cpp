@@ -6,6 +6,7 @@
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
 
+#include <algorithm>
 #include "GXElement.hpp"
 
 
