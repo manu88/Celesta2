@@ -23,7 +23,7 @@ public:
     bool init();
     bool deInit();
     
-
+    void update();
 private:  /* attributes */
     
 

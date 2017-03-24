@@ -20,7 +20,7 @@ public:
     
     bool init();
     bool deInit();
-    
+    void update();
 private:
     DisplayImplRPI _impl;
 };

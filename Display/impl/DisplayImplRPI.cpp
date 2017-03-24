@@ -9,6 +9,37 @@
 #include "DisplayImplRPI.hpp"
 
 
+#include <EGL/egl.h>
+#include <bcm_host.h>
+#include <assert.h>
+
+
+typedef struct {
+	// Screen dimentions
+	uint32_t screen_width;
+	uint32_t screen_height;
+	// Window dimentions
+	int32_t window_x;
+	int32_t window_y;
+	uint32_t window_width;
+	uint32_t window_height;
+	// dispman window 
+	DISPMANX_ELEMENT_HANDLE_T element;
+
+	// EGL data
+	EGLDisplay display;
+
+	EGLSurface surface;
+	EGLContext context;
+} STATE_T;
+
+static void setWindowParams(STATE_T * state, int x, int y, VC_RECT_T * src_rect, VC_RECT_T * dst_rect);
+void dispmanChangeWindowOpacity(STATE_T * state, uint32_t alpha);
+void dispmanMoveWindow(STATE_T * state, int x, int y);
+void oglinit(STATE_T * state);
+
+static STATE_T _state, *state = &_state;	// global graphics state
+
 DisplayImplRPI::DisplayImplRPI()
 {
     
@@ -21,13 +52,45 @@ DisplayImplRPI::~DisplayImplRPI()
 
 bool DisplayImplRPI::init()
 {
-    return false;
+
+    int width = 0;
+    int height = 0;
+
+	int init_x = 0;
+	int init_y = 0;
+	int init_w = 0;
+	int init_h = 0;
+
+	bcm_host_init();
+	memset(state, 0, sizeof(*state));
+	state->window_x = init_x;
+	state->window_y = init_y;
+	state->window_width = init_w;
+	state->window_height = init_h;
+	oglinit(state);
+
+	width = state->window_width;
+	height = state->window_height;
+    
+    return width != 0 && height != 0;
 }
 bool DisplayImplRPI::deInit()
 {
+    eglSwapBuffers(state->display, state->surface);
+	eglMakeCurrent(state->display, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+	eglDestroySurface(state->display, state->surface);
+	eglDestroyContext(state->display, state->context);
+	eglTerminate(state->display);
+
     return false;
 }
 
+void DisplayImplRPI::update()
+{
+//    assert(vgGetError() == VG_NO_ERROR);
+	eglSwapBuffers(state->display, state->surface);
+//	assert(eglGetError() == EGL_SUCCESS);
+}
 
 /* **** */
 
@@ -160,7 +223,7 @@ void oglinit(STATE_T * state) {
     
     dispman_element = vc_dispmanx_element_add(dispman_update, dispman_display, 0 /*layer */ , &dst_rect, 0 /*src */ ,
                                               &src_rect, DISPMANX_PROTECTION_NONE, &alpha, 0 /*clamp */ ,
-                                              0 /*transform */ );
+                                              (DISPMANX_TRANSFORM_T)0 /*transform */ );
     
     state->element = dispman_element;
     nativewindow.element = dispman_element;

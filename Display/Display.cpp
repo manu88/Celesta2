@@ -27,3 +27,8 @@ bool Display::deInit()
 {
     return _impl.deInit();
 }
+
+void Display::update()
+{
+    _impl.update();
+}

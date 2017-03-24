@@ -48,6 +48,15 @@ int main(int argc, const char * argv[])
     renderer.setBounds(  makeRect(0, 0, 1920, 1080) );
     renderer.update();
 
+    GXPath path( makeRect(200, 300, 400, 200));
+    path.addRect(path.getBoundingRect());
+    path.setFillColor(makeColor(0, 0, 255 ));
+    path.fill();
+
+    disp.update();
+while(1)
+{
+}
 
     return 0;
 }
