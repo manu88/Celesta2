@@ -63,11 +63,7 @@ private:
 };
 int main(int argc, const char * argv[])
 {
-    /*
-    JSApplication jsApp("/Users/manueldeneu/Documents/projets/dev/CelestaV2/JSTests/hello1.js");
-    
-    jsApp.start();
-    */
+
     CLApplication app("com.myApp");
     MyAppDelegate delegate;
     

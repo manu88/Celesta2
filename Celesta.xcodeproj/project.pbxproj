@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		591CF4D41E85530C009279BA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D31E85530C009279BA /* main.cpp */; };
 		591CF4D91E855A67009279BA /* CLElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D81E855A67009279BA /* CLElement.cpp */; };
+		591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DA1E855AFE009279BA /* GXElement.cpp */; };
+		591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DE1E855B78009279BA /* GXGeometry.cpp */; };
 		5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
 		5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
 		5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
@@ -50,6 +52,10 @@
 		591CF4D31E85530C009279BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		591CF4D61E855784009279BA /* CLElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CLElement.hpp; sourceTree = "<group>"; };
 		591CF4D81E855A67009279BA /* CLElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLElement.cpp; sourceTree = "<group>"; };
+		591CF4DA1E855AFE009279BA /* GXElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXElement.cpp; path = GX/GXElement.cpp; sourceTree = "<group>"; };
+		591CF4DB1E855AFE009279BA /* GXElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXElement.hpp; path = GX/GXElement.hpp; sourceTree = "<group>"; };
+		591CF4DE1E855B78009279BA /* GXGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXGeometry.cpp; path = GX/GXGeometry.cpp; sourceTree = "<group>"; };
+		591CF4DF1E855B78009279BA /* GXGeometry.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXGeometry.hpp; path = GX/GXGeometry.hpp; sourceTree = "<group>"; };
 		5923E87F1E82B91F00587675 /* Celesta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Celesta; sourceTree = BUILT_PRODUCTS_DIR; };
 		5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GroundBase-cpp.xcodeproj"; path = "../FlyLab/GroundBase-cpp/GroundBase-cpp.xcodeproj"; sourceTree = "<group>"; };
 		5923E8981E82B97300587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/Celesta-awrmxhgwyxveadawcvgctxqmlhsd/Build/Products/Debug/libGroundBase.dylib"; sourceTree = "<group>"; };
@@ -86,12 +92,24 @@
 			path = CoreTest;
 			sourceTree = "<group>";
 		};
+		591CF4DD1E855B02009279BA /* GX */ = {
+			isa = PBXGroup;
+			children = (
+				591CF4DE1E855B78009279BA /* GXGeometry.cpp */,
+				591CF4DF1E855B78009279BA /* GXGeometry.hpp */,
+				591CF4DA1E855AFE009279BA /* GXElement.cpp */,
+				591CF4DB1E855AFE009279BA /* GXElement.hpp */,
+			);
+			name = GX;
+			sourceTree = "<group>";
+		};
 		5923E8761E82B91F00587675 = {
 			isa = PBXGroup;
 			children = (
 				5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */,
 				591CF4D21E85530C009279BA /* CoreTest */,
 				5923E8891E82B94300587675 /* Core */,
+				591CF4DD1E855B02009279BA /* GX */,
 				5923E8801E82B91F00587675 /* Products */,
 				5923E8971E82B97300587675 /* Frameworks */,
 			);
@@ -223,8 +241,10 @@
 			files = (
 				591CF4D91E855A67009279BA /* CLElement.cpp in Sources */,
 				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
+				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
+				591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */,
 				591CF4D41E85530C009279BA /* main.cpp in Sources */,
 				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
 			);
