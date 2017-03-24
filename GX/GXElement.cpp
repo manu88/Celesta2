@@ -120,6 +120,16 @@ void GXElement::paint(const GXRect &rect)
     path.setFillColor( _backgroundColor );
     path.fill();
     path.clear();
+    
+    if( !_children.empty())
+    {
+        
+        
+        for (auto const child : _children)
+        {
+            child->paint(child->getBounds());
+        }
+    }
 }
 
 void GXElement::printInfos(std::ostream &stream) const
@@ -144,7 +154,6 @@ void GXElement::printInfos(std::ostream &stream) const
         for (auto const child : _children)
         {
             stream << "     " ;
-            child->paint(child->getBounds());
         }
     }
     stream << std::endl;
