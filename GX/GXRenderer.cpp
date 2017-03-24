@@ -33,9 +33,11 @@ bool GXRenderer::update()
     if( !_rootElement)
         return false;
     
+    if( _rootElement->_needsUpdate)
+    {
+        _rootElement->paint(getBounds() );
+    }
     
-    _rootElement->paint(getBounds() );
-    std::cout  <<  std::endl;
     
 
     return true;

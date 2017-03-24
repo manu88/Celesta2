@@ -38,12 +38,15 @@ public:
     void setZPos( int );
     int  getZPos() const;
     
+    /**/
     void setBackgroundColor(const GXColor &);
     
     const GXColor & getBackgroundColor() const
     {
         return _backgroundColor;
     }
+    /* Updates */
+    void setNeedsDisplay( const GXRect & );
     
     /* Hierarchy */
     
@@ -79,7 +82,8 @@ private:
     GXChildList _children;
     
     /**/
-    bool _needsUpdate;
+    bool   _needsUpdate;
+    GXRect _updateRect;
     
 };
 

@@ -16,7 +16,8 @@ _bounds( makeRectNULL() ),
 _zOrder( 0 ),
 _backgroundColor( makeColor(0,0,0)),
 _parent( nullptr ),
-_needsUpdate(false)
+_needsUpdate(false),
+_updateRect( makeRectNULL() )
 {
     
 }
@@ -91,6 +92,8 @@ bool GXElement::addChild( GXElement* element )
     element->_parent = this;
     
     sortChildren();
+    
+    element->setNeedsDisplay(element->getBounds());
     return true;
 }
 
@@ -123,6 +126,20 @@ void GXElement::sortChildren()
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** */
 /*
+    Updates
+ */
+
+void GXElement::setNeedsDisplay( const GXRect &rect )
+{
+    _updateRect = rect;
+    _needsUpdate = true;
+    if(_parent)
+    {
+        _parent->setNeedsDisplay( rect );
+    }
+}
+/* **** **** **** **** **** **** **** **** **** **** **** **** */
+/*
     Render
  */
 
@@ -147,6 +164,8 @@ void GXElement::paint(const GXRect &rect)
 	    child->paint( b );
         }
     }
+    
+    _needsUpdate = false;
 }
 
 void GXElement::printInfos(std::ostream &stream) const

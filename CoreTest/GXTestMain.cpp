@@ -143,7 +143,7 @@ int main(int argc, const char * argv[])
             win1.moveOf(5, 5);
             disp.update();
         });
-        runLoop.addSource(timer);
+        //runLoop.addSource(timer);
         
         runLoop.run();
         
