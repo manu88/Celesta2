@@ -97,10 +97,10 @@ void GXElement::paint(const GXRect &rect)
     printInfos( std::cout );
     
     GXPath path( getBounds());
-    path.addRect(path.getBoundingRect());
+    path.addRect(makeRect(makePointNULL(), getBounds().size));
     path.setFillColor( _backgroundColor );
     path.fill();
-    
+    path.clear();
 }
 
 void GXElement::printInfos(std::ostream &stream) const
