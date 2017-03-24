@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		591CF4D41E85530C009279BA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D31E85530C009279BA /* main.cpp */; };
+		5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
+		5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
+		5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
+		5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */; };
+		5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8BF1E82C96E00587675 /* FileSystem.cpp */; };
+		5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5923E8921E82B95D00587675 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 593BC3C01DBE763700B6D713;
+			remoteInfo = "GroundBase-cpp";
+		};
+		5923E8941E82B95D00587675 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 593BC3D71DBE76CB00B6D713;
+			remoteInfo = GBCPPTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5923E87D1E82B91F00587675 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		591CF4D31E85530C009279BA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5923E87F1E82B91F00587675 /* Celesta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Celesta; sourceTree = BUILT_PRODUCTS_DIR; };
+		5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GroundBase-cpp.xcodeproj"; path = "../FlyLab/GroundBase-cpp/GroundBase-cpp.xcodeproj"; sourceTree = "<group>"; };
+		5923E8981E82B97300587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/Celesta-awrmxhgwyxveadawcvgctxqmlhsd/Build/Products/Debug/libGroundBase.dylib"; sourceTree = "<group>"; };
+		5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libGroundBase-cpp.dylib"; path = "../../../../../../usr/local/lib/libGroundBase-cpp.dylib"; sourceTree = "<group>"; };
+		5923E8A31E82C05200587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = ../../../../../../usr/local/lib/libGroundBase.dylib; sourceTree = "<group>"; };
+		5923E8A81E82C0A400587675 /* CLApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLApplication.cpp; sourceTree = "<group>"; };
+		5923E8A91E82C0A400587675 /* CLApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CLApplication.hpp; sourceTree = "<group>"; };
+		5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLApplicationDelegate.cpp; sourceTree = "<group>"; };
+		5923E8BA1E82C3C400587675 /* CLApplicationDelegate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CLApplicationDelegate.hpp; sourceTree = "<group>"; };
+		5923E8BF1E82C96E00587675 /* FileSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileSystem.cpp; sourceTree = "<group>"; };
+		5923E8C01E82C96E00587675 /* FileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileSystem.hpp; sourceTree = "<group>"; };
+		5923E8C21E82C99C00587675 /* StringOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringOperations.cpp; sourceTree = "<group>"; };
+		5923E8C31E82C99C00587675 /* StringOperations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringOperations.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5923E87C1E82B91F00587675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */,
+				5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		591CF4D21E85530C009279BA /* CoreTest */ = {
+			isa = PBXGroup;
+			children = (
+				591CF4D31E85530C009279BA /* main.cpp */,
+			);
+			path = CoreTest;
+			sourceTree = "<group>";
+		};
+		5923E8761E82B91F00587675 = {
+			isa = PBXGroup;
+			children = (
+				5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */,
+				591CF4D21E85530C009279BA /* CoreTest */,
+				5923E8891E82B94300587675 /* Core */,
+				5923E8801E82B91F00587675 /* Products */,
+				5923E8971E82B97300587675 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5923E8801E82B91F00587675 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5923E87F1E82B91F00587675 /* Celesta */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5923E8891E82B94300587675 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5923E8C21E82C99C00587675 /* StringOperations.cpp */,
+				5923E8C31E82C99C00587675 /* StringOperations.hpp */,
+				5923E8BF1E82C96E00587675 /* FileSystem.cpp */,
+				5923E8C01E82C96E00587675 /* FileSystem.hpp */,
+				5923E8A81E82C0A400587675 /* CLApplication.cpp */,
+				5923E8A91E82C0A400587675 /* CLApplication.hpp */,
+				5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */,
+				5923E8BA1E82C3C400587675 /* CLApplicationDelegate.hpp */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5923E88D1E82B95C00587675 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5923E8931E82B95D00587675 /* libGroundBase-cpp.dylib */,
+				5923E8951E82B95D00587675 /* GBCPPTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5923E8971E82B97300587675 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */,
+				5923E8A31E82C05200587675 /* libGroundBase.dylib */,
+				5923E8981E82B97300587675 /* libGroundBase.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5923E87E1E82B91F00587675 /* Celesta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5923E8861E82B91F00587675 /* Build configuration list for PBXNativeTarget "Celesta" */;
+			buildPhases = (
+				5923E87B1E82B91F00587675 /* Sources */,
+				5923E87C1E82B91F00587675 /* Frameworks */,
+				5923E87D1E82B91F00587675 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Celesta;
+			productName = Celesta;
+			productReference = 5923E87F1E82B91F00587675 /* Celesta */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5923E8771E82B91F00587675 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Unlimited Development";
+				TargetAttributes = {
+					5923E87E1E82B91F00587675 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5923E87A1E82B91F00587675 /* Build configuration list for PBXProject "Celesta" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5923E8761E82B91F00587675;
+			productRefGroup = 5923E8801E82B91F00587675 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5923E88D1E82B95C00587675 /* Products */;
+					ProjectRef = 5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				5923E87E1E82B91F00587675 /* Celesta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5923E8931E82B95D00587675 /* libGroundBase-cpp.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = "libGroundBase-cpp.dylib";
+			remoteRef = 5923E8921E82B95D00587675 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5923E8951E82B95D00587675 /* GBCPPTest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = GBCPPTest;
+			remoteRef = 5923E8941E82B95D00587675 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5923E87B1E82B91F00587675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
+				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
+				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
+				591CF4D41E85530C009279BA /* main.cpp in Sources */,
+				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5923E8841E82B91F00587675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/GroundBase/;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5923E8851E82B91F00587675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include/GroundBase/;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5923E8871E82B91F00587675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5923E8881E82B91F00587675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5923E87A1E82B91F00587675 /* Build configuration list for PBXProject "Celesta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5923E8841E82B91F00587675 /* Debug */,
+				5923E8851E82B91F00587675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5923E8861E82B91F00587675 /* Build configuration list for PBXNativeTarget "Celesta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5923E8871E82B91F00587675 /* Debug */,
+				5923E8881E82B91F00587675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5923E8771E82B91F00587675 /* Project object */;
+}
