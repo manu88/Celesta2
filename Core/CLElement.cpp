@@ -6,4 +6,14 @@
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
 
-#include "Element.hpp"
+#include "CLElement.hpp"
+
+CLElement::CLElement()
+{
+    
+}
+
+CLElement::~CLElement()
+{
+    
+}

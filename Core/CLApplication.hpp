@@ -11,10 +11,10 @@
 
 #include <GroundBase.hpp>
 
-
+#include "CLElement.hpp"
 class CLApplicationDelegate;
 
-class CLApplication
+class CLApplication : public CLElement
 {
 public:
     
