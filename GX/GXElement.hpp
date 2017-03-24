@@ -36,6 +36,11 @@ public:
     
     void setBackgroundColor(const GXColor &);
     
+    const GXColor & getBackgroundColor() const
+    {
+        return _backgroundColor;
+    }
+    
     /* Hierarchy */
     
     const GXElement* getParent() const noexcept

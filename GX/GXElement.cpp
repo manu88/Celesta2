@@ -110,7 +110,11 @@ void GXElement::printInfos(std::ostream &stream) const
            << " y=" << _bounds.origin.y
            << " w=" << _bounds.size.width
            << " h=" << _bounds.size.height
-           << " z=" << _zOrder;
+           << " z=" << _zOrder
+           << " Color = " << (int) _backgroundColor.r
+                   << "/" << (int) _backgroundColor.g
+                   << "/" << (int) _backgroundColor.b
+                   << "/" << (int) _backgroundColor.a;
     
     
     if( !_children.empty())
