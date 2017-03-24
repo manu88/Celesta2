@@ -14,6 +14,7 @@
 GXElement::GXElement():
 _bounds( makeRectNULL() ),
 _zOrder( 0 ),
+_backgroundColor( makeColor(0,0,0)),
 _parent( nullptr )
 {
     
@@ -51,6 +52,12 @@ void GXElement::setZPos( int z)
 int GXElement::getZPos() const
 {
     return  _zOrder;
+}
+
+
+void GXElement::setBackgroundColor(const GXColor & color)
+{
+    _backgroundColor = color;
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -91,7 +98,7 @@ void GXElement::paint(const GXRect &rect)
     
     GXPath path( getBounds());
     path.addRect(path.getBoundingRect());
-    path.setFillColor(makeColor(0, 0, 255 ));
+    path.setFillColor( _backgroundColor );
     path.fill();
     
 }

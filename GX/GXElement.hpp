@@ -13,6 +13,7 @@
 #include <vector>
 #include "GXGeometry.hpp"
 #include "../Core/CLElement.hpp"
+#include "GXColors.hpp"
 
 class GXElement : public virtual CLElement
 {
@@ -32,6 +33,8 @@ public:
     // 1 atop 0
     void setZPos( int );
     int  getZPos() const;
+    
+    void setBackgroundColor(const GXColor &);
     
     /* Hierarchy */
     
@@ -60,6 +63,8 @@ private:
     GXRect _bounds;
     int    _zOrder; // 1 atop 0
     
+    GXColor _backgroundColor;
+
     GXElement*  _parent;
     GXChildList _children;
 };

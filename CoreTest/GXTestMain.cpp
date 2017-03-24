@@ -28,7 +28,8 @@ int main(int argc, const char * argv[])
     
     
     GXElement mainElement;
-    
+    mainElement.setBackgroundColor(makeColor(255,0,0));
+
     const GXRect b = makeRect(0, 0, 1920, 1080);
     mainElement.setBounds( b );
     assert(mainElement.getBounds() == b);
@@ -36,10 +37,13 @@ int main(int argc, const char * argv[])
     GXElement child1;
     child1.setBounds(  makeRect(100, 50, 200, 100) );
     child1.setZPos(1);
+    child1.setBackgroundColor(makeColor(0,255,0));
+
     GXElement child2;
     child2.setBounds(  makeRect(140, 80, 200, 100) );
     child2.setZPos(0);
- 
+    child2.setBackgroundColor(makeColor(0,0,255));
+
     mainElement.addChild(&child1);
     mainElement.addChild(&child2);
     
