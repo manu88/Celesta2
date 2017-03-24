@@ -25,23 +25,22 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
         char buf[10];
         if( GBRunLoopSourceRead(source, buf, 10))
         {
-            const GBString* in = GBStringInitWithCStr(buf);
-            const GBString* cmd = GBStringByRemovingChars(in, "\n");
+
             
             bool update = false;
-            if( GBStringEqualsCStr(cmd, "a"))
+            if( buf[0] == 'a')
             {
                 printf("move <- \n");
                 child2.moveOf(-10 , 0);
                 update = true;
             }
-            else if( GBStringEqualsCStr(cmd, "z"))
-            {
+            else  if( buf[0] == 'z')
+	    {
                 printf("move -> \n");
                 child2.moveOf(10 , 0);
                 update = true;
             }
-            else if( GBStringEqualsCStr(cmd, "q"))
+            else  if( buf[0] == 'q')
             {
                 printf("Send quit \n");
                 GBRunLoopStop( GBRunLoopSourceGetRunLoop(source));
@@ -55,8 +54,6 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
                 }
             }
             
-            GBRelease(in);
-            GBRelease(cmd);
         }
         
     }
@@ -78,17 +75,17 @@ int main(int argc, const char * argv[])
     GXElement mainElement;
     mainElement.setBackgroundColor(makeColor(255,0,0));
 
-    const GXRect b = makeRect(0, 0, 250, 150);
+    const GXRect b = makeRect(0, 0, 1920, 1080);
     mainElement.setBounds( b );
     assert(mainElement.getBounds() == b);
     
     GXElement child1;
-    child1.setBounds(  makeRect(100, 50, 200, 100) );
+    child1.setBounds(  makeRect(100, 50, 200, 150) );
     child1.setZPos(0);
     child1.setBackgroundColor(makeColor(0,255,0));
 
     
-    child2.setBounds(  makeRect(140, 80, 200, 100) );
+    child2.setBounds(  makeRect(140, 80, 170, 100) );
     child2.setZPos(1);
     child2.setBackgroundColor(makeColor(0,0,255));
 
