@@ -46,7 +46,8 @@ public:
         return _backgroundColor;
     }
     /* Updates */
-    void setNeedsDisplay( const GXRect & );
+    void setNeedsDisplay( const GXRect &  );
+    void setNeedsDisplay();
     
     /* Hierarchy */
     

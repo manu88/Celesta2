@@ -72,6 +72,7 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
             
             if( update)
             {
+                win1.setNeedsDisplay();
                 if( !disp.update() )
                 {
                     std::cout << "Error update Display " << std::endl;

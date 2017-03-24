@@ -129,6 +129,10 @@ void GXElement::sortChildren()
     Updates
  */
 
+void GXElement::setNeedsDisplay()
+{
+    setNeedsDisplay(getBounds());
+}
 void GXElement::setNeedsDisplay( const GXRect &rect )
 {
     _updateRect = rect;
