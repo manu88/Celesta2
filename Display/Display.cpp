@@ -9,7 +9,7 @@
 #include "Display.hpp"
 
 #ifdef TARGET_RASPBERRY_PI
-#include "DisplayImplRPI.hpp"
+#include "impl/DisplayImplRPI.hpp"
 #endif
 
 Display::Display():
