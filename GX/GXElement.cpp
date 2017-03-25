@@ -112,9 +112,10 @@ bool GXElement::removeChild(GXElement *element)
     if( !element)
         return false;
     
-    if(_children.erase(std::remove( _children.begin(), _children.end(), element), _children.end()) != _children.end())
+    _children.erase(std::remove( _children.begin(), _children.end(), element), _children.end());
     {
         sortChildren();
+	element->_parent = nullptr;
         return true;
     }
     
