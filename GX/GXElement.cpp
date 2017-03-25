@@ -111,15 +111,17 @@ bool GXElement::removeChild(GXElement *element)
 {
     if( !element)
         return false;
+
+    DEBUG_ASSERT(element->_parent == this);
+    
+    if(element->_parent != this)
+        return false;
     
     _children.erase(std::remove( _children.begin(), _children.end(), element), _children.end());
-    {
-        sortChildren();
-	element->_parent = nullptr;
-        return true;
-    }
+
+    sortChildren();
+    return true;
     
-    return false;
 }
 
 struct layer_comparor
@@ -160,7 +162,7 @@ void GXElement::setNeedsDisplay( const GXRect &rect )
 
 void GXElement::paint(const GXRect &rect)
 {
-    printInfos( std::cout );
+    //printInfos( std::cout );
     
     GXPath path( rect);
     path.addRect(makeRect(makePointNULL(), rect.size));
@@ -175,8 +177,8 @@ void GXElement::paint(const GXRect &rect)
         for (auto const child : _children)
         {
             const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
-            printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height); 
-	    child->paint( b );
+            //printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height);
+            child->paint( b );
         }
     }
     

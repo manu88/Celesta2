@@ -163,7 +163,7 @@ int main(int argc, const char * argv[])
 	    win1.setNeedsDisplay();
             disp.update();
         });
-        runLoop.addSource(timer);
+        //runLoop.addSource(timer);
 
         runLoop.run();
 
