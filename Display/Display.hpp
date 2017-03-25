@@ -11,17 +11,16 @@
 
 #include <GBThread.hpp>
 #include "../Core/CLElement.hpp"
+#include "../GX/GXRenderer.hpp"
 
 class AbstractDisplayImpl;
-class GXRenderer;
 
-class Display : public virtual CLElement
+
+class Display : public GXRenderer
 {
 public:
     Display();
     ~Display();
-    
-    void setRenderer(GXRenderer* );
     
     bool init();
     bool deInit();
@@ -36,7 +35,7 @@ private:
     Thread _guiThread;
     AbstractDisplayImpl *_impl;
     
-    GXRenderer *_renderer;
+
 };
 
 #endif /* Display_hpp */

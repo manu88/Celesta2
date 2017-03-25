@@ -21,7 +21,7 @@ public:
     
     bool setDisplayedElement(GXElement*);
     
-    bool update();
+    bool updateContent();
     
     GXElement* getRootElement() const
     {

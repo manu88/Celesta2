@@ -21,8 +21,7 @@
 
 
 Display::Display():
-_impl(nullptr),
-_renderer(nullptr)
+_impl(nullptr)
 {
 #ifdef TARGET_RASPBERRY_PI
     _impl = new DisplayImplRPI();
@@ -63,10 +62,9 @@ bool Display::deInit()
 bool Display::update()
 {
     DEBUG_ASSERT(_impl);
-    if( !_renderer)
-        return false;
+
     
-    if(_renderer->update())
+    if( updateContent() )
     {
         return _impl->update();
     }
@@ -83,10 +81,7 @@ bool Display::stop()
     return _guiThread.sendStop();
 }
 
-void Display::setRenderer(GXRenderer* renderer )
-{
-    _renderer = renderer;
-}
+
 
 void Display::startGUI()
 {

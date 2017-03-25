@@ -28,7 +28,7 @@ bool GXRenderer::setDisplayedElement(GXElement* element)
     return true;
 }
 
-bool GXRenderer::update()
+bool GXRenderer::updateContent()
 {
     if( !_rootElement)
         return false;

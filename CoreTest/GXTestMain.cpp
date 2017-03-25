@@ -138,13 +138,10 @@ int main(int argc, const char * argv[])
 
         mainElement.addChild(&win1);
         win1.addChild(&child2);
+
+        disp.setDisplayedElement(&mainElement);
+        disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
-        GXRenderer renderer;
-        renderer.setDisplayedElement(&mainElement);
-        renderer.setBounds(  makeRect(0, 0, 1920, 1080) );
-        
-        
-        disp.setRenderer(&renderer);
 
         assert(disp.start());
         
