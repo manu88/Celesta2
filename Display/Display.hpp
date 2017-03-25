@@ -31,6 +31,8 @@ public:
     
 private:
     
+    void needsDisplay() override final ;
+    
     void startGUI();
     Thread _guiThread;
     AbstractDisplayImpl *_impl;

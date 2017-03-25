@@ -24,6 +24,7 @@ GXRenderer::~GXRenderer()
 bool GXRenderer::setDisplayedElement(GXElement* element)
 {
     _rootElement = element;
+    element->_parent = this;
     
     return true;
 }

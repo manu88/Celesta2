@@ -66,7 +66,7 @@ public:
     
     void printInfos( std::ostream &stream) const;
 protected:
-    
+    virtual void needsDisplay();
     virtual void paint(const GXRect &rect); // should go pure virtual
     //GXElement();
     

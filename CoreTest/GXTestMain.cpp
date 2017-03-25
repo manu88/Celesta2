@@ -89,10 +89,12 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
             if( update)
             {
                 win1.setNeedsDisplay();
+                /*
                 if( !disp.update() )
                 {
                     std::cout << "Error update Display " << std::endl;
                 }
+                 */
             }
             
         }
@@ -113,6 +115,10 @@ int main(int argc, const char * argv[])
         }
         
         
+        disp.setBounds(  makeRect(0, 0, 1920, 1080) );
+        assert(disp.start());
+        
+        
         GXElement mainElement;
         mainElement.setBackgroundColor(makeColor(255,0,0));
 
@@ -125,7 +131,7 @@ int main(int argc, const char * argv[])
         win1.setZPos(0);
         win1.setBackgroundColor(makeColor(0,255,0));
 
-	GXElement win3;
+        GXElement win3;
         win3.setBounds(  makeRect(100, 50, 200, 150) );
         win3.setZPos(3);
         win3.setBackgroundColor(makeColor(127,0,127 , 127));
@@ -140,16 +146,8 @@ int main(int argc, const char * argv[])
         win1.addChild(&child2);
 
         disp.setDisplayedElement(&mainElement);
-        disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
-
-        assert(disp.start());
         
-        if( !disp.update() )
-        {
-            std::cout << "Error update Display " << std::endl;
-        }
-
         GBFDSource* input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
         runLoop.addSource(input);
         
@@ -158,13 +156,15 @@ int main(int argc, const char * argv[])
         {
             win1.moveOf(5, 5);
  
-	    if( win1.getBounds().origin.y > 1080)
-	    {
-		win1.moveTo(0,0);
-	    }
-	    win1.setNeedsDisplay();
-            disp.update();
+            if( win1.getBounds().origin.y > 1080)
+            {
+                win1.moveTo(0,0);
+            }
+            
+            win1.setNeedsDisplay();
+
         });
+        
         //runLoop.addSource(timer);
 
         runLoop.run();

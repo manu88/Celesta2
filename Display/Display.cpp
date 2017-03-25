@@ -82,14 +82,24 @@ bool Display::stop()
 }
 
 
+void Display::needsDisplay()
+{
+    std::cout << "DISP needsDisplay " << std::endl;
+    _guiThread.wake();
+}
+
 
 void Display::startGUI()
 {
     std::cout << "Start GUI Thread" << std::endl;
     
+    update();
     while ( !_guiThread.shouldReturn() )
     {
-        _guiThread.waitFor(1000);
+        if(_guiThread.waitForever())
+        {
+            std::cout << "DISP Update " << std::endl;
+        }
     }
     
 }

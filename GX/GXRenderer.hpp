@@ -20,7 +20,7 @@ public:
     ~GXRenderer();
     
     bool setDisplayedElement(GXElement*);
-    
+
     bool updateContent();
     
     GXElement* getRootElement() const

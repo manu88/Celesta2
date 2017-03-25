@@ -150,6 +150,7 @@ void GXElement::setNeedsDisplay( const GXRect &rect )
 {
     _updateRect = rect;
     _needsUpdate = true;
+    needsDisplay();
     if(_parent)
     {
         _parent->setNeedsDisplay( rect );
@@ -159,6 +160,10 @@ void GXElement::setNeedsDisplay( const GXRect &rect )
 /*
     Render
  */
+
+void GXElement::needsDisplay()
+{    
+}
 
 void GXElement::paint(const GXRect &rect)
 {
