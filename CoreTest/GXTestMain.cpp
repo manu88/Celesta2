@@ -58,14 +58,19 @@ static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification
             }
             else if( buf[0] == 't')
             {
-                win1.removeChild( &child2);
-                update = true;
+                if(win1.removeChild( &child2))
+                    update = true;
+	 	else 
+		    std::cout << "Error remove child" << std::endl;
+
             }
             else if( buf[0] == 'g')
             {
-                win1.addChild( &child2);
-                update = true;
-            }
+                if(win1.addChild( &child2))
+                    update = true;
+            	else 
+		    std::cout << "Error add child" << std::endl;
+	    }
 
             else  if( buf[0] == 'p')
             {
@@ -123,7 +128,7 @@ int main(int argc, const char * argv[])
 	GXElement win3;
         win3.setBounds(  makeRect(100, 50, 200, 150) );
         win3.setZPos(3);
-        win3.setBackgroundColor(makeColor(127,0,127));
+        win3.setBackgroundColor(makeColor(127,0,127 , 127));
         mainElement.addChild(&win3);
 
         

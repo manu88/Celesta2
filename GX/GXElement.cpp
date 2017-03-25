@@ -93,8 +93,8 @@ bool GXElement::addChild( GXElement* element )
     if( !element)
         return false;
     
-    if( element->_parent == this)
-        return true;
+//    if( element->_parent == this)
+//        return true;
     
     DEBUG_ASSERT( std::find(_children.begin(), _children.end(), element) == _children.end());
     
@@ -114,8 +114,8 @@ bool GXElement::removeChild(GXElement *element)
 
     DEBUG_ASSERT(element->_parent == this);
     
-    if(element->_parent != this)
-        return false;
+//    if(element->_parent != this)
+//        return false;
     
     _children.erase(std::remove( _children.begin(), _children.end(), element), _children.end());
 
