@@ -26,17 +26,17 @@ public:
     bool start() noexcept;
     bool stop() noexcept;
     
-    RunLoop& getRunLoop() noexcept
+    GB::RunLoop& getRunLoop() noexcept
     {
         return _runLoop;
     }
     
-    Variant getValueForKey( const std::string &key) const noexcept;
+    GB::Variant getValueForKey( const std::string &key) const noexcept;
     
 private:
     const std::string &_identifier;
-    RunLoop _runLoop;
-    Dictionary _datas;
+    GB::RunLoop _runLoop;
+    GB::Dictionary _datas;
     CLApplicationDelegate *_delegate;
 };
 

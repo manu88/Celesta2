@@ -63,7 +63,6 @@ bool Display::update()
 {
     DEBUG_ASSERT(_impl);
 
-    
     if( updateContent() )
     {
         return _impl->update();
@@ -99,6 +98,7 @@ void Display::startGUI()
         if(_guiThread.waitForever())
         {
             std::cout << "DISP Update " << std::endl;
+            update();
         }
     }
     
