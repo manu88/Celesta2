@@ -99,6 +99,7 @@ void Display::startGUI()
         if(_guiThread.waitForever())
         {
             std::cout << "DISP Update " << std::endl;
+//	    update();
         }
     }
     
