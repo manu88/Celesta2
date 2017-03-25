@@ -9,9 +9,8 @@
 #ifndef Display_hpp
 #define Display_hpp
 
+#include <GBThread.hpp>
 #include "../Core/CLElement.hpp"
-
-
 
 class AbstractDisplayImpl;
 class GXRenderer;
@@ -28,7 +27,13 @@ public:
     bool deInit();
     bool update();
     
+    bool start();
+    bool stop();
+    
 private:
+    
+    void startGUI();
+    Thread _guiThread;
     AbstractDisplayImpl *_impl;
     
     GXRenderer *_renderer;

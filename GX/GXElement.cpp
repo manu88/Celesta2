@@ -7,6 +7,8 @@
 //
 
 #include <algorithm>
+#include <GroundBase.hpp>
+
 #include "GXElement.hpp"
 #include "GXColors.hpp"
 #include "GXPath.hpp"
@@ -88,6 +90,14 @@ void GXElement::setBackgroundColor(const GXColor & color)
 
 bool GXElement::addChild( GXElement* element )
 {
+    if( !element)
+        return false;
+    
+    if( element->_parent == this)
+        return true;
+    
+    DEBUG_ASSERT( std::find(_children.begin(), _children.end(), element) == _children.end());
+    
     _children.push_back(element);
     element->_parent = this;
     

@@ -29,9 +29,11 @@ _renderer(nullptr)
 #else
     _impl = new DisplayImplDummy();
 #endif
-    
-    
+
     DEBUG_ASSERT(_impl);
+    
+    _guiThread.setName("Celesta.GUI");
+    _guiThread.setMain(std::bind(&Display::startGUI, this));
 }
 
 Display::~Display()
@@ -69,11 +71,30 @@ bool Display::update()
         return _impl->update();
     }
     
-    
     return false;
+}
+
+bool Display::start()
+{
+    return _guiThread.start();
+}
+bool Display::stop()
+{
+    return _guiThread.sendStop();
 }
 
 void Display::setRenderer(GXRenderer* renderer )
 {
     _renderer = renderer;
+}
+
+void Display::startGUI()
+{
+    std::cout << "Start GUI Thread" << std::endl;
+    
+    while ( !_guiThread.shouldReturn() )
+    {
+        _guiThread.waitFor(1000);
+    }
+    
 }

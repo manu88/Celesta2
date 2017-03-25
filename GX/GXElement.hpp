@@ -60,7 +60,7 @@ public:
     {
         return _children;
     }
-    
+    /* return true if the element is succesfully added (also true if the element has already in the children*/
     bool addChild( GXElement* );
     bool removeChild(GXElement *);
     

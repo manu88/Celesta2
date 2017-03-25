@@ -141,19 +141,16 @@ int main(int argc, const char * argv[])
         
         disp.setRenderer(&renderer);
 
+        assert(disp.start());
         
         if( !disp.update() )
         {
             std::cout << "Error update Display " << std::endl;
         }
-        
-        
-        
+
         GBFDSource* input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
         runLoop.addSource(input);
         
-        
-        timer;
         timer.setInterval(10);
         timer.setCallback([&](Timer &timer)
         {
@@ -172,6 +169,8 @@ int main(int argc, const char * argv[])
 
 
         GBRelease(input);
+        
+        disp.stop();
     }
     Introspection(true);
 
