@@ -18,8 +18,8 @@
 GXElement win1;
 GXElement child2;
 Display disp;
-Timer timer;
-RunLoop runLoop;
+GB::Timer timer;
+GB::RunLoop runLoop;
 
 
 static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
@@ -152,7 +152,7 @@ int main(int argc, const char * argv[])
         runLoop.addSource(input);
         
         timer.setInterval(10);
-        timer.setCallback([&](Timer &timer)
+        timer.setCallback([&](GB::Timer &timer)
         {
             win1.moveOf(5, 5);
  

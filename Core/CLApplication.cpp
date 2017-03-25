@@ -14,7 +14,7 @@ CLApplication::CLApplication( const std::string &identifier ):
 _identifier( identifier),
 _delegate(nullptr)
 {
-    _datas.addValueForKey(Variant(identifier), "identifier");
+    _datas.addValueForKey( GB::Variant(identifier), "identifier");
 }
 
 CLApplication::~CLApplication()
@@ -82,7 +82,7 @@ bool CLApplication::stop() noexcept
     return false;
 }
 
-Variant CLApplication::getValueForKey( const std::string &key) const noexcept
+GB::Variant CLApplication::getValueForKey( const std::string &key) const noexcept
 {
     return _datas.getValueForKey(key);
 }
