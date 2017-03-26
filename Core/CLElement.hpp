@@ -11,6 +11,7 @@
 
 #include <string>
 #include <map>
+#include <functional>
 
 namespace GB
 {
