@@ -11,7 +11,9 @@
 
 #include <string>
 #include <map>
+#include <functional>
 #include <GBVariant.hpp>
+
 
 
 class CLElement
