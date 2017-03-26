@@ -177,8 +177,7 @@ void GXElement::paint(const GXRect &rect)
     
     if( !_children.empty())
     {
-        
-        
+
         for (auto const child : _children)
         {
             const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
