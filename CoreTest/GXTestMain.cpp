@@ -187,7 +187,7 @@ int main(int argc, const char * argv[])
         
         disp.stop();
     }
-    Introspection(true);
+    GB::BinCoder::introspection(true);
 
     
     return 0;

@@ -29,6 +29,29 @@ _updateRect( makeRectNULL() )
         return GB::Variant::null();
         
     });
+    
+    registerSelector("getBounds", [&](const GB::Variant &l)
+                     {                         
+                         return GB::Variant({ getBounds().origin.x,
+                                              getBounds().origin.y,
+                                              getBounds().size.width,
+                                              getBounds().size.height
+                                            });
+                     });
+    
+    registerSelector("setBounds", [&](const GB::Variant &l)
+    {
+        setBounds( makeRect(
+                            l.getList().at(0).getInt(),
+                            l.getList().at(1).getInt(),
+                            l.getList().at(2).getInt(),
+                            l.getList().at(3).getInt()
+                 ));
+        
+        return GB::Variant::null();
+    });
+    
+    
 }
 
 GXElement::~GXElement()
