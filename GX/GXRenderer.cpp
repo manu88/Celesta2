@@ -11,6 +11,7 @@
 
 
 GXRenderer::GXRenderer():
+CLElement("GXRenderer"),
 _rootElement(nullptr)
 {
     

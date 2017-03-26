@@ -65,6 +65,9 @@ public:
     bool removeChild(GXElement *);
     
     void printInfos( std::ostream &stream) const;
+    
+    
+    virtual const GB::Variant perform( const Selector & , const GB::VariantList &args) override ;
 protected:
     virtual void needsDisplay();
     virtual void paint(const GXRect &rect); // should go pure virtual
