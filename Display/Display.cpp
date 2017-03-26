@@ -50,7 +50,7 @@ bool Display::init()
 {
     DEBUG_ASSERT(_impl);
         
-    return _impl->init();
+    return true;//_impl->init();
 }
 bool Display::deInit()
 {
@@ -90,6 +90,10 @@ void Display::needsDisplay()
 
 void Display::startGUI()
 {
+
+    if( !_impl->init())
+	return;
+
     std::cout << "Start GUI Thread" << std::endl;
     
     update();
