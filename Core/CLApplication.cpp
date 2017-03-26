@@ -11,6 +11,7 @@
 
 
 CLApplication::CLApplication( const std::string &identifier ):
+CLElement("CLApplication"),
 _identifier( identifier),
 _delegate(nullptr)
 {

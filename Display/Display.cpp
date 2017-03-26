@@ -21,6 +21,7 @@
 
 
 Display::Display():
+CLElement("Display"),
 _impl(nullptr)
 {
 #ifdef TARGET_RASPBERRY_PI

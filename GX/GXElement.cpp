@@ -14,6 +14,7 @@
 #include "GXPath.hpp"
 
 GXElement::GXElement():
+CLElement("GXElement"),
 _bounds( makeRectNULL() ),
 _zOrder( 0 ),
 _backgroundColor( makeColor(0,0,0)),
@@ -211,3 +212,8 @@ void GXElement::printInfos(std::ostream &stream) const
     stream << std::endl;
 }
 
+
+const GB::Variant GXElement::perform( const Selector &sel , const GB::VariantList &args)
+{
+    return CLElement::perform(sel, args);
+}
