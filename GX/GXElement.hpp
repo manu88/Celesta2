@@ -35,7 +35,7 @@ public:
     void moveTo( int x  , int y);
     
     // 1 atop 0
-    void setZPos( int );
+    bool setZPos( int );
     int  getZPos() const;
     
     /**/
@@ -66,8 +66,6 @@ public:
     
     void printInfos( std::ostream &stream) const;
     
-    
-    virtual const GB::Variant perform( const Selector & , const GB::VariantList &args) override ;
 protected:
     virtual void needsDisplay();
     virtual void paint(const GXRect &rect); // should go pure virtual

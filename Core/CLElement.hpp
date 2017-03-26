@@ -11,27 +11,24 @@
 
 #include <string>
 #include <map>
+#include <GBVariant.hpp>
 
-namespace GB
-{
-    class VariantList;
-    class Variant;
-}
+
 class CLElement
 {
     
 public:
     typedef std::string Selector;
-    typedef std::function<const GB::Variant(const GB::VariantList &)> Callable;
+    typedef std::function<const GB::Variant(const GB::Variant &)> Callable;
     
     virtual ~CLElement();
     
     const std::string &getClassName() const noexcept;
-    virtual const GB::Variant perform( const Selector & , const GB::VariantList &args);
+    const GB::Variant perform( const Selector & , const GB::Variant &args = GB::Variant::null());
+    bool respondsTo( const Selector &) const;
 protected:
     CLElement( const std::string &className );
     
-    const GB::Variant test(const GB::VariantList &args);
     
     bool registerSelector( const Selector &name , Callable func);
 private:

@@ -22,7 +22,13 @@ _parent( nullptr ),
 _needsUpdate(false),
 _updateRect( makeRectNULL() )
 {
-    
+    registerSelector("getZPos", std::bind( &GXElement::getZPos, this ));
+    registerSelector("setZPos", [&](const GB::Variant &l)
+    {
+        setZPos(l.getInt());
+        return GB::Variant::null();
+        
+    });
 }
 
 GXElement::~GXElement()
@@ -68,9 +74,10 @@ void GXElement::setSize( const GXSize &size)
     setBounds( makeRect(_bounds.origin, size ) );
 }
 
-void GXElement::setZPos( int z)
+bool GXElement::setZPos( int z)
 {
     _zOrder = z;
+    return true;
 }
 
 int GXElement::getZPos() const
@@ -212,8 +219,3 @@ void GXElement::printInfos(std::ostream &stream) const
     stream << std::endl;
 }
 
-
-const GB::Variant GXElement::perform( const Selector &sel , const GB::VariantList &args)
-{
-    return CLElement::perform(sel, args);
-}

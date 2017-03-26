@@ -11,14 +11,17 @@
 #include <assert.h>
 
 #include <GroundBase.hpp>
+
 #include "GXElement.hpp"
 #include "GXRenderer.hpp"
 #include "Display.hpp"
 
 static void testClassName( CLElement &el)
 {
+    assert(el.respondsTo("getClassName"));
+    
     const std::string &className1 = el.getClassName();
-    const GB::Variant& className2 = el.perform("getClassName", GB::VariantList() );
+    const GB::Variant& className2 = el.perform("getClassName");
     assert( !className2.isNull() && className2.isString());
     assert(className2.getString() == className1);
     
@@ -27,9 +30,18 @@ static void testClassName( CLElement &el)
     
 }
 
+static void testGXElement( GXElement &el)
+{
+    const int zPos = 10;
+    el.perform("setZPos", GB::Variant(zPos));
+    assert(el.getZPos() == zPos);
+    const GB::Variant &zPos2 = el.perform("getZPos" );
+    assert(zPos2.isInt() && zPos2.getInt() == zPos);
+}
 
 int main(int argc, const char * argv[])
 {
+    GB::ObjectWrapper::enableInvalidReleaseDebug(true);
     
     GXRenderer rend;
     testClassName( rend );
@@ -38,8 +50,12 @@ int main(int argc, const char * argv[])
     
     Display disp;
     testClassName(disp);
+    testGXElement(disp);
+     
+    testGXElement(el);
     
     
+    GB::ObjectWrapper::introspection( true );
     //const GB::Variant &className
     return 0;
 }

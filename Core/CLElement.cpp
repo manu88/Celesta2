@@ -13,12 +13,11 @@
 CLElement::CLElement( const std::string &className ):
 _className(className)
 {
-    
+    /*
     registerSelector("t",
                      std::bind(&CLElement::test,this  , std::placeholders::_1 ));
-    
-    registerSelector("getClassName",
-                     std::bind(&CLElement::getClassName,this   ));
+    */
+    registerSelector("getClassName", std::bind( &CLElement::getClassName, this ));
 
     
 }
@@ -41,7 +40,7 @@ const std::string &CLElement::getClassName() const noexcept
     return _className;// std::string( typeid(this).name());
 }
 
-const GB::Variant CLElement::perform( const Selector &sel, const GB::VariantList &args)
+const GB::Variant CLElement::perform( const Selector &sel, const GB::Variant &args)
 {
     if( _selectors.find(sel) != _selectors.end())
     {
@@ -52,8 +51,8 @@ const GB::Variant CLElement::perform( const Selector &sel, const GB::VariantList
     return GB::Variant::null();
 }
 
-
-const GB::Variant CLElement::test(const GB::VariantList &args)
+bool CLElement::respondsTo( const Selector &sel ) const
 {
-    return GB::Variant(getClassName());
+    return _selectors.find(sel) != _selectors.end();
 }
+
