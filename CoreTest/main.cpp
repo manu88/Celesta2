@@ -28,7 +28,7 @@ class MyAppDelegate  : public CLApplicationDelegate
             getApp()->getRunLoop().dispatchAsync([&]
             {
                 _timer.setInterval(1000);
-                _timer.setCallback([&](Timer &timer)
+                _timer.setCallback([&](GB::Timer &timer)
                 {
                     static int count = 0;
                     std::cout << "on time" << std::endl;
@@ -58,7 +58,7 @@ class MyAppDelegate  : public CLApplicationDelegate
     }
     
 private:
-    Timer _timer;
+    GB::Timer _timer;
     
 };
 int main(int argc, const char * argv[])

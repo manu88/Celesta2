@@ -27,6 +27,25 @@
 		591CF5051E857260009279BA /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF5031E857260009279BA /* Display.cpp */; };
 		591CF50D1E859578009279BA /* AbstractDisplayImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */; };
 		591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */; };
+		59221BDD1E87D7E5006C09FE /* GXColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FE1E856914009279BA /* GXColors.cpp */; };
+		59221BE01E87D7E9006C09FE /* GXPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FB1E8568E8009279BA /* GXPath.cpp */; };
+		59221BE11E87D7F1006C09FE /* GXRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4F71E855E77009279BA /* GXRenderer.cpp */; };
+		59221BE41E87D80D006C09FE /* GXRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4F71E855E77009279BA /* GXRenderer.cpp */; };
+		59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */; };
+		59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D81E855A67009279BA /* CLElement.cpp */; };
+		59221BE71E87D80D006C09FE /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF5031E857260009279BA /* Display.cpp */; };
+		59221BE81E87D80D006C09FE /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
+		59221BE91E87D80D006C09FE /* AbstractDisplayImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */; };
+		59221BEA1E87D80D006C09FE /* GXGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DE1E855B78009279BA /* GXGeometry.cpp */; };
+		59221BEC1E87D80D006C09FE /* GXPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FB1E8568E8009279BA /* GXPath.cpp */; };
+		59221BED1E87D80D006C09FE /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8BF1E82C96E00587675 /* FileSystem.cpp */; };
+		59221BEE1E87D80D006C09FE /* CLApplicationDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */; };
+		59221BEF1E87D80D006C09FE /* GXColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FE1E856914009279BA /* GXColors.cpp */; };
+		59221BF01E87D80D006C09FE /* GXElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DA1E855AFE009279BA /* GXElement.cpp */; };
+		59221BF11E87D80D006C09FE /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
+		59221BF31E87D80D006C09FE /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
+		59221BF41E87D80D006C09FE /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
+		59221BFB1E87D82F006C09FE /* TestSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59221BFA1E87D82F006C09FE /* TestSelector.cpp */; };
 		5923E8A41E82C05200587675 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
 		5923E8A51E82C05200587675 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
 		5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
@@ -54,6 +73,15 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		591CF4EE1E855D06009279BA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		59221BF51E87D80D006C09FE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -99,6 +127,8 @@
 		591CF50C1E859578009279BA /* AbstractDisplayImpl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AbstractDisplayImpl.hpp; sourceTree = "<group>"; };
 		591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DisplayImplDum.cpp; path = Dummies/DisplayImplDum.cpp; sourceTree = SOURCE_ROOT; };
 		591CF50F1E8599DE009279BA /* DisplayImplDum.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DisplayImplDum.hpp; path = Dummies/DisplayImplDum.hpp; sourceTree = SOURCE_ROOT; };
+		59221BF91E87D80D006C09FE /* TestSelector */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestSelector; sourceTree = BUILT_PRODUCTS_DIR; };
+		59221BFA1E87D82F006C09FE /* TestSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestSelector.cpp; sourceTree = "<group>"; };
 		5923E87F1E82B91F00587675 /* Celesta */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Celesta; sourceTree = BUILT_PRODUCTS_DIR; };
 		5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GroundBase-cpp.xcodeproj"; path = "../FlyLab/GroundBase-cpp/GroundBase-cpp.xcodeproj"; sourceTree = "<group>"; };
 		5923E8981E82B97300587675 /* libGroundBase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGroundBase.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/Celesta-awrmxhgwyxveadawcvgctxqmlhsd/Build/Products/Debug/libGroundBase.dylib"; sourceTree = "<group>"; };
@@ -124,6 +154,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59221BF21E87D80D006C09FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59221BF31E87D80D006C09FE /* libGroundBase-cpp.dylib in Frameworks */,
+				59221BF41E87D80D006C09FE /* libGroundBase.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5923E87C1E82B91F00587675 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				591CF4F31E855D23009279BA /* GXTestMain.cpp */,
+				59221BFA1E87D82F006C09FE /* TestSelector.cpp */,
 				591CF4D31E85530C009279BA /* main.cpp */,
 			);
 			path = CoreTest;
@@ -215,6 +255,7 @@
 			children = (
 				5923E87F1E82B91F00587675 /* Celesta */,
 				591CF4F21E855D06009279BA /* GXTest */,
+				59221BF91E87D80D006C09FE /* TestSelector */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,6 +316,23 @@
 			productReference = 591CF4F21E855D06009279BA /* GXTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		59221BE21E87D80D006C09FE /* TestSelector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59221BF61E87D80D006C09FE /* Build configuration list for PBXNativeTarget "TestSelector" */;
+			buildPhases = (
+				59221BE31E87D80D006C09FE /* Sources */,
+				59221BF21E87D80D006C09FE /* Frameworks */,
+				59221BF51E87D80D006C09FE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestSelector;
+			productName = Celesta;
+			productReference = 59221BF91E87D80D006C09FE /* TestSelector */;
+			productType = "com.apple.product-type.tool";
+		};
 		5923E87E1E82B91F00587675 /* Celesta */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5923E8861E82B91F00587675 /* Build configuration list for PBXNativeTarget "Celesta" */;
@@ -327,6 +385,7 @@
 			targets = (
 				5923E87E1E82B91F00587675 /* Celesta */,
 				591CF4E11E855D06009279BA /* GXTest */,
+				59221BE21E87D80D006C09FE /* TestSelector */,
 			);
 		};
 /* End PBXProject section */
@@ -370,6 +429,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59221BE31E87D80D006C09FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59221BE41E87D80D006C09FE /* GXRenderer.cpp in Sources */,
+				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
+				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
+				59221BE71E87D80D006C09FE /* Display.cpp in Sources */,
+				59221BE81E87D80D006C09FE /* StringOperations.cpp in Sources */,
+				59221BE91E87D80D006C09FE /* AbstractDisplayImpl.cpp in Sources */,
+				59221BEA1E87D80D006C09FE /* GXGeometry.cpp in Sources */,
+				59221BEC1E87D80D006C09FE /* GXPath.cpp in Sources */,
+				59221BFB1E87D82F006C09FE /* TestSelector.cpp in Sources */,
+				59221BED1E87D80D006C09FE /* FileSystem.cpp in Sources */,
+				59221BEE1E87D80D006C09FE /* CLApplicationDelegate.cpp in Sources */,
+				59221BEF1E87D80D006C09FE /* GXColors.cpp in Sources */,
+				59221BF01E87D80D006C09FE /* GXElement.cpp in Sources */,
+				59221BF11E87D80D006C09FE /* CLApplication.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5923E87B1E82B91F00587675 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +459,9 @@
 				591CF4F51E855D2D009279BA /* main.cpp in Sources */,
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
+				59221BE11E87D7F1006C09FE /* GXRenderer.cpp in Sources */,
+				59221BE01E87D7E9006C09FE /* GXPath.cpp in Sources */,
+				59221BDD1E87D7E5006C09FE /* GXColors.cpp in Sources */,
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
 				591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */,
 				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
@@ -396,6 +479,20 @@
 			name = Debug;
 		};
 		591CF4F11E855D06009279BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		59221BF71E87D80D006C09FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		59221BF81E87D80D006C09FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +610,15 @@
 			buildConfigurations = (
 				591CF4F01E855D06009279BA /* Debug */,
 				591CF4F11E855D06009279BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59221BF61E87D80D006C09FE /* Build configuration list for PBXNativeTarget "TestSelector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59221BF71E87D80D006C09FE /* Debug */,
+				59221BF81E87D80D006C09FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
