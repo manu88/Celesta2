@@ -137,6 +137,12 @@ int main(int argc, const char * argv[])
         win3.setBackgroundColor(makeColor(127,0,127 , 127));
         mainElement.addChild(&win3);
 
+	GXElement win4;
+        win4.setBounds(  makeRect(600, 60, 600, 500) );
+        win4.setZPos(4);
+        win4.setBackgroundColor(makeColor(0,100,127 ));
+        mainElement.addChild(&win4);
+
         
         child2.setBounds(  makeRect(0, 0, 170, 100) );
         child2.setZPos(1);
@@ -154,6 +160,13 @@ int main(int argc, const char * argv[])
         timer.setInterval(10);
         timer.setCallback([&](GB::Timer &timer)
         {
+	    GXColor col = win1.getBackgroundColor();
+            col.a++;
+            if( col.a>255)
+                col.a = 0;
+            
+            win1.setBackgroundColor(col);
+
             win1.moveOf(5, 5);
  
             if( win1.getBounds().origin.y > 1080)

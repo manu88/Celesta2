@@ -170,7 +170,8 @@ void GXElement::paint(const GXRect &rect)
     //printInfos( std::cout );
     
     GXPath path( rect);
-    path.addRect(makeRect(makePointNULL(), rect.size));
+   // path.addRect(makeRect(makePointNULL(), rect.size));
+    path.addRoundedRect(makeRect(makePointNULL(), rect.size), 50.f, 50.f);
     path.setFillColor( _backgroundColor );
     path.fill();
     path.clear();
