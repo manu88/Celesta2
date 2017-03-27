@@ -379,5 +379,56 @@ GXLine operator-(const GXLine& lhs, const GXPoint& rhs)
     return makeLine(lhs.p0 - rhs, lhs.p1 - rhs);
 }
 
+/* **** **** **** **** **** **** **** **** **** **** **** **** **** **** *****/
 
+GXRect  VariantGetRect( const GB::Variant &v)
+{
+    if( v.isList() && v.getList().size() == 4)
+    {
+        return makeRect( v.getList().at(0).getInt(),
+                         v.getList().at(1).getInt(),
+                         v.getList().at(2).getInt(),
+                         v.getList().at(3).getInt()
+                        );
+    }
+    return makeRectNULL();
+}
+GXPoint VariantGetPoint( const GB::Variant &v)
+{
+    if( v.isList() && v.getList().size() == 2)
+    {
+        return makePoint(v.getList().at(0).getInt(),
+                         v.getList().at(1).getInt());
 
+    }
+    return makePointNULL();
+}
+GXSize  VariantGetSize( const GB::Variant &v)
+{
+    if( v.isList() && v.getList().size() == 2)
+    {
+        return makeSize(v.getList().at(0).getInt(),
+                         v.getList().at(1).getInt());
+        
+    }
+    return makeSizeNULL();
+}
+
+GB::Variant GXRectGetVariant( const GXRect &v)
+{
+    return GB::Variant({ GB::Variant(v.origin.x) ,
+                         GB::Variant(v.origin.y) ,
+                         GB::Variant(v.size.width) ,
+                         GB::Variant(v.size.height)
+                      });
+}
+
+GB::Variant GXPointGetVariant( const GXPoint &v)
+{
+    return GB::Variant({ GB::Variant(v.x) , GB::Variant(v.y) });
+}
+
+GB::Variant GXSizeGetVariant( const GXSize &v)
+{
+    return GB::Variant({ GB::Variant(v.width) , GB::Variant(v.height) });
+}

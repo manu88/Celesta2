@@ -84,7 +84,10 @@ bool Display::stop()
 
 void Display::needsDisplay()
 {
-    std::cout << "DISP needsDisplay " << std::endl;
+    if( !_guiThread.isRunning())
+    {
+        return;
+    }
     _guiThread.wake();
 }
 

@@ -22,36 +22,53 @@ _parent( nullptr ),
 _needsUpdate(false),
 _updateRect( makeRectNULL() )
 {
+    initSelectors();
+}
+
+void GXElement::initSelectors()
+{
     registerSelector("getZPos", std::bind( &GXElement::getZPos, this ));
     registerSelector("setZPos", [&](const GB::Variant &l)
     {
-        setZPos(l.getInt());
+        setZPos(l.toInt());
         return GB::Variant::null();
-        
+     
     });
     
     registerSelector("getBounds", [&](const GB::Variant &l)
-                     {                         
-                         return GB::Variant({ getBounds().origin.x,
-                                              getBounds().origin.y,
-                                              getBounds().size.width,
-                                              getBounds().size.height
-                                            });
-                     });
+    {
+        return GXRectGetVariant(getBounds());
+    });
     
     registerSelector("setBounds", [&](const GB::Variant &l)
     {
-        setBounds( makeRect(
-                            l.getList().at(0).getInt(),
-                            l.getList().at(1).getInt(),
-                            l.getList().at(2).getInt(),
-                            l.getList().at(3).getInt()
-                 ));
-        
+        setBounds( VariantGetRect(l));
         return GB::Variant::null();
     });
     
+    registerSelector("setPos", [&](const GB::Variant &l)
+    {
+        setBounds( makeRect(VariantGetPoint(l)  , getBounds().size) );
+        return GB::Variant::null();
+    });
     
+    registerSelector("getPos", [&](const GB::Variant &l)
+    {
+        return GXPointGetVariant(getBounds().origin);
+    });
+    
+    registerSelector("getBackgroundColor", [&]( const GB::Variant &l)
+    {
+        const GXColor &c = getBackgroundColor();
+        printf("will return color %i %i %i %i \n" , c.r , c.g , c.b , c.a);
+        return GXColorGetVariant(c);
+    });
+    
+    registerSelector("setBackgroundColor", [&]( const GB::Variant &l)
+    {
+        setBackgroundColor( VariantGetGXColor(l));
+        return GB::Variant::null();
+    });
 }
 
 GXElement::~GXElement()

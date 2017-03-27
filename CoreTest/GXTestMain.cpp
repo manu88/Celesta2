@@ -9,28 +9,121 @@
 #include <stdio.h>
 #include <assert.h>
 #include <GroundBase.hpp>
+#include <map>
+#include "StringOperations.hpp"
 #include "GXElement.hpp"
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
 #include "Display.hpp"
 
 
+
+static std::map<const std::string, CLElement*> _elements;
 GXElement win1;
 GXElement child2;
 Display disp;
 GB::Timer timer;
 GB::RunLoop runLoop;
 
+static void quit()
+{
+    printf("Stop Display ...\n");
+    disp.stop();
+    printf("Done\n");
+    printf("Stop RunLoop ...\n");
+    runLoop.stop();
+    printf("Done\n");
+}
+
+static void parseCommands( const std::string &cmds)
+{
+    printf("Command '%s' \n" , cmds.c_str());
+    
+    std::vector<std::string> args = StringOperations::split(cmds, ' ');
+
+    if( args.at(0) == "quit")
+    {
+        quit();
+        
+    }
+    else if( args.at(0) == "list")
+    {
+        printf("%zi Elements : \n" , _elements.size());
+        
+        for (auto const &el : _elements)
+        {
+            printf("\t'%s' %s \n" ,el.first.c_str() , el.second->getClassName().c_str());
+        }
+    }
+    else if( args.at(0) == "sels")
+    {
+        const std::string targetName = args[1];
+        CLElement* target =  _elements.find(targetName)->second;
+        if( !target)
+        {
+            printf("Target '%s' not found \n" , targetName.c_str() );
+            return;
+        }
+        printf("%zi Selectors for '%s' class %s \n" , target->getSelectors().size() , targetName.c_str() , target->getClassName().c_str());
+        
+        for (auto &sel : target->getSelectors())
+        {
+            printf("\tSEL '%s' \n" , sel.first.c_str() );
+        }
+    }
+    else
+    {
+        
+        printf("Perform '%s' on '%s' with args :" , args[0].c_str() , args[1].c_str() );
+        const CLElement::Selector sel = args[0];
+        const std::string targetName = args[1];
+        CLElement* target =  _elements.find(targetName)->second;
+        if( !target)
+        {
+            printf("Target '%s' not found \n" , targetName.c_str() );
+            return;
+        }
+        args.erase(args.begin());
+        args.erase(args.begin());
+        
+        if( args.size() == 0)
+        {
+            printf("None");
+        }
+        const GB::Variant arguments(args);
+        
+        for ( auto const &v : arguments.getList())
+        {
+            printf(" '%s' " , v.toString().c_str() );
+        }
+        printf("\n");
+        
+        const GB::Variant &ret =  target->perform(sel , arguments.getList().size() == 1? arguments.getList().at(0) : arguments);
+        
+        if (!ret.isNull())
+        {
+            std::cout << "returned :" << ret.toString() << std::endl;
+        }
+        else
+        {
+            std::cout << "returned NULL Variant" << std::endl;
+        }
+    }
+}
 
 static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
 {
     if( notification == GBRunLoopSourceCanRead)
     {
-        char buf[10];
-        if( GBRunLoopSourceRead(source, buf, 10))
+        static char buf[64];
+        memset(buf, 0, 64);
+        if( GBRunLoopSourceRead(source, buf, 64))
         {
-
+            const std::string cmds = StringOperations::reduce( buf , "" , "\n");
             
+            parseCommands(cmds);
+            
+            return;
             bool update = false;
             if( buf[0] == 'q')
             {
@@ -137,7 +230,7 @@ int main(int argc, const char * argv[])
         win3.setBackgroundColor(makeColor(127,0,127 , 127));
         mainElement.addChild(&win3);
 
-	GXElement win4;
+        GXElement win4;
         win4.setBounds(  makeRect(600, 60, 600, 500) );
         win4.setZPos(4);
         win4.setBackgroundColor(makeColor(0,100,127 ));
@@ -180,6 +273,20 @@ int main(int argc, const char * argv[])
         
         //runLoop.addSource(timer);
 
+        
+        _elements.insert(std::make_pair("win1", &win1));
+        _elements.insert(std::make_pair("child2", &child2));
+        _elements.insert(std::make_pair("win3", &win3));
+        _elements.insert(std::make_pair("win4", &win4));
+        _elements.insert(std::make_pair("disp", &disp));
+        
+        std::cout << "commands type SEL TARGET ARGS .." << std::endl;
+        
+        parseCommands("setBackgroundColor win1 1 4 3 4");
+        const GXColor &c = win1.getBackgroundColor();
+        printf("Background Color %i %i %i %i\n" ,c.r , c.g , c.b , c.a );
+        //assert(c == makeColor(1, 2, 3 , 4));
+        
         runLoop.run();
 
 
@@ -187,8 +294,8 @@ int main(int argc, const char * argv[])
         
         disp.stop();
     }
-    GB::BinCoder::introspection(true);
-
     
+    //GB::BinCoder::introspection(true);
+
     return 0;
 }

@@ -72,6 +72,7 @@ protected:
     //GXElement();
     
 private:
+    void initSelectors();
     
     void sortChildren();
     

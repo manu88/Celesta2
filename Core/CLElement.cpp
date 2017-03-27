@@ -7,6 +7,7 @@
 //
 
 #include <GBVariant.hpp>
+#include <GBRunLoop.hpp>
 
 #include "CLElement.hpp"
 
@@ -27,10 +28,10 @@ CLElement::~CLElement()
     
 }
 
-bool CLElement::registerSelector( const Selector &name , Callable func)
+bool CLElement::registerSelector( const Selector &name , CallableFunction func)
 {
  
-    std::pair<Selector, Callable> p = std::make_pair(name,
+    std::pair<Selector, CallableFunction> p = std::make_pair(name,
                                                      func);
     return _selectors.insert(p).second;
 }
@@ -38,6 +39,19 @@ bool CLElement::registerSelector( const Selector &name , Callable func)
 const std::string &CLElement::getClassName() const noexcept
 {
     return _className;// std::string( typeid(this).name());
+}
+
+/*static*/ const GB::Variant CLElement::performAsync(const GB::RunLoop& runLoop,
+                                                     CLElement* el ,
+                                                     const Selector &sel ,
+                                                     const GB::Variant &args
+                                                     )
+{
+    runLoop.dispatchAsync([&]()
+    {
+        el->perform(sel , args);
+    });
+    return GB::Variant::null();
 }
 
 const GB::Variant CLElement::perform( const Selector &sel, const GB::Variant &args)
@@ -54,5 +68,9 @@ const GB::Variant CLElement::perform( const Selector &sel, const GB::Variant &ar
 bool CLElement::respondsTo( const Selector &sel ) const
 {
     return _selectors.find(sel) != _selectors.end();
+}
+const std::map<const CLElement::Selector , CLElement::CallableFunction>& CLElement::getSelectors() const
+{
+    return _selectors;
 }
 

@@ -32,6 +32,15 @@ static void testClassName( CLElement &el)
 
 static void testGXElement( GXElement &el)
 {
+    assert(el.respondsTo("setZPos"));
+    assert(el.respondsTo("getZPos"));
+    assert(el.respondsTo("getBounds"));
+    assert(el.respondsTo("setBounds"));
+    assert(el.respondsTo("getBackgroundColor"));
+    assert(el.respondsTo("setBackgroundColor"));
+
+    assert(el.respondsTo("yoloLol") == false);
+    
     const int zPos = 10;
     el.perform("setZPos", GB::Variant(zPos));
     assert(el.getZPos() == zPos);
@@ -42,8 +51,6 @@ static void testGXElement( GXElement &el)
     
     el.perform("setBounds" , GB::VariantList({ 12, 34, 56, 78 }) );
     
-    //el.setBounds( bounds );
-    
     const GB::Variant b = el.perform("getBounds");
     assert(b.isList());
     assert(b.getList().size() == 4 );
@@ -51,6 +58,14 @@ static void testGXElement( GXElement &el)
     assert(b.getList().at(1).getInt() == bounds.origin.y);
     assert(b.getList().at(2).getInt() == bounds.size.width);
     assert(b.getList().at(3).getInt() == bounds.size.height);
+    
+    
+    el.perform("setBackgroundColor" , GXColorGetVariant(makeColor(10, 20, 30 , 40)));
+    
+    const GXColor &color = el.getBackgroundColor();
+    const GB::Variant &colorVar = el.perform("getBackgroundColor");
+    assert( VariantGetGXColor(colorVar) == color);
+    
 }
 
 int main(int argc, const char * argv[])

@@ -15,6 +15,7 @@
 
 #include <stdint.h>
 #include <vector>
+#include <GBVariant.hpp>
 #include "GXGeometry.hpp"
 
 
@@ -110,7 +111,7 @@ typedef struct
  */
 
 GXColor makeColor(uint8_t r , uint8_t g , uint8_t b , uint8_t a = 255 );
-GXColor makeColor(int r , int g , int b , int a = 255 );
+//GXColor makeColor(int r , int g , int b , int a = 255 );
 
 
 bool operator==(const GXColor& lhs, const GXColor& rhs);
@@ -137,6 +138,7 @@ uint32_t GXColorToARGB8888(GXColor color );
 GXColorFLOAT GXColorToGXColorFLoat(const GXColor &color );
 
 
-
+GB::Variant GXColorGetVariant( const GXColor &v);
+GXColor     VariantGetGXColor( const GB::Variant &v);
 
 #endif /* COLORS_H */

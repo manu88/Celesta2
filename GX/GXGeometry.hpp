@@ -14,13 +14,11 @@
 #define _GXGeometry_h
 
 #include <list>
+#include <GBVariant.hpp>
 
 /*! \file GXGeometry.h
  \brief Simple geometric elements
  */
-
-
-
 
 typedef struct
 {
@@ -175,5 +173,15 @@ GXLine operator-=(const GXLine& lhs, const GXPoint& rhs);
 
 GXLine operator+(const GXLine& lhs, const GXPoint& rhs);
 GXLine operator-(const GXLine& lhs, const GXPoint& rhs);
+
+/* **** **** **** **** **** **** **** **** **** **** **** **** **** **** *****/
+/* From/To GB::Variant */
+GXRect  VariantGetRect( const GB::Variant &v);
+GXPoint VariantGetPoint( const GB::Variant &v);
+GXSize  VariantGetSize( const GB::Variant &v);
+
+GB::Variant GXRectGetVariant( const GXRect &v);
+GB::Variant GXPointGetVariant( const GXPoint &v);
+GB::Variant GXSizeGetVariant( const GXSize &v);
 
 #endif

@@ -15,7 +15,7 @@ GXColor makeColor(uint8_t r , uint8_t g , uint8_t b , uint8_t a     )
 {
     return GXColor { r ,  g ,  b ,  a };
 }
-
+/*
 GXColor makeColor(int r , int g , int b , int a  )
 {
     return makeColor( static_cast<uint8_t>( r ),
@@ -24,7 +24,7 @@ GXColor makeColor(int r , int g , int b , int a  )
                       static_cast<uint8_t>( a )
                      );
 }
-
+*/
 
 
 
@@ -87,3 +87,27 @@ GXColorFLOAT GXColorToGXColorFLoat(const GXColor &color )
                         };
 }
 
+/* **** **** **** **** **** **** **** **** **** **** **** **** **** **** *****/
+
+GB::Variant GXColorGetVariant( const GXColor &v)
+{
+    return GB::Variant({ GB::Variant(v.r) ,
+                         GB::Variant(v.g) ,
+                         GB::Variant(v.b) ,
+                         GB::Variant(v.a)
+                        });
+}
+GXColor     VariantGetGXColor( const GB::Variant &v)
+{
+    if( v.isList() &&
+       (v.getList().size() == 3 || v.getList().size() == 4)
+       )
+    {        
+        return makeColor( v.getList().at(0).getInt(),
+                          v.getList().at(1).getInt(),
+                          v.getList().at(2).getInt() ,
+                          v.getList().size() == 4? v.getList().at(3).getInt() : 255
+                          );
+    }
+    return makeColor(0, 0, 0);
+}
