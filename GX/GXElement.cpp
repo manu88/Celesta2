@@ -27,6 +27,12 @@ _updateRect( makeRectNULL() )
 
 void GXElement::initSelectors()
 {
+    
+    registerSelector("setNeedsDisplay", [&](const GB::Variant &l)
+    {
+        setNeedsDisplay();
+        return GB::Variant::null();
+    });
     registerSelector("getZPos", std::bind( &GXElement::getZPos, this ));
     registerSelector("setZPos", [&](const GB::Variant &l)
     {

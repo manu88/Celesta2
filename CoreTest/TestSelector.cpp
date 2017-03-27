@@ -49,7 +49,7 @@ static void testGXElement( GXElement &el)
     
     const GXRect bounds = makeRect(12, 34, 56, 78);
     
-    el.perform("setBounds" , GB::VariantList({ 12, 34, 56, 78 }) );
+    el.perform("setBounds" , GB::Variant({ GB::Variant(12), GB::Variant(34), GB::Variant(56), GB::Variant(78) }) );
     
     const GB::Variant b = el.perform("getBounds");
     assert(b.isList());
