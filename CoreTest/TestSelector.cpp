@@ -68,11 +68,43 @@ static void testGXElement( GXElement &el)
     
 }
 
+GXRect setValue( const GB::Variant &value)
+{
+    return VariantGetRect(value);
+}
+int testSet( int val)
+{
+    return val;
+}
+
+const GB::Variant testRet(const GXRect &r)
+{
+    return GXRectGetVariant(r);
+}
 int main(int argc, const char * argv[])
 {
     GB::ObjectWrapper::enableInvalidReleaseDebug(true);
  
     {
+        const GXRect rect = makeRect(100, 120, 130, 140);
+        //
+        const GB::Variant &v = testRet(rect);
+        
+        
+        const GXRect &r = setValue(v);
+        assert(r == rect);
+        
+        int inputV = 100;
+        const GB::Variant implicitConv =  testSet( inputV );
+        assert(implicitConv.isInt());
+        assert(implicitConv.getInt() == inputV);
+
+        assert(v.isList());
+        assert(v.getList().size() == 4);
+        assert(v.getList().at(0) == rect.origin.x);
+        assert(v.getList().at(1) == rect.origin.y);
+        assert(v.getList().at(2) == rect.size.width);
+        assert(v.getList().at(3) == rect.size.height);
         GXRenderer rend;
         testClassName( rend );
         GXElement el;

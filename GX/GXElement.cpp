@@ -43,7 +43,8 @@ void GXElement::initSelectors()
     
     registerSelector("getBounds", [&](const GB::Variant &l)
     {
-        return GXRectGetVariant(getBounds());
+        const GB::Variant &ret =  GXRectGetVariant(getBounds());
+        return ret;
     });
     
     registerSelector("setBounds", [&](const GB::Variant &l)
@@ -72,6 +73,7 @@ void GXElement::initSelectors()
     
     registerSelector("setBackgroundColor", [&]( const GB::Variant &l)
     {
+        
         setBackgroundColor( VariantGetGXColor(l));
         return GB::Variant::null();
     });

@@ -16,6 +16,19 @@ _identifier( identifier),
 _delegate(nullptr)
 {
     _datas.addValueForKey( GB::Variant(identifier), "identifier");
+    
+    registerSelector("stop", [&]( const GB::Variant& )
+    {
+        stop();
+        return GB::Variant::null();
+    });
+
+    registerSelector("getValueForKey", [&]( const GB::Variant& key )
+    {
+        return getValueForKey(key.toString());
+    });
+    
+    
 }
 
 CLApplication::~CLApplication()

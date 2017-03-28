@@ -78,7 +78,12 @@ bool Display::start()
 }
 bool Display::stop()
 {
-    return _guiThread.sendStop();
+    if( _guiThread.sendStop())
+    {
+        return _guiThread.waitForTerminaison();
+    }
+    
+    return false;
 }
 
 
@@ -105,6 +110,11 @@ void Display::startGUI()
     {
         if(_guiThread.waitForever())
         {
+            if (_guiThread.shouldReturn())
+            {
+                break;
+            }
+            
             std::cout << "DISP Update " << std::endl;
             update();
         }

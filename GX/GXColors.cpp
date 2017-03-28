@@ -97,16 +97,18 @@ GB::Variant GXColorGetVariant( const GXColor &v)
                          GB::Variant(v.a)
                         });
 }
-GXColor     VariantGetGXColor( const GB::Variant &v)
+GXColor VariantGetGXColor( const GB::Variant &v)
 {
+    
     if( v.isList() &&
        (v.getList().size() == 3 || v.getList().size() == 4)
        )
-    {        
-        return makeColor( v.getList().at(0).getInt(),
-                          v.getList().at(1).getInt(),
-                          v.getList().at(2).getInt() ,
-                          v.getList().size() == 4? v.getList().at(3).getInt() : 255
+    {
+        printf("Val Type %i \n" , v.getList().at(0).getType());
+        return makeColor( v.getList().at(0).toInt(),
+                          v.getList().at(1).toInt(),
+                          v.getList().at(2).toInt() ,
+                          v.getList().size() == 4? v.getList().at(3).toInt() : 255
                           );
     }
     return makeColor(0, 0, 0);

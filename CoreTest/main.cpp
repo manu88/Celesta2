@@ -68,9 +68,6 @@ int main(int argc, const char * argv[])
     MyAppDelegate delegate;
     
     app.setDelegate(&delegate);
-    
-    
-    
     app.start();
      
     std::cout << "App returned " << std::endl;
