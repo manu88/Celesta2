@@ -36,6 +36,13 @@ class MyAppDelegate  : public CLApplicationDelegate
         }
         
         
+        getApp()->registerSelector("move", [&]( const GB::Variant &vars )
+        {
+            win1.moveOf(10, 10);
+            win1.setNeedsDisplay();
+            return GB::Variant::null();
+        });
+        
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
         
@@ -83,6 +90,7 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         
         _elements.insert(std::make_pair("app", getApp() ) );
+        _elements.insert(std::make_pair("main", &mainElement));
         _elements.insert(std::make_pair("win1", &win1));
         _elements.insert(std::make_pair("child2", &child2));
         _elements.insert(std::make_pair("win3", &win3));
@@ -96,7 +104,7 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         
         getApp()->getRunLoop().addSource(input);
-        
+
         
     }
     static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)

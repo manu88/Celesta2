@@ -34,11 +34,12 @@ public:
     const std::map<const Selector , CallableFunction>& getSelectors() const;
     
     static const GB::Variant performAsync( const GB::RunLoop&, CLElement* , const Selector & , const GB::Variant &args = GB::Variant::null());
+    bool registerSelector( const Selector &name , CallableFunction func);
 protected:
     CLElement( const std::string &className );
     
     
-    bool registerSelector( const Selector &name , CallableFunction func);
+    
 private:
     const std::string _className;
     std::map<const Selector , CallableFunction> _selectors;
