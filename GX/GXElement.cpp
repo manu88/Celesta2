@@ -149,6 +149,9 @@ bool GXElement::addChild( GXElement* element )
     if( !element)
         return false;
     
+    if( element == this)
+        return false;
+    
 //    if( element->_parent == this)
 //        return true;
     

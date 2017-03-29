@@ -138,9 +138,15 @@ class MyAppDelegate  : public CLApplicationDelegate
     
     void parseCommands( const std::string &cmds)
     {
+        if( cmds.empty())
+            return;
+        
         printf("Command '%s' \n" , cmds.c_str());
         
         std::vector< std::string> args = StringOperations::split(cmds, ' ');
+        
+        if( args.empty())
+            return;
         
         if( args.at(0) == "list")
         {
@@ -151,63 +157,66 @@ class MyAppDelegate  : public CLApplicationDelegate
                 printf("\t'%s' %s \n" ,el.first.c_str() , el.second->getClassName().c_str());
             }
         }
-        else if( args.at(0) == "sels")
+        else if( args.size() > 1)
         {
-            const std::string targetName = args[1];
-            CLElement* target =  _elements.find(targetName)->second;
-            if( !target)
+            if( args.at(0) == "sels")
             {
-                printf("Target '%s' not found \n" , targetName.c_str() );
-                return;
-            }
-            printf("%zi Selectors for '%s' class %s \n" , target->getSelectors().size() , targetName.c_str() , target->getClassName().c_str());
-            
-            for (auto &sel : target->getSelectors())
-            {
-                printf("\tSEL '%s' \n" , sel.first.c_str() );
-            }
-        }
-        else
-        {
-            
-            printf("Perform '%s' on '%s' with args :" , args[0].c_str() , args[1].c_str() );
-            const CLElement::Selector sel = args[0];
-            const std::string targetName = args[1];
-            CLElement* target =  _elements.find(targetName)->second;
-            if( !target)
-            {
-                printf("Target '%s' not found \n" , targetName.c_str() );
-                return;
-            }
-            args.erase(args.begin());
-            args.erase(args.begin());
-            
-            if( args.size() == 0)
-            {
-                printf("None");
-            }
-            GB::Variant arguments({});
-            
-            for (const std::string &a : args)
-            {
-                arguments.getList().push_back(a);
-            }
-            
-            for ( auto const &v : arguments.getList())
-            {
-                printf(" '%s' " , v.toString().c_str() );
-            }
-            printf("\n");
-            
-            const GB::Variant &ret =  target->perform(sel , arguments.getList().size() == 1? arguments.getList().at(0) : arguments);
-            
-            if (!ret.isNull())
-            {
-                std::cout << "returned :" << ret << std::endl;
+                const std::string targetName = args[1];
+                CLElement* target =  _elements.find(targetName)->second;
+                if( !target)
+                {
+                    printf("Target '%s' not found \n" , targetName.c_str() );
+                    return;
+                }
+                printf("%zi Selectors for '%s' class %s \n" , target->getSelectors().size() , targetName.c_str() , target->getClassName().c_str());
+                
+                for (auto &sel : target->getSelectors())
+                {
+                    printf("\tSEL '%s' \n" , sel.first.c_str() );
+                }
             }
             else
             {
-                std::cout << "returned NULL Variant" << std::endl;
+                
+                printf("Perform '%s' on '%s' with args :" , args[0].c_str() , args[1].c_str() );
+                const CLElement::Selector sel = args[0];
+                const std::string targetName = args[1];
+                CLElement* target =  _elements.find(targetName)->second;
+                if( !target)
+                {
+                    printf("Target '%s' not found \n" , targetName.c_str() );
+                    return;
+                }
+                args.erase(args.begin());
+                args.erase(args.begin());
+                
+                if( args.size() == 0)
+                {
+                    printf("None");
+                }
+                GB::Variant arguments({});
+                
+                for (const std::string &a : args)
+                {
+                    arguments.getList().push_back(a);
+                }
+                
+                for ( auto const &v : arguments.getList())
+                {
+                    printf(" '%s' " , v.toString().c_str() );
+                }
+                printf("\n");
+                
+                const GB::Variant &ret =  target->perform(sel , arguments.getList().size() == 1? arguments.getList().at(0) : arguments);
+                
+                if (!ret.isNull())
+                {
+                    std::cout << "returned :" << ret << std::endl;
+                }
+                else
+                {
+                    std::cout << "returned NULL Variant" << std::endl;
+                }
             }
         }
     }
