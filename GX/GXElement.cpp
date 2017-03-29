@@ -15,6 +15,7 @@
 
 GXElement::GXElement():
 CLElement("GXElement"),
+_visible (true),
 _bounds( makeRectNULL() ),
 _zOrder( 0 ),
 _backgroundColor( makeColor(0,0,0)),
@@ -77,6 +78,18 @@ void GXElement::initSelectors()
         setBackgroundColor( VariantGetGXColor(l));
         return GB::Variant::null();
     });
+    
+    registerSelector("setVisible", [&]( const GB::Variant &l)
+                     {
+                         
+                         setVisible( (bool) l.toInt());
+                         return GB::Variant::null();
+                     });
+    
+    registerSelector("isVisible", [&]( const GB::Variant &l)
+                     {
+                         return isVisible();
+                     });
 }
 
 GXElement::~GXElement()
@@ -137,6 +150,12 @@ int GXElement::getZPos() const
 void GXElement::setBackgroundColor(const GXColor & color)
 {
     _backgroundColor = color;
+}
+
+void GXElement::setVisible( bool vis)
+{
+    _visible = vis;
+    
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -240,9 +259,13 @@ void GXElement::paint(const GXRect &rect)
         for (auto const child : _children)
         {
             DEBUG_ASSERT(child);
-            const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
-            //printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height);
-            child->paint( b );
+            
+            if( child && child->isVisible())
+            {
+                const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
+                //printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height);
+                child->paint( b );
+            }
         }
     }
     

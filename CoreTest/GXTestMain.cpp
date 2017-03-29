@@ -162,17 +162,21 @@ class MyAppDelegate  : public CLApplicationDelegate
             if( args.at(0) == "sels")
             {
                 const std::string targetName = args[1];
-                CLElement* target =  _elements.find(targetName)->second;
-                if( !target)
+                if( _elements.count(targetName) == 0)
                 {
                     printf("Target '%s' not found \n" , targetName.c_str() );
                     return;
                 }
-                printf("%zi Selectors for '%s' class %s \n" , target->getSelectors().size() , targetName.c_str() , target->getClassName().c_str());
+                CLElement* target =  _elements.find(targetName)->second;
                 
-                for (auto &sel : target->getSelectors())
+                if( target)
                 {
-                    printf("\tSEL '%s' \n" , sel.first.c_str() );
+                    printf("%zi Selectors for '%s' class %s \n" , target->getSelectors().size() , targetName.c_str() , target->getClassName().c_str());
+                    
+                    for (auto &sel : target->getSelectors())
+                    {
+                        printf("\tSEL '%s' \n" , sel.first.c_str() );
+                    }
                 }
             }
             else

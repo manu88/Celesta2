@@ -34,6 +34,12 @@ public:
     void moveOf( int dX , int dY);
     void moveTo( int x  , int y);
     
+    void setVisible( bool);
+    bool isVisible() const noexcept
+    {
+        return _visible;
+    }
+    
     // 1 atop 0
     bool setZPos( int );
     int  getZPos() const;
@@ -76,6 +82,7 @@ private:
     
     void sortChildren();
     
+    bool _visible;
     GXRect _bounds;
     int    _zOrder; // 1 atop 0
     
