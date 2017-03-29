@@ -59,13 +59,13 @@ class MyAppDelegate  : public CLApplicationDelegate
         win1.setZPos(0);
         win1.setBackgroundColor(makeColor(0,255,0));
         
-        GXElement win3;
+        
         win3.setBounds(  makeRect(100, 50, 200, 150) );
         win3.setZPos(3);
         win3.setBackgroundColor(makeColor(127,0,127 , 127));
         mainElement.addChild(&win3);
         
-        GXElement win4;
+        
         win4.setBounds(  makeRect(600, 60, 600, 500) );
         win4.setZPos(4);
         win4.setBackgroundColor(makeColor(0,100,127 ));
@@ -231,6 +231,8 @@ private:
     GXElement child2;
     Display disp;
     GBFDSource* input;
+    GXElement win3;
+    GXElement win4;
     /*
     GB::Timer timer;
     GB::RunLoop runLoop;
