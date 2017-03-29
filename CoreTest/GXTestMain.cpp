@@ -194,10 +194,15 @@ class MyAppDelegate  : public CLApplicationDelegate
                 printf("Perform '%s' on '%s' with args :" , args[0].c_str() , args[1].c_str() );
                 const CLElement::Selector sel = args[0];
                 const std::string targetName = args[1];
+                
+                if( _elements.count(targetName) == 0)
+                {
+                    printf("Target '%s' not found \n" , targetName.c_str() );
+                    return;
+                }
                 CLElement* target =  _elements.find(targetName)->second;
                 if( !target)
                 {
-                    printf("Target '%s' not found \n" , targetName.c_str() );
                     return;
                 }
                 args.erase(args.begin());
