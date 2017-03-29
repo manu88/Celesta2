@@ -5,6 +5,9 @@
 //  Created by Manuel Deneu on 22/03/2017.
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 #include "CLApplication.hpp"
 #include "CLApplicationDelegate.hpp"
@@ -15,7 +18,10 @@ CLElement("CLApplication"),
 _identifier( identifier),
 _delegate(nullptr)
 {
-    _datas.addValueForKey( GB::Variant(identifier), "identifier");
+    if( !_datas.addValueForKey( GB::Variant(identifier), "identifier"))
+    {
+        DEBUG_ASSERT(0);
+    }
     
     registerSelector("stop", [&]( const GB::Variant& )
     {
@@ -27,6 +33,12 @@ _delegate(nullptr)
     {
         return getValueForKey(key.toString());
     });
+    
+    registerSelector("setValueForKey", [&]( const GB::Variant& params )
+                     {
+                         return _datas.addValueForKey(params.getList().at(0), params.getList().at(1).getString());
+                         //return getValueForKey(key.toString());
+                     });
     
     
 }
@@ -66,8 +78,6 @@ bool CLApplication::start() noexcept
     
     if(_runLoop.run())
     {
-        
-        
         return true;
     }
     return false;
@@ -98,5 +108,7 @@ bool CLApplication::stop() noexcept
 
 GB::Variant CLApplication::getValueForKey( const std::string &key) const noexcept
 {
-    return _datas.getValueForKey(key);
+    const GB::Variant ret = _datas.getValueForKey(key);
+    
+    return ret;
 }

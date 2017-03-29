@@ -104,7 +104,6 @@ GXColor VariantGetGXColor( const GB::Variant &v)
        (v.getList().size() == 3 || v.getList().size() == 4)
        )
     {
-        printf("Val Type %i \n" , v.getList().at(0).getType());
         return makeColor( v.getList().at(0).toInt(),
                           v.getList().at(1).toInt(),
                           v.getList().at(2).toInt() ,

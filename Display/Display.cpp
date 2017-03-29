@@ -53,6 +53,7 @@ bool Display::init()
         
     return true;//_impl->init();
 }
+
 bool Display::deInit()
 {
     DEBUG_ASSERT(_impl);

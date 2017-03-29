@@ -15,6 +15,7 @@
 #include "GXElement.hpp"
 #include "GXRenderer.hpp"
 #include "Display.hpp"
+#include "CLApplication.hpp"
 
 static void testClassName( CLElement &el)
 {
@@ -101,10 +102,10 @@ int main(int argc, const char * argv[])
 
         assert(v.isList());
         assert(v.getList().size() == 4);
-        assert(v.getList().at(0) == rect.origin.x);
-        assert(v.getList().at(1) == rect.origin.y);
-        assert(v.getList().at(2) == rect.size.width);
-        assert(v.getList().at(3) == rect.size.height);
+        assert(v.getList().at(0).getInt() == rect.origin.x);
+        assert(v.getList().at(1).getInt() == rect.origin.y);
+        assert(v.getList().at(2).getInt() == rect.size.width);
+        assert(v.getList().at(3).getInt() == rect.size.height);
         GXRenderer rend;
         testClassName( rend );
         GXElement el;
@@ -115,6 +116,14 @@ int main(int argc, const char * argv[])
         testGXElement(disp);
          
         testGXElement(el);
+    }
+    {
+        const std::string appID = "com.myCompanyName.myApplicationName";
+        CLApplication app( appID);
+        
+        const GB::Variant vAppID = app.perform("getValueForKey" , std::string("identifier") );
+        assert(vAppID.isString());
+        assert(vAppID.getString() == appID);
     }
     
     GB::ObjectWrapper::introspection( true );

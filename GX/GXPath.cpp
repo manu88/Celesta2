@@ -82,9 +82,9 @@ void GXPath::clear()
 {
     VGPaint painter = vgCreatePaint();
     
-    GXColorFLOAT clr = GXColorToGXColorFLoat( color );
+    const GXColorFLOAT clr = GXColorToGXColorFLoat( color );
     
-    const VGfloat _color[4] { clr.r , clr.g , clr.b , clr.a};
+    const VGfloat _color[4] = { clr.r , clr.g , clr.b , clr.a};
     
     vgSetParameteri( painter, VG_PAINT_TYPE, VG_PAINT_TYPE_COLOR);
     vgSetParameterfv( painter, VG_PAINT_COLOR, 4, _color);
@@ -100,17 +100,13 @@ void GXPath::clear()
 
 /*static*/ void GXPath::setFillColor  (const GXColor &color )
 {
-#ifdef TARGET_RASPBERRY_PI
+//#ifdef TARGET_RASPBERRY_PI
     VGPaint painter = vgCreatePaint();
     
-    GXColorFLOAT clr = GXColorToGXColorFLoat( color );
+    const GXColorFLOAT clr = GXColorToGXColorFLoat( color );
     
-    VGfloat _color[4];
-    _color[0] = clr.r ; // r
-    _color[1] = clr.g ; // g
-    _color[2] = clr.b ; // b
-    _color[3] = clr.a ;
-    
+    const VGfloat _color[4] = {clr.r , clr.g ,clr.b ,clr.a};
+
     vgSetParameteri( painter, VG_PAINT_TYPE, VG_PAINT_TYPE_COLOR);
     vgSetParameterfv( painter, VG_PAINT_COLOR, 4, _color);
     
@@ -118,7 +114,7 @@ void GXPath::clear()
     
     vgDestroyPaint(painter);
     
-#endif
+//#endif
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -132,11 +128,7 @@ void GXPath::clear()
 
 /*static*/ void GXPath::setStrokeWidth( float width )
 {
-#ifdef TARGET_RASPBERRY_PI   
-    
 	vgSetf( VG_STROKE_LINE_WIDTH, (VGfloat) width);
-    
-#endif
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -276,6 +268,8 @@ void GXPath::addEllipse( const GXRect &boundingRect)
     VGUErrorCode ret = vguEllipse ( m_path , center.x , center.y , boundingRect.size.width , boundingRect.size.height );
     
     DEBUG_ASSERT( ret == VGU_NO_ERROR);
+#else 
+    UNUSED_PARAMETER(center);
 #endif    
 }
 
@@ -310,10 +304,10 @@ void GXPath::addArc( const GXPoint &center ,  const GXSize &size , float startAn
     
     DEBUG_ASSERT( ret == VGU_NO_ERROR);
 #else
-    a1;
-    a2;
-    type;
-    center;
+    UNUSED_PARAMETER(a1);
+    UNUSED_PARAMETER(a2);
+    UNUSED_PARAMETER(type);
+    UNUSED_PARAMETER(center);
     
 #endif
 }
@@ -454,6 +448,8 @@ void GXPath::addCurve(const Curve_float &curve)
     vgAppendPath( m_path , path);
     vgDestroyPath( path );
     
+#else 
+    UNUSED_PARAMETER(size);
 #endif
     
 //    m_currentPoint = endPoint;
@@ -530,7 +526,7 @@ const GXRect& GXPath::getBoundingRect() const
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** */
 
-float GXPath::getPathLenght() const
+float GXPath::getPathLength() const
 {
 #ifdef TARGET_RASPBERRY_PI
 //    return vgPathLength ( m_path , )

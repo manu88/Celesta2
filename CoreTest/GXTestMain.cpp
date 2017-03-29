@@ -184,7 +184,12 @@ class MyAppDelegate  : public CLApplicationDelegate
             {
                 printf("None");
             }
-            const GB::Variant arguments(args);
+            GB::Variant arguments({});
+            
+            for (const std::string &a : args)
+            {
+                arguments.getList().push_back(a);
+            }
             
             for ( auto const &v : arguments.getList())
             {

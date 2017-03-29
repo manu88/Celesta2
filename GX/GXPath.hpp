@@ -218,15 +218,11 @@ public:
         m_shouldClearAfterRender = shouldI;
     }
     
-    //! Get the global geometry of the path.
-    /*!
-        \return A rectangle bounding the drawed shape.
-     */
     
     void clearRect( const GXColor &color);
     const GXRect &getBoundingRect() const;
     
-    float getPathLenght() const;
+    float getPathLength() const;
     
     void setBounds( const GXRect &bounds)
     {
