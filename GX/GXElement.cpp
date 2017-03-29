@@ -234,9 +234,9 @@ void GXElement::paint(const GXRect &rect)
     
     if( !_children.empty())
     {
-
         for (auto const child : _children)
         {
+            DEBUG_ASSERT(child);
             const GXRect b = makeRect(getBounds().origin + child->getBounds().origin, child->getBounds().size );
             //printf("Paint at %i %i %i %i \n" , b.origin.x , b.origin.y , b.size.width , b.size.height);
             child->paint( b );

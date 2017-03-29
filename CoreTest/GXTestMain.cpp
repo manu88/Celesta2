@@ -37,13 +37,15 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
-        assert(disp.start());
+        
         
         
     }
     
     void didStart()
     {
+        assert(disp.start());
+        
         std::cout << "App did Start" << std::endl;
         
         mainElement.setBackgroundColor(makeColor(255,0,0));
