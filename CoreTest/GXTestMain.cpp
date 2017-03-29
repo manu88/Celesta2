@@ -16,6 +16,7 @@
 
 #include "StringOperations.hpp"
 #include "GXElement.hpp"
+#include "GXLayout.hpp"
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
 #include "Display.hpp"
@@ -238,13 +239,13 @@ private:
     
     std::map<const std::string, CLElement*> _elements;
     
-    GXElement mainElement;
-    GXElement win1;
-    GXElement child2;
+    GXLayout mainElement;
+    GXLayout win1;
+    GXLayout child2;
     Display disp;
     GBFDSource* input;
-    GXElement win3;
-    GXElement win4;
+    GXLayout win3;
+    GXLayout win4;
     /*
     GB::Timer timer;
     GB::RunLoop runLoop;

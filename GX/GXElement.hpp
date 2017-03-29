@@ -21,7 +21,7 @@ public:
     friend class GXRenderer;
     
     typedef std::vector<GXElement*> GXChildList;
-    GXElement(); // Public is temp. for tests
+    
     virtual ~GXElement();
     
     /* Geometry */
@@ -73,6 +73,8 @@ public:
     void printInfos( std::ostream &stream) const;
     
 protected:
+    GXElement(); // Public is temp. for tests
+    
     virtual void needsDisplay();
     virtual void paint(const GXRect &rect); // should go pure virtual
     //GXElement();
