@@ -17,6 +17,8 @@ public:
     GXLayout();
     ~GXLayout();
 private:
+    
+    void paint(const GXRect &rect) override ;
 };
 
 #endif /* GXLayout_hpp */
