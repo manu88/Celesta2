@@ -38,7 +38,7 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         getApp()->registerSelector("move", [&]( const GB::Variant &vars )
         {
-            win1.moveOf(10, 10);
+            win1.moveOf(50, 50);
             win1.setNeedsDisplay();
             return GB::Variant::null();
         });
