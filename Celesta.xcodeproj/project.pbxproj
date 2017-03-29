@@ -52,6 +52,8 @@
 		5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */; };
 		5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8BF1E82C96E00587675 /* FileSystem.cpp */; };
 		5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
+		59FA9CEB1E8C176B00A96B57 /* GXLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9CE91E8C176B00A96B57 /* GXLayout.cpp */; };
+		59FA9CEC1E8C176B00A96B57 /* GXLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9CE91E8C176B00A96B57 /* GXLayout.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,8 @@
 		5923E8C01E82C96E00587675 /* FileSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileSystem.hpp; sourceTree = "<group>"; };
 		5923E8C21E82C99C00587675 /* StringOperations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StringOperations.cpp; sourceTree = "<group>"; };
 		5923E8C31E82C99C00587675 /* StringOperations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringOperations.hpp; sourceTree = "<group>"; };
+		59FA9CE91E8C176B00A96B57 /* GXLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXLayout.cpp; path = GX/GXLayout.cpp; sourceTree = "<group>"; };
+		59FA9CEA1E8C176B00A96B57 /* GXLayout.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXLayout.hpp; path = GX/GXLayout.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,8 @@
 				591CF4FC1E8568E8009279BA /* GXPath.hpp */,
 				591CF4DE1E855B78009279BA /* GXGeometry.cpp */,
 				591CF4DF1E855B78009279BA /* GXGeometry.hpp */,
+				59FA9CE91E8C176B00A96B57 /* GXLayout.cpp */,
+				59FA9CEA1E8C176B00A96B57 /* GXLayout.hpp */,
 				591CF4DA1E855AFE009279BA /* GXElement.cpp */,
 				591CF4DB1E855AFE009279BA /* GXElement.hpp */,
 				591CF4F71E855E77009279BA /* GXRenderer.cpp */,
@@ -412,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59FA9CEC1E8C176B00A96B57 /* GXLayout.cpp in Sources */,
 				591CF4FA1E855EF0009279BA /* GXRenderer.cpp in Sources */,
 				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
 				591CF4E31E855D06009279BA /* CLElement.cpp in Sources */,
@@ -460,6 +467,7 @@
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				59221BE11E87D7F1006C09FE /* GXRenderer.cpp in Sources */,
+				59FA9CEB1E8C176B00A96B57 /* GXLayout.cpp in Sources */,
 				59221BE01E87D7E9006C09FE /* GXPath.cpp in Sources */,
 				59221BDD1E87D7E5006C09FE /* GXColors.cpp in Sources */,
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
