@@ -385,10 +385,10 @@ GXRect  VariantGetRect( const GB::Variant &v)
 {
     if( v.isList() && v.getList().size() == 4)
     {
-        return makeRect( v.getList().at(0).getInt(),
-                         v.getList().at(1).getInt(),
-                         v.getList().at(2).getInt(),
-                         v.getList().at(3).getInt()
+        return makeRect( v.getList().at(0).toInt(),
+                         v.getList().at(1).toInt(),
+                         v.getList().at(2).toInt(),
+                         v.getList().at(3).toInt()
                         );
     }
     return makeRectNULL();
@@ -397,8 +397,8 @@ GXPoint VariantGetPoint( const GB::Variant &v)
 {
     if( v.isList() && v.getList().size() == 2)
     {
-        return makePoint(v.getList().at(0).getInt(),
-                         v.getList().at(1).getInt());
+        return makePoint(v.getList().at(0).toInt(),
+                         v.getList().at(1).toInt());
 
     }
     return makePointNULL();
@@ -407,8 +407,8 @@ GXSize  VariantGetSize( const GB::Variant &v)
 {
     if( v.isList() && v.getList().size() == 2)
     {
-        return makeSize(v.getList().at(0).getInt(),
-                         v.getList().at(1).getInt());
+        return makeSize(v.getList().at(0).toInt(),
+                         v.getList().at(1).toInt());
         
     }
     return makeSizeNULL();
