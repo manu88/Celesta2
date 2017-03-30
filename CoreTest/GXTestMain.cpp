@@ -14,6 +14,7 @@
 #include "CLApplicationDelegate.hpp"
 #include "CLApplication.hpp"
 
+
 #include "StringOperations.hpp"
 #include "GXElement.hpp"
 #include "GXLayout.hpp"
@@ -43,6 +44,12 @@ class MyAppDelegate  : public CLApplicationDelegate
             win1.setNeedsDisplay();
             return GB::Variant::null();
         });
+        
+        getApp()->registerSelector("save", [&]( const GB::Variant &vars )
+                                   {
+                                       
+                                       return saveUI(vars.toString());
+                                   });
         
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
@@ -240,8 +247,31 @@ class MyAppDelegate  : public CLApplicationDelegate
     }
 
     
+    bool saveUI( const std::string &file)
+    {
+        GB::Variant children((GB::VariantList()));
+        
+        for(const GXElement* el : mainElement.getChildren())
+        {
+            const GB::Variant prop(
+            {
+                { "Class" , el->getClassName()},
+                { "ZPos" , el->getZPos() },
+                { "Bounds" , GXRectGetVariant( el->getBounds()) }
+            });
+            children.getList().push_back(prop);
+            
+            
+        }
+        _doc.addValueForKey( children, "children");
+        
+        return _doc.save(file);
+    }
+    
 private:
     
+    
+    GB::XMLDocument _doc;
     std::map<const std::string, CLElement*> _elements;
     
     GXLayout mainElement;

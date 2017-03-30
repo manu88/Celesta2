@@ -81,6 +81,8 @@ void GXElement::initSelectors()
     
     registerSelector("setVisible", [&]( const GB::Variant &l)
                      {
+                         if( l.isNull())
+                             return GB::Variant::null();
                          
                          setVisible( (bool) l.toInt());
                          return GB::Variant::null();
