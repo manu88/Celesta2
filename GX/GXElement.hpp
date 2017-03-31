@@ -72,6 +72,7 @@ public:
     
     void printInfos( std::ostream &stream) const;
     
+    GB::Variant serialize() const override ;
 protected:
     GXElement(); // Public is temp. for tests
     

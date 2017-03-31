@@ -290,3 +290,14 @@ void GXElement::printInfos(std::ostream &stream) const
     stream << std::endl;
 }
 
+GB::Variant GXElement::serialize() const
+{
+    GB::Variant r = CLElement::serialize();
+    
+    r.getMap().insert({ "ZPos" , getZPos() });
+    r.getMap().insert({ "Bounds" , GXRectGetVariant( getBounds()) });
+    r.getMap().insert({ "BackGroundColor" , GXColorGetVariant(getBackgroundColor())});
+    
+    return r;
+}
+

@@ -8,8 +8,9 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include <GroundBase.hpp>
 #include <map>
+#include <GroundBase.hpp>
+#include <GBBinCoder.hpp>
 
 #include "CLApplicationDelegate.hpp"
 #include "CLApplication.hpp"
@@ -17,7 +18,7 @@
 
 #include "StringOperations.hpp"
 #include "GXElement.hpp"
-#include "GXLayout.hpp"
+#include "GXLayer.hpp"
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
 #include "Display.hpp"
@@ -52,6 +53,14 @@ class MyAppDelegate  : public CLApplicationDelegate
                                    });
         
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
+        
+        
+        //loadUI("file.xml");
+        
+        
+        
+        const GB::Variant serializeTest = getApp()->serialize();
+        
         
         
         
@@ -96,14 +105,21 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         disp.setDisplayedElement(&mainElement);
         
+        mainElement.setIdentifier("main");
+        win1.setIdentifier("win1");
+        child2.setIdentifier("child2");
+        win3.setIdentifier("win3");
+        win4.setIdentifier("win4");
+        disp.setIdentifier("disp");
+        
         
         _elements.insert(std::make_pair("app", getApp() ) );
-        _elements.insert(std::make_pair("main", &mainElement));
-        _elements.insert(std::make_pair("win1", &win1));
-        _elements.insert(std::make_pair("child2", &child2));
-        _elements.insert(std::make_pair("win3", &win3));
-        _elements.insert(std::make_pair("win4", &win4));
-        _elements.insert(std::make_pair("disp", &disp));
+        _elements.insert(std::make_pair(mainElement.getIdentifier(), &mainElement));
+        _elements.insert(std::make_pair(win1.getIdentifier(), &win1));
+        _elements.insert(std::make_pair(child2.getIdentifier(), &child2));
+        _elements.insert(std::make_pair(win3.getIdentifier(), &win3));
+        _elements.insert(std::make_pair(win4.getIdentifier(), &win4));
+        _elements.insert(std::make_pair(disp.getIdentifier(), &disp));
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -246,41 +262,64 @@ class MyAppDelegate  : public CLApplicationDelegate
         }
     }
 
-    
     bool saveUI( const std::string &file)
     {
         GB::Variant children((GB::VariantList()));
         
         for(const GXElement* el : mainElement.getChildren())
         {
-            const GB::Variant prop(
-            {
-                { "Class" , el->getClassName()},
-                { "ZPos" , el->getZPos() },
-                { "Bounds" , GXRectGetVariant( el->getBounds()) }
-            });
+            const GB::Variant prop = el->serialize();
+            
             children.getList().push_back(prop);
             
             
         }
-        _doc.addValueForKey( children, "children");
+        _doc.addValueForKey( children, "Children");
         
         return _doc.save(file);
     }
     
+    bool loadUI( const std::string &file)
+    {
+        GB::XMLDocument doc(file);
+        
+        if( !doc.isValid())
+            return false;
+        
+        std::cout << "parse file " << file << std::endl;
+        
+        const GB::Variant &children = doc.getValueForKey("Children");
+        
+        assert(children.isList());
+        
+        std::cout << "Got " << children.getList().size() << " children" << std::endl;
+        
+        for (const GB::Variant &child  : children.getList())
+        {
+            assert(child.isMap());
+            const GB::Variant id = child.getMap().at("Identifier");
+            assert(id.isString());
+            std::cout << "\t id : " << id  << std::endl;
+            
+        }
+        
+        return false;
+    }
 private:
     
     
     GB::XMLDocument _doc;
     std::map<const std::string, CLElement*> _elements;
     
-    GXLayout mainElement;
-    GXLayout win1;
-    GXLayout child2;
-    Display disp;
     GBFDSource* input;
-    GXLayout win3;
-    GXLayout win4;
+    
+    GXLayer mainElement;
+    GXLayer win1;
+    GXLayer child2;
+    Display disp;
+    
+    GXLayer win3;
+    GXLayer win4;
     /*
     GB::Timer timer;
     GB::RunLoop runLoop;
@@ -291,6 +330,7 @@ private:
 
 int main(int argc, const char * argv[])
 {
+    GB::ObjectWrapper::enableInvalidReleaseDebug(true);
     {
         CLApplication app("com.myApp");
         MyAppDelegate delegate;

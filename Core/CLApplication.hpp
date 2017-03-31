@@ -34,7 +34,7 @@ public:
     GB::Variant getValueForKey( const std::string &key) const noexcept;
     
 private:
-    const std::string &_identifier;
+
     GB::RunLoop _runLoop;
     GB::Dictionary _datas;
     CLApplicationDelegate *_delegate;

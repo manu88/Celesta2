@@ -6,19 +6,19 @@
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
 
-#ifndef GXLayout_hpp
-#define GXLayout_hpp
+#ifndef GXLayer_hpp
+#define GXLayer_hpp
 
 #include "GXElement.hpp"
 
-class GXLayout : public GXElement
+class GXLayer : public GXElement
 {
 public:
-    GXLayout();
-    ~GXLayout();
+    GXLayer();
+    ~GXLayer();
 private:
     
     void paint(const GXRect &rect) override ;
 };
 
-#endif /* GXLayout_hpp */
+#endif /* GXLayer */

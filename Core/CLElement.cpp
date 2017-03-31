@@ -7,18 +7,26 @@
 //
 
 #include <GBVariant.hpp>
+#include <iostream> // DEBUG
 #include <GBRunLoop.hpp>
+#include <GBSequenceType.hpp>
 
 #include "CLElement.hpp"
 
 CLElement::CLElement( const std::string &className ):
 _className(className)
 {
-    /*
-    registerSelector("t",
-                     std::bind(&CLElement::test,this  , std::placeholders::_1 ));
-    */
+    
     registerSelector("getClassName", std::bind( &CLElement::getClassName, this ));
+    
+    registerSelector("getIdentifier", std::bind( &CLElement::getIdentifier, this ));
+    
+    registerSelector("setIdentifier", [&](const GB::Variant &l)
+                     {
+                         setIdentifier(l.toString());
+                         return GB::Variant::null();
+                         
+                     });
 
     
 }
@@ -69,8 +77,28 @@ bool CLElement::respondsTo( const Selector &sel ) const
 {
     return _selectors.find(sel) != _selectors.end();
 }
+
 const std::map<const CLElement::Selector , CLElement::CallableFunction>& CLElement::getSelectors() const
 {
     return _selectors;
 }
+
+void CLElement::setIdentifier( const std::string &id) noexcept
+{
+    _identifier = id;
+}
+
+
+GB::Variant CLElement::serialize() const
+{
+    std::cout << "CLElement serialization" << std::endl;
+    
+    const GB::Variant prop({
+                            { "Class" , getClassName()},
+                            { "Identifier" , getIdentifier()}
+                           });
+
+    return prop;
+}
+
 

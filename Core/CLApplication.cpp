@@ -15,13 +15,10 @@
 
 CLApplication::CLApplication( const std::string &identifier ):
 CLElement("CLApplication"),
-_identifier( identifier),
+
 _delegate(nullptr)
 {
-    if( !_datas.addValueForKey( GB::Variant(identifier), "identifier"))
-    {
-        DEBUG_ASSERT(0);
-    }
+    setIdentifier(identifier);
     
     registerSelector("stop", [&]( const GB::Variant& )
     {

@@ -7,20 +7,20 @@
 //
 
 #include "GXPath.hpp"
-#include "GXLayout.hpp"
+#include "GXLayer.hpp"
 
 
-GXLayout::GXLayout():
+GXLayer::GXLayer():
 CLElement("GXLayout")
 {
     
 }
-GXLayout::~GXLayout()
+GXLayer::~GXLayer()
 {
     
 }
 
-void GXLayout::paint(const GXRect &rect)
+void GXLayer::paint(const GXRect &rect)
 {
     GXPath path( rect);
     // path.addRect(makeRect(makePointNULL(), rect.size));
