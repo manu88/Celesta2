@@ -12,7 +12,7 @@
 
 #include <GroundBase.hpp>
 
-#include "GXElement.hpp"
+#include "GXLayer.hpp"
 #include "GXRenderer.hpp"
 #include "Display.hpp"
 #include "CLApplication.hpp"
@@ -108,7 +108,7 @@ int main(int argc, const char * argv[])
         assert(v.getList().at(3).getInt() == rect.size.height);
         GXRenderer rend;
         testClassName( rend );
-        GXElement el;
+        GXLayer el;
         testClassName(el);
         
         Display disp;

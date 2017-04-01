@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>TestFonts.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>TestSelector.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>5923E87E1E82B91F00587675</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>59FA9CFE1E8ED3B800A96B57</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -15,7 +15,6 @@
 #include "CLApplicationDelegate.hpp"
 #include "CLApplication.hpp"
 
-
 #include "StringOperations.hpp"
 #include "GXElement.hpp"
 #include "GXLayer.hpp"

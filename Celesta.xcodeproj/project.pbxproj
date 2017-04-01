@@ -54,6 +54,27 @@
 		5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
 		59FA9CEB1E8C176B00A96B57 /* GXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9CE91E8C176B00A96B57 /* GXLayer.cpp */; };
 		59FA9CEC1E8C176B00A96B57 /* GXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9CE91E8C176B00A96B57 /* GXLayer.cpp */; };
+		59FA9D001E8ED3B800A96B57 /* GXRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4F71E855E77009279BA /* GXRenderer.cpp */; };
+		59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */; };
+		59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D81E855A67009279BA /* CLElement.cpp */; };
+		59FA9D031E8ED3B800A96B57 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF5031E857260009279BA /* Display.cpp */; };
+		59FA9D041E8ED3B800A96B57 /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
+		59FA9D051E8ED3B800A96B57 /* AbstractDisplayImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */; };
+		59FA9D061E8ED3B800A96B57 /* GXGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DE1E855B78009279BA /* GXGeometry.cpp */; };
+		59FA9D071E8ED3B800A96B57 /* GXPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FB1E8568E8009279BA /* GXPath.cpp */; };
+		59FA9D091E8ED3B800A96B57 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8BF1E82C96E00587675 /* FileSystem.cpp */; };
+		59FA9D0A1E8ED3B800A96B57 /* CLApplicationDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */; };
+		59FA9D0B1E8ED3B800A96B57 /* GXColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FE1E856914009279BA /* GXColors.cpp */; };
+		59FA9D0C1E8ED3B800A96B57 /* GXElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DA1E855AFE009279BA /* GXElement.cpp */; };
+		59FA9D0D1E8ED3B800A96B57 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
+		59FA9D0F1E8ED3B800A96B57 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
+		59FA9D101E8ED3B800A96B57 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
+		59FA9D171E8ED3EA00A96B57 /* TestFonts.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D161E8ED3EA00A96B57 /* TestFonts.cpp */; };
+		59FA9D1B1E8ED46900A96B57 /* FontParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D191E8ED46900A96B57 /* FontParser.cpp */; };
+		59FA9D1C1E8ED46900A96B57 /* FontParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D191E8ED46900A96B57 /* FontParser.cpp */; };
+		59FA9D1D1E8ED46900A96B57 /* FontParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D191E8ED46900A96B57 /* FontParser.cpp */; };
+		59FA9D1E1E8ED46900A96B57 /* FontParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D191E8ED46900A96B57 /* FontParser.cpp */; };
+		59FA9D201E8ED65000A96B57 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +114,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		5923E87D1E82B91F00587675 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		59FA9D111E8ED3B800A96B57 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -146,6 +176,12 @@
 		5923E8C31E82C99C00587675 /* StringOperations.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringOperations.hpp; sourceTree = "<group>"; };
 		59FA9CE91E8C176B00A96B57 /* GXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXLayer.cpp; path = GX/GXLayer.cpp; sourceTree = "<group>"; };
 		59FA9CEA1E8C176B00A96B57 /* GXLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXLayer.hpp; path = GX/GXLayer.hpp; sourceTree = "<group>"; };
+		59FA9CFD1E8ED3A700A96B57 /* Curve.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Curve.hpp; sourceTree = "<group>"; };
+		59FA9D151E8ED3B800A96B57 /* TestFonts */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestFonts; sourceTree = BUILT_PRODUCTS_DIR; };
+		59FA9D161E8ED3EA00A96B57 /* TestFonts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestFonts.cpp; sourceTree = "<group>"; };
+		59FA9D191E8ED46900A96B57 /* FontParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontParser.cpp; sourceTree = "<group>"; };
+		59FA9D1A1E8ED46900A96B57 /* FontParser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FontParser.hpp; sourceTree = "<group>"; };
+		59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../usr/local/lib/libfreetype.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +212,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59FA9D0E1E8ED3B800A96B57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59FA9D0F1E8ED3B800A96B57 /* libGroundBase-cpp.dylib in Frameworks */,
+				59FA9D101E8ED3B800A96B57 /* libGroundBase.dylib in Frameworks */,
+				59FA9D201E8ED65000A96B57 /* libfreetype.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -185,6 +231,7 @@
 				591CF4F31E855D23009279BA /* GXTestMain.cpp */,
 				59221BFA1E87D82F006C09FE /* TestSelector.cpp */,
 				591CF4D31E85530C009279BA /* main.cpp */,
+				59FA9D161E8ED3EA00A96B57 /* TestFonts.cpp */,
 			);
 			path = CoreTest;
 			sourceTree = "<group>";
@@ -246,6 +293,8 @@
 			isa = PBXGroup;
 			children = (
 				5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */,
+				59FA9D181E8ED46900A96B57 /* Fonts */,
+				59FA9CFC1E8ED3A700A96B57 /* Data */,
 				591CF5111E8599E1009279BA /* Dummies */,
 				591CF4D21E85530C009279BA /* CoreTest */,
 				591CF5061E857267009279BA /* Display */,
@@ -262,6 +311,7 @@
 				5923E87F1E82B91F00587675 /* Celesta */,
 				591CF4F21E855D06009279BA /* GXTest */,
 				59221BF91E87D80D006C09FE /* TestSelector */,
+				59FA9D151E8ED3B800A96B57 /* TestFonts */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,11 +345,29 @@
 		5923E8971E82B97300587675 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */,
 				5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */,
 				5923E8A31E82C05200587675 /* libGroundBase.dylib */,
 				5923E8981E82B97300587675 /* libGroundBase.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59FA9CFC1E8ED3A700A96B57 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				59FA9CFD1E8ED3A700A96B57 /* Curve.hpp */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		59FA9D181E8ED46900A96B57 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				59FA9D191E8ED46900A96B57 /* FontParser.cpp */,
+				59FA9D1A1E8ED46900A96B57 /* FontParser.hpp */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,6 +424,23 @@
 			productReference = 5923E87F1E82B91F00587675 /* Celesta */;
 			productType = "com.apple.product-type.tool";
 		};
+		59FA9CFE1E8ED3B800A96B57 /* TestFonts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59FA9D121E8ED3B800A96B57 /* Build configuration list for PBXNativeTarget "TestFonts" */;
+			buildPhases = (
+				59FA9CFF1E8ED3B800A96B57 /* Sources */,
+				59FA9D0E1E8ED3B800A96B57 /* Frameworks */,
+				59FA9D111E8ED3B800A96B57 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestFonts;
+			productName = Celesta;
+			productReference = 59FA9D151E8ED3B800A96B57 /* TestFonts */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -392,6 +477,7 @@
 				5923E87E1E82B91F00587675 /* Celesta */,
 				591CF4E11E855D06009279BA /* GXTest */,
 				59221BE21E87D80D006C09FE /* TestSelector */,
+				59FA9CFE1E8ED3B800A96B57 /* TestFonts */,
 			);
 		};
 /* End PBXProject section */
@@ -421,6 +507,7 @@
 				59FA9CEC1E8C176B00A96B57 /* GXLayer.cpp in Sources */,
 				591CF4FA1E855EF0009279BA /* GXRenderer.cpp in Sources */,
 				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
+				59FA9D1C1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				591CF4E31E855D06009279BA /* CLElement.cpp in Sources */,
 				591CF5051E857260009279BA /* Display.cpp in Sources */,
 				591CF4E41E855D06009279BA /* StringOperations.cpp in Sources */,
@@ -449,6 +536,7 @@
 				59221BEA1E87D80D006C09FE /* GXGeometry.cpp in Sources */,
 				59221BEC1E87D80D006C09FE /* GXPath.cpp in Sources */,
 				59221BFB1E87D82F006C09FE /* TestSelector.cpp in Sources */,
+				59FA9D1D1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59221BED1E87D80D006C09FE /* FileSystem.cpp in Sources */,
 				59221BEE1E87D80D006C09FE /* CLApplicationDelegate.cpp in Sources */,
 				59221BEF1E87D80D006C09FE /* GXColors.cpp in Sources */,
@@ -473,6 +561,29 @@
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
 				591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */,
 				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
+				59FA9D1B1E8ED46900A96B57 /* FontParser.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59FA9CFF1E8ED3B800A96B57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59FA9D001E8ED3B800A96B57 /* GXRenderer.cpp in Sources */,
+				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
+				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
+				59FA9D031E8ED3B800A96B57 /* Display.cpp in Sources */,
+				59FA9D041E8ED3B800A96B57 /* StringOperations.cpp in Sources */,
+				59FA9D051E8ED3B800A96B57 /* AbstractDisplayImpl.cpp in Sources */,
+				59FA9D061E8ED3B800A96B57 /* GXGeometry.cpp in Sources */,
+				59FA9D071E8ED3B800A96B57 /* GXPath.cpp in Sources */,
+				59FA9D171E8ED3EA00A96B57 /* TestFonts.cpp in Sources */,
+				59FA9D1E1E8ED46900A96B57 /* FontParser.cpp in Sources */,
+				59FA9D091E8ED3B800A96B57 /* FileSystem.cpp in Sources */,
+				59FA9D0A1E8ED3B800A96B57 /* CLApplicationDelegate.cpp in Sources */,
+				59FA9D0B1E8ED3B800A96B57 /* GXColors.cpp in Sources */,
+				59FA9D0C1E8ED3B800A96B57 /* GXElement.cpp in Sources */,
+				59FA9D0D1E8ED3B800A96B57 /* CLApplication.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +658,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include/GroundBase/;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/GroundBase/,
+					/usr/local/include/freetype2/,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -589,7 +704,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include/GroundBase/;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/GroundBase/,
+					/usr/local/include/freetype2/,
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -604,6 +723,20 @@
 			name = Debug;
 		};
 		5923E8881E82B91F00587675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		59FA9D131E8ED3B800A96B57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		59FA9D141E8ED3B800A96B57 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -645,6 +778,15 @@
 			buildConfigurations = (
 				5923E8871E82B91F00587675 /* Debug */,
 				5923E8881E82B91F00587675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59FA9D121E8ED3B800A96B57 /* Build configuration list for PBXNativeTarget "TestFonts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59FA9D131E8ED3B800A96B57 /* Debug */,
+				59FA9D141E8ED3B800A96B57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
