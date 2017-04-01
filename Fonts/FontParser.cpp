@@ -14,7 +14,7 @@
 #include <vector>
 #include <float.h>
 
-#include "Curve.hpp"
+#include "../Data/Curve.hpp"
 //#include "../GX/GXFont.h"
 
 

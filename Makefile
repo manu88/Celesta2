@@ -1,17 +1,18 @@
 CXX = g++ 
 
 LDFLAGS  = -L/usr/local/lib/ -lGroundBase -lGroundBase-cpp
-CXXFLAGS = -g -std=c++11 -I/usr/local/include/GroundBase/ -ICore/ -IGX/ -IDisplay/
+CXXFLAGS = -g -std=c++11 -I/usr/local/include/GroundBase/ -I/usr/include/freetype2/ -ICore/ -IGX/ -IDisplay/
 
 CXXFLAGS+= -DTARGET_RASPBERRY_PI -DHAVE_EGL -I/opt/vc/include/
-LDFLAGS+= -L/opt/vc/lib/ -lOpenVG  -lGLESv2 -lEGL -lbcm_host
+LDFLAGS+= -L/opt/vc/lib/ -lOpenVG  -lGLESv2 -lEGL -lbcm_host -lfreetype
 
 
 CORE_SRC    = $(wildcard Core/*.cpp)
 GX_SRC      = $(wildcard GX/*.cpp)
+FONT_SRC    = $(wildcard Fonts/*.cpp)
 DISPLAY_SRC = $(wildcard Display/*.cpp) $(wildcard Display/*/*.cpp) 
 
-Base_src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC)
+Base_src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC) $(FONT_SRC)
 
 GX_src =  CoreTest/GXTestMain.cpp
 Selector_TEST =  CoreTest/TestSelector.cpp
