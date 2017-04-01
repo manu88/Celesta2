@@ -106,12 +106,12 @@ public:
         return m_lineSpace;
     }
     
-    std::string getName() const
+    const std::string& getName() const
     {
         return m_fontName;
     }
     
-    std::string getFileName() const
+    const std::string& getFileName() const
     {
         return m_fileName;
     }

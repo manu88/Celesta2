@@ -10,7 +10,7 @@
 #include "FontParser.hpp"
 
 
-
+/*static*/ const std::string GXFont::DefaultFont  = "Source Sans Pro Regular";
 
 
 GXGlyph::GXGlyph()

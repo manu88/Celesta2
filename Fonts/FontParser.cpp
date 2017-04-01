@@ -15,7 +15,7 @@
 #include <float.h>
 
 #include "../Data/Curve.hpp"
-//#include "../GX/GXFont.h"
+#include "GXFont.hpp"
 
 
 #include "FileSystem.hpp"
@@ -99,7 +99,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
         std::cout << "couldn't load new face\n" << std::endl;
         return false;
     }
-    /*
+
     
     font->m_fileName = filename;
     
@@ -115,7 +115,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
     else
         font->m_fontName += " No Style";
     
-    */
+    
     FT_Set_Char_Size(
                      face,     
                      0 ,                              /* char_width in 1/64th of points  */
@@ -132,7 +132,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
     if (descent <0)
         descent *= -1;
     
-    //font->m_lineSpace = face->ascender + descent +  face->height;
+    font->m_lineSpace = face->ascender + descent +  face->height;
 
     for( unsigned int cc = 0 ; cc<256 ; cc++ )
     {
@@ -149,7 +149,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
                                               | FT_LOAD_IGNORE_TRANSFORM )
            )
         {
-            /*
+            
             GXGlyph *glyph = new GXGlyph(); // empty
             
             glyph->_advanceX = (float) ( face->glyph->advance.x );
@@ -170,7 +170,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
             }
             
             font->addChar( static_cast<char>( cc ), glyph);
-            */
+            
             num_glyphs++;
         }
     }
@@ -197,41 +197,41 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
 
 /*static*/ int FontParser::FT_Outline_MoveToFunc( const FT_Vector*  to, void *user )
 {
-    /*
+    
     GXGlyph *gl = reinterpret_cast<GXGlyph*>( user );
     
     gl->addSegment( Curve_float::makeMoveTo(to->x, to->y));
-    */
+    
     return 0;
 }
 
 /*static*/ int FontParser::FT_Outline_LineToFunc( const FT_Vector*  to, void *user )
 {
-    /*
+    
     GXGlyph *gl = reinterpret_cast<GXGlyph*>( user );
     
     gl->addSegment( Curve_float::makeLineTo( to->x, to->y ) );
-    */
+    
     return 0;
 }
 
 /*static*/ int FontParser::FT_Outline_ConicToFunc( const FT_Vector*  control, const FT_Vector*  to, void* user )
 {
-    /*
+    
     GXGlyph *gl = reinterpret_cast<GXGlyph*>( user );
     
     gl->addSegment( Curve_float::makeQuadTo( control->x, control->y, to->x, to->y ) );
-     */
+    
     return 0;
 }
 
 /*static*/ int FontParser::FT_Outline_CubicToFunc( const FT_Vector*  control1, const FT_Vector*  control2, const FT_Vector*  to, void* user )
 {
-    /*
+    
     GXGlyph *gl = reinterpret_cast<GXGlyph*>( user );
 
     gl->addSegment( Curve_float::makeCubicTo( control1->x, control1->y,control2->x, control2->y, to->x, to->y ) );
-*/
+
     return 0;    
 }
 

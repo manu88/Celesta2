@@ -7,11 +7,25 @@
 //
 
 
-
+#include <iostream>
 #include <stdio.h>
+#include <assert.h>
 #include "Curve.hpp"
+#include "GXFont.hpp"
+#include "FontParser.hpp"
 
 int main(int argc, const char * argv[])
 {
+    const GXFont *font = GXFont::loadFont("SourceSansPro-Black.ttf");
+    
+    
+    assert(font);
+    
+    
+    std::cout << "parsed font : " << font->getName()
+              << " line space " << font->getLineSpace()
+              << " num glyphes " << font->getNumGlyphes()
+              <<  std::endl;
+    
     return 0;
 }
