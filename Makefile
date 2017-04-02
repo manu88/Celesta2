@@ -11,8 +11,8 @@ CORE_SRC    = $(wildcard Core/*.cpp)
 GX_SRC      = $(wildcard GX/*.cpp)
 FONT_SRC    = $(wildcard Fonts/*.cpp)
 DISPLAY_SRC = $(wildcard Display/*.cpp) $(wildcard Display/*/*.cpp) 
-
-Base_src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC) $(FONT_SRC)
+DRIVERS_SRC = $(wildcard Drivers/*.cpp)
+Base_src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC) $(FONT_SRC) $(DRIVERS_SRC)
 
 GX_src =  CoreTest/GXTestMain.cpp
 Selector_TEST =  CoreTest/TestSelector.cpp
