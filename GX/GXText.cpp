@@ -83,7 +83,7 @@ void GXText::prepare()
     _textPath->setFillColor  ( _textColor );
     
     const GXPoint carret = makePoint(0,/* getBounds().origin.x, getBounds().origin.y*/
-                                     0 - lineJump
+                                     100 - lineJump
                                      );
     
     GXPoint pt  = carret;

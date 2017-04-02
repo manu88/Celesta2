@@ -104,7 +104,7 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         disp.setDisplayedElement(&mainElement);
         
-        child2.setText("Hello");
+        win4.setText("Hello");
         
         mainElement.setIdentifier("main");
         win1.setIdentifier("win1");
@@ -316,11 +316,11 @@ private:
     
     GXLayer mainElement;
     GXLayer win1;
-    GXText child2;
+    GXLayer child2;
     Display disp;
     
     GXLayer win3;
-    GXLayer win4;
+    GXText win4;
     /*
     GB::Timer timer;
     GB::RunLoop runLoop;
