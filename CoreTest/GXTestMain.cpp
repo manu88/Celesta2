@@ -134,6 +134,13 @@ public:
         input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
         GBRunLoopSourceSetUserContext(input, this);
         
+        _mouse.callback = [&](const TCPMouseMsg &msg)
+        {
+            printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
+            win1.moveTo(msg.x, msg.y);
+            win1.setNeedsDisplay();
+        };
+        
         _mouse.addToRunLoop(getApp()->getRunLoop());
         getApp()->getRunLoop().addSource(input);
 

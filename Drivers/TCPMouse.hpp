@@ -9,10 +9,11 @@
 #ifndef TCPMouse_hpp
 #define TCPMouse_hpp
 
+#include <functional>
 #include <GBObjectWrapper.hpp>
 #include <GBSocket.h>
 #include "CLElement.hpp"
-
+#include "TCPMouseDefs.h"
 
 namespace GB
 {
@@ -21,10 +22,15 @@ namespace GB
 class TCPMouse : public CLElement , GB::ObjectWrapper
 {
 public:
+    
+    typedef std::function<void(const TCPMouseMsg& state)> MouseCallBack;
+    
     TCPMouse( int port);
     ~TCPMouse();
     
     bool addToRunLoop(GB::RunLoop &);
+    
+    MouseCallBack callback;
     
 private:
     

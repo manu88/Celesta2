@@ -9,13 +9,15 @@
 //#include <GBRunLoop.h>
 #include <GBRunLoop.hpp>
 #include "TCPMouse.hpp"
-#include "TCPMouseDefs.h"
+
 
 TCPMouse::TCPMouse( int port) :
 CLElement("TCPMouse")
 {
     
     setGBObject(GBTCPSocketCreateListener(port,1, TCPMouse::listenerCallback));
+    
+    GBRunLoopSourceSetUserContext(getGBRef(), this);
     
 }
 TCPMouse::~TCPMouse()
@@ -32,6 +34,8 @@ bool TCPMouse::addToRunLoop(GB::RunLoop &runLoop)
 
 /*static*/ void TCPMouse::clientCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
 {
+    TCPMouse* self = static_cast<TCPMouse*>(  GBRunLoopSourceGetUserContext(source) );
+    DEBUG_ASSERT(self);
     if( notification == GBRunLoopSourceCanRead)
     {
         static TCPMouseMsg msg;
@@ -41,7 +45,12 @@ bool TCPMouse::addToRunLoop(GB::RunLoop &runLoop)
         if( GBRunLoopSourceRead(source,&msg, sizeof(msg) ))
         {
             
-            printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
+            if( self->callback)
+            {
+                self->callback(msg);
+            }
+            
+            //
         }
     }
     else
@@ -51,11 +60,16 @@ bool TCPMouse::addToRunLoop(GB::RunLoop &runLoop)
 }
 /*static*/ void TCPMouse::listenerCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
 {
+    TCPMouse* self = static_cast<TCPMouse*>(  GBRunLoopSourceGetUserContext(source) );
+    DEBUG_ASSERT(self);
+    
     if( notification == GBRunLoopSourceCanRead)
     {
         printf("Connection request \n");
         GBSocket* cSock = static_cast<GBSocket* >(source);
         GBSocket* client = GBSocketCreate(GBSocketGetType(cSock), clientCallback);
+        
+        GBRunLoopSourceSetUserContext(client, self);
         if(GBSocketAccept(cSock, client))
         {
             GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
