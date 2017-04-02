@@ -79,6 +79,10 @@
 		59FA9D241E8F941100A96B57 /* GXFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D211E8F941100A96B57 /* GXFont.cpp */; };
 		59FA9D251E8F941100A96B57 /* GXFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D211E8F941100A96B57 /* GXFont.cpp */; };
 		59FA9D261E8F941100A96B57 /* GXFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D211E8F941100A96B57 /* GXFont.cpp */; };
+		59FA9D291E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
+		59FA9D2A1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
+		59FA9D2B1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
+		59FA9D2C1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +192,8 @@
 		59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = ../../../../../../usr/local/lib/libfreetype.dylib; sourceTree = "<group>"; };
 		59FA9D211E8F941100A96B57 /* GXFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GXFont.cpp; sourceTree = "<group>"; };
 		59FA9D221E8F941100A96B57 /* GXFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GXFont.hpp; sourceTree = "<group>"; };
+		59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutManager.cpp; sourceTree = "<group>"; };
+		59FA9D281E8FAAFD00A96B57 /* LayoutManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +376,8 @@
 		59FA9D181E8ED46900A96B57 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */,
+				59FA9D281E8FAAFD00A96B57 /* LayoutManager.hpp */,
 				59FA9D211E8F941100A96B57 /* GXFont.cpp */,
 				59FA9D221E8F941100A96B57 /* GXFont.hpp */,
 				59FA9D191E8ED46900A96B57 /* FontParser.cpp */,
@@ -521,6 +529,7 @@
 				591CF5051E857260009279BA /* Display.cpp in Sources */,
 				591CF4E41E855D06009279BA /* StringOperations.cpp in Sources */,
 				591CF50D1E859578009279BA /* AbstractDisplayImpl.cpp in Sources */,
+				59FA9D2A1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 				591CF4E51E855D06009279BA /* GXGeometry.cpp in Sources */,
 				591CF4F61E855D33009279BA /* GXTestMain.cpp in Sources */,
 				591CF4FD1E8568E8009279BA /* GXPath.cpp in Sources */,
@@ -552,6 +561,7 @@
 				59221BEF1E87D80D006C09FE /* GXColors.cpp in Sources */,
 				59221BF01E87D80D006C09FE /* GXElement.cpp in Sources */,
 				59221BF11E87D80D006C09FE /* CLApplication.cpp in Sources */,
+				59FA9D2B1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +575,7 @@
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				59FA9D231E8F941100A96B57 /* GXFont.cpp in Sources */,
+				59FA9D291E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 				59221BE11E87D7F1006C09FE /* GXRenderer.cpp in Sources */,
 				59FA9CEB1E8C176B00A96B57 /* GXLayer.cpp in Sources */,
 				59221BE01E87D7E9006C09FE /* GXPath.cpp in Sources */,
@@ -596,6 +607,7 @@
 				59FA9D0B1E8ED3B800A96B57 /* GXColors.cpp in Sources */,
 				59FA9D0C1E8ED3B800A96B57 /* GXElement.cpp in Sources */,
 				59FA9D0D1E8ED3B800A96B57 /* CLApplication.cpp in Sources */,
+				59FA9D2C1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

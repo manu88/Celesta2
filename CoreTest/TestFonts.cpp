@@ -13,6 +13,7 @@
 #include "Curve.hpp"
 #include "GXFont.hpp"
 #include "FontParser.hpp"
+#include "LayoutManager.hpp"
 
 int main(int argc, const char * argv[])
 {
@@ -26,6 +27,10 @@ int main(int argc, const char * argv[])
               << " line space " << font->getLineSpace()
               << " num glyphes " << font->getNumGlyphes()
               <<  std::endl;
+    
+    LayoutManager manager;
+    
+    
     
     return 0;
 }
