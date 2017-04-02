@@ -230,11 +230,14 @@ void GXElement::setNeedsDisplay( const GXRect &rect )
 {
     _updateRect = rect;
     _needsUpdate = true;
-    needsDisplay();
     if(_parent)
     {
         _parent->setNeedsDisplay( rect );
     }
+    
+    needsDisplay();
+    
+    
 }
 /* **** **** **** **** **** **** **** **** **** **** **** **** */
 /*

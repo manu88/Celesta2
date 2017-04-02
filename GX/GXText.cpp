@@ -31,9 +31,31 @@ _textPath(nullptr)
                          return GB::Variant::null();
                      });
     
-    registerSelector("getText", [&](const GB::Variant &text)
+    registerSelector("getText", [&](const GB::Variant &)
                      {
                          return getText();
+                     });
+    
+    registerSelector("setTextSize", [&](const GB::Variant &size)
+                     {
+                         setTextSize( size.toFloat() );
+                         return GB::Variant::null();
+                     });
+    
+    registerSelector("getTextSize", [&](const GB::Variant &)
+                     {
+                         return getTextSize();
+                     });
+    
+    registerSelector("setFont", [&](const GB::Variant &f)
+                     {
+                         _font = GXFont::loadFont(f.toString());
+                         return GB::Variant::null();
+                     });
+    
+    registerSelector("getFont", [&](const GB::Variant &)
+                     {
+                         return _font->getName();
                      });
 
 }
@@ -46,19 +68,49 @@ void GXText::setText(const std::string &text) noexcept
 {
     _text = text;
     
-    prepare();
+    //prepare();
     setNeedsDisplay();
+}
+
+void GXText::setTextSize( float size) noexcept
+{
+    if( _size != size)
+    {
+        _size = size;
+        setNeedsDisplay();
+    }
+    
+}
+
+
+void GXText::setFont(const GXFont *font) noexcept
+{
+    if( font != _font )
+    {
+        _font = font;
+        setNeedsDisplay();
+    }
 }
 
 void GXText::paint(const GXRect &rect)
 {
-    printf("Paint GXText\n");
+    prepare();
+    
+    
+    GXPath path( rect);
+    path.addRect(makeRect(makePointNULL(), rect.size));
+    path.setStrokeColor( makeColor(0, 0, 0) );
+    path.stroke();
+    
     if( _textPath)
     {
+        printf("Paint GXText\n");
+        _textPath->setBounds(rect);
         _textPath->setFillColor( _textColor );
         _textPath->setStrokeColor( _textColor );
         _textPath->fill();
         _textPath->stroke();
+        
     }
     GXElement::paint(rect);
 }
@@ -68,7 +120,8 @@ void GXText::prepare()
     DEBUG_ASSERT(_font);
     
     if ( _textPath == nullptr)
-        _textPath = new GXPath( makeRectNULL() );
+        _textPath = new GXPath(makeRectNULL());
+    
     
     DEBUG_ASSERT(_textPath);
     
@@ -101,7 +154,6 @@ void GXText::prepare()
         
         if ( c == '\n')
         {
-            printf("Draw Line jump\n");
             pt.x = carret.x;
             pt.y -= lineJump;
             size.height += lineJump;
@@ -115,6 +167,7 @@ void GXText::prepare()
         
         else
         {
+            
             printf("Draw %c at %i %i \n" , c , pt.x , pt.y);
             const GXGlyph *glyph =  _font->getCharacter( c );
             
@@ -132,7 +185,7 @@ void GXText::prepare()
     if( tempWidth > size.width )
         size.width = tempWidth;
     
-    setSize(makeSize( size.width, size.height) );
+    //setSize(makeSize( size.width, size.height) );
     printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 

@@ -22,9 +22,16 @@
 #include "GXPath.hpp"
 #include "Display.hpp"
 #include "GXText.hpp"
+#include "../Drivers/TCPMouse.hpp"
 
 class MyAppDelegate  : public CLApplicationDelegate
 {
+public:
+    MyAppDelegate():
+    _mouse(11000)
+    {
+        
+    }
     void willStart()
     {
         std::cout << "App will Start" << std::endl;
@@ -127,7 +134,7 @@ class MyAppDelegate  : public CLApplicationDelegate
         input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
         GBRunLoopSourceSetUserContext(input, this);
         
-        
+        _mouse.addToRunLoop(getApp()->getRunLoop());
         getApp()->getRunLoop().addSource(input);
 
         
@@ -312,6 +319,7 @@ private:
     GB::XMLDocument _doc;
     std::map<const std::string, CLElement*> _elements;
     
+    TCPMouse _mouse;
     GBFDSource* input;
     
     GXLayer mainElement;

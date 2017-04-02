@@ -23,7 +23,6 @@ GXLayer::~GXLayer()
 void GXLayer::paint(const GXRect &rect)
 {
     GXPath path( rect);
-    // path.addRect(makeRect(makePointNULL(), rect.size));
     path.addRoundedRect(makeRect(makePointNULL(), rect.size), 25.f, 25.f);
     path.setFillColor( getBackgroundColor() );
     path.fill();

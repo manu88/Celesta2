@@ -28,6 +28,17 @@ public:
         return _text;
     }
     
+    const GXFont* getFont() const noexcept
+    {
+        return _font;
+    }
+    void setFont(const GXFont *) noexcept;
+    
+    void setTextSize( float size) noexcept;
+    float getTextSize() const noexcept
+    {
+        return _size;
+    }
     void paint(const GXRect &rect) override ;
     
     

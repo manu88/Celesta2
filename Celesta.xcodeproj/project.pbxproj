@@ -88,6 +88,10 @@
 		59FA9D541E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
 		59FA9D551E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
 		59FA9D561E910DE800A96B57 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */; };
+		59FA9D611E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
+		59FA9D621E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
+		59FA9D631E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
+		59FA9D641E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +204,8 @@
 		59FA9D281E8FAAFD00A96B57 /* LayoutManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutManager.hpp; sourceTree = "<group>"; };
 		59FA9D501E910D9900A96B57 /* GXText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXText.cpp; path = GX/GXText.cpp; sourceTree = "<group>"; };
 		59FA9D511E910D9900A96B57 /* GXText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXText.hpp; path = GX/GXText.hpp; sourceTree = "<group>"; };
+		59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPMouse.cpp; sourceTree = "<group>"; };
+		59FA9D601E9158E600A96B57 /* TCPMouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPMouse.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +318,7 @@
 		5923E8761E82B91F00587675 = {
 			isa = PBXGroup;
 			children = (
+				59FA9D5E1E9158E600A96B57 /* Drivers */,
 				5923E88C1E82B95C00587675 /* GroundBase-cpp.xcodeproj */,
 				59FA9D181E8ED46900A96B57 /* Fonts */,
 				59FA9CFC1E8ED3A700A96B57 /* Data */,
@@ -392,6 +399,15 @@
 				59FA9D1A1E8ED46900A96B57 /* FontParser.hpp */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		59FA9D5E1E9158E600A96B57 /* Drivers */ = {
+			isa = PBXGroup;
+			children = (
+				59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */,
+				59FA9D601E9158E600A96B57 /* TCPMouse.hpp */,
+			);
+			path = Drivers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -533,6 +549,7 @@
 				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
 				59FA9D1C1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59FA9D241E8F941100A96B57 /* GXFont.cpp in Sources */,
+				59FA9D621E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				591CF4E31E855D06009279BA /* CLElement.cpp in Sources */,
 				591CF5051E857260009279BA /* Display.cpp in Sources */,
 				591CF4E41E855D06009279BA /* StringOperations.cpp in Sources */,
@@ -558,6 +575,7 @@
 				59FA9D251E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
 				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
+				59FA9D631E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				59221BE71E87D80D006C09FE /* Display.cpp in Sources */,
 				59FA9D541E910D9900A96B57 /* GXText.cpp in Sources */,
 				59221BE81E87D80D006C09FE /* StringOperations.cpp in Sources */,
@@ -583,6 +601,7 @@
 				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
 				591CF4F51E855D2D009279BA /* main.cpp in Sources */,
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
+				59FA9D611E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				59FA9D231E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59FA9D291E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
@@ -606,6 +625,7 @@
 				59FA9D261E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
+				59FA9D641E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				59FA9D031E8ED3B800A96B57 /* Display.cpp in Sources */,
 				59FA9D551E910D9900A96B57 /* GXText.cpp in Sources */,
 				59FA9D041E8ED3B800A96B57 /* StringOperations.cpp in Sources */,
