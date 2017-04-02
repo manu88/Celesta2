@@ -109,6 +109,10 @@ public:
         mainElement.addChild(&win1);
         win1.addChild(&child2);
         
+        cursor.setZPos(40);
+        cursor.setBackgroundColor(makeColor(0, 0, 0));
+        mainElement.addChild(&cursor);
+        
         disp.setDisplayedElement(&mainElement);
         
         win4.setText("Hello");
@@ -136,9 +140,9 @@ public:
         
         _mouse.callback = [&](const TCPMouseMsg &msg)
         {
-            printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
-            win1.moveTo(msg.x, msg.y);
-            win1.setNeedsDisplay();
+            //printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
+            cursor.moveTo(msg.x, msg.y);
+            cursor.setNeedsDisplay();
         };
         
         _mouse.addToRunLoop(getApp()->getRunLoop());
@@ -336,6 +340,8 @@ private:
     
     GXLayer win3;
     GXText win4;
+    
+    GXLayer cursor;
     /*
     GB::Timer timer;
     GB::RunLoop runLoop;
