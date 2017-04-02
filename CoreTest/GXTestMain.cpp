@@ -104,6 +104,8 @@ class MyAppDelegate  : public CLApplicationDelegate
         
         disp.setDisplayedElement(&mainElement);
         
+        child2.setText("Hello");
+        
         mainElement.setIdentifier("main");
         win1.setIdentifier("win1");
         child2.setIdentifier("child2");

@@ -101,6 +101,7 @@ void GXText::prepare()
         
         if ( c == '\n')
         {
+            printf("Draw Line jump\n");
             pt.x = carret.x;
             pt.y -= lineJump;
             size.height += lineJump;
@@ -114,6 +115,7 @@ void GXText::prepare()
         
         else
         {
+            printf("Draw %c at %i %i \n" , c , pt.x , pt.y);
             const GXGlyph *glyph =  _font->getCharacter( c );
             
             drawCharAtPositionWithSize( glyph, pt , realSize );
