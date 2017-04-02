@@ -150,12 +150,28 @@ public:
             else
             {
                 cursor.setBackgroundColor(makeColor(200, 200, 200));
+                
+                const GXPoint pos = makePoint(msg.x, msg.y);
+                
+                for(const GXElement* el : mainElement.getChildren())
+                {
+                    if( rectContainsPoint(el->getBounds(), pos))
+                    {
+                        
+                        printf("Find intersection \n");
+                        break;
+                    }
+                }
+                
             }
+            
+            
+            
             cursor.moveTo(msg.x, msg.y);
             cursor.setNeedsDisplay();
         };
         
-        _mouse.addToRunLoop(getApp()->getRunLoop());
+        assert(_mouse.addToRunLoop(getApp()->getRunLoop()) );
         getApp()->getRunLoop().addSource(input);
 
         

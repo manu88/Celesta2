@@ -11,6 +11,7 @@
 
 #include <functional>
 #include <GBObjectWrapper.hpp>
+#include <GBSocket.hpp>
 #include <GBSocket.h>
 #include "CLElement.hpp"
 #include "TCPMouseDefs.h"
@@ -19,7 +20,7 @@ namespace GB
 {
     class RunLoop;
 }
-class TCPMouse : public CLElement , GB::ObjectWrapper
+class TCPMouse : public CLElement// , GB::ObjectWrapper
 {
 public:
     
@@ -34,10 +35,13 @@ public:
     
 private:
     
-    static void listenerCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification);
+    void listenerCallback( GBRunLoopSourceNotification notification);
+    void onClient( GBRunLoopSourceNotification notification);
     static void clientCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification);
     
-    const GB::RunLoop* _runLoop;
+    GB::Socket _listener;
+    GB::Socket *_client;
+    GB::RunLoop* _runLoop;
 
     
     
