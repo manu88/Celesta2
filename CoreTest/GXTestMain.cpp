@@ -21,7 +21,7 @@
 #include "GXRenderer.hpp"
 #include "GXPath.hpp"
 #include "Display.hpp"
-
+#include "GXText.hpp"
 
 class MyAppDelegate  : public CLApplicationDelegate
 {
@@ -314,7 +314,7 @@ private:
     
     GXLayer mainElement;
     GXLayer win1;
-    GXLayer child2;
+    GXText child2;
     Display disp;
     
     GXLayer win3;

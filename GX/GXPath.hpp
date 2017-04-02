@@ -28,7 +28,7 @@
 
 
 #include "GXGeometry.hpp"
-#include "GXCurve.hpp"
+#include "../Data/Curve.hpp"
 #include "GXColors.hpp"
 
 #include "GXDefs.hpp"

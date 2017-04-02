@@ -16,6 +16,7 @@ class CLApplicationDelegate
     friend class CLApplication;
 public:
     virtual ~CLApplicationDelegate();
+    
 protected:
     CLApplicationDelegate();
     

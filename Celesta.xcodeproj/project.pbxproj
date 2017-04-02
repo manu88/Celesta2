@@ -83,6 +83,11 @@
 		59FA9D2A1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
 		59FA9D2B1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
 		59FA9D2C1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
+		59FA9D521E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
+		59FA9D531E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
+		59FA9D541E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
+		59FA9D551E910D9900A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
+		59FA9D561E910DE800A96B57 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +162,6 @@
 		591CF4FC1E8568E8009279BA /* GXPath.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXPath.hpp; path = GX/GXPath.hpp; sourceTree = "<group>"; };
 		591CF4FE1E856914009279BA /* GXColors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXColors.cpp; path = GX/GXColors.cpp; sourceTree = "<group>"; };
 		591CF4FF1E856914009279BA /* GXColors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXColors.hpp; path = GX/GXColors.hpp; sourceTree = "<group>"; };
-		591CF5011E856950009279BA /* GXCurve.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GXCurve.hpp; path = GX/GXCurve.hpp; sourceTree = "<group>"; };
 		591CF5021E856975009279BA /* GXDefs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GXDefs.hpp; path = GX/GXDefs.hpp; sourceTree = "<group>"; };
 		591CF5031E857260009279BA /* Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Display.cpp; path = Display/Display.cpp; sourceTree = SOURCE_ROOT; };
 		591CF5041E857260009279BA /* Display.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Display.hpp; path = Display/Display.hpp; sourceTree = SOURCE_ROOT; };
@@ -194,6 +198,8 @@
 		59FA9D221E8F941100A96B57 /* GXFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GXFont.hpp; sourceTree = "<group>"; };
 		59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayoutManager.cpp; sourceTree = "<group>"; };
 		59FA9D281E8FAAFD00A96B57 /* LayoutManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LayoutManager.hpp; sourceTree = "<group>"; };
+		59FA9D501E910D9900A96B57 /* GXText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GXText.cpp; path = GX/GXText.cpp; sourceTree = "<group>"; };
+		59FA9D511E910D9900A96B57 /* GXText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXText.hpp; path = GX/GXText.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,7 @@
 			files = (
 				591CF4EC1E855D06009279BA /* libGroundBase-cpp.dylib in Frameworks */,
 				591CF4ED1E855D06009279BA /* libGroundBase.dylib in Frameworks */,
+				59FA9D561E910DE800A96B57 /* libfreetype.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +258,9 @@
 		591CF4DD1E855B02009279BA /* GX */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9D501E910D9900A96B57 /* GXText.cpp */,
+				59FA9D511E910D9900A96B57 /* GXText.hpp */,
 				591CF5021E856975009279BA /* GXDefs.hpp */,
-				591CF5011E856950009279BA /* GXCurve.hpp */,
 				591CF4FE1E856914009279BA /* GXColors.cpp */,
 				591CF4FF1E856914009279BA /* GXColors.hpp */,
 				591CF4FB1E8568E8009279BA /* GXPath.cpp */,
@@ -533,6 +541,7 @@
 				591CF4E51E855D06009279BA /* GXGeometry.cpp in Sources */,
 				591CF4F61E855D33009279BA /* GXTestMain.cpp in Sources */,
 				591CF4FD1E8568E8009279BA /* GXPath.cpp in Sources */,
+				59FA9D531E910D9900A96B57 /* GXText.cpp in Sources */,
 				591CF4E61E855D06009279BA /* FileSystem.cpp in Sources */,
 				591CF4E71E855D06009279BA /* CLApplicationDelegate.cpp in Sources */,
 				591CF5001E856914009279BA /* GXColors.cpp in Sources */,
@@ -550,6 +559,7 @@
 				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
 				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
 				59221BE71E87D80D006C09FE /* Display.cpp in Sources */,
+				59FA9D541E910D9900A96B57 /* GXText.cpp in Sources */,
 				59221BE81E87D80D006C09FE /* StringOperations.cpp in Sources */,
 				59221BE91E87D80D006C09FE /* AbstractDisplayImpl.cpp in Sources */,
 				59221BEA1E87D80D006C09FE /* GXGeometry.cpp in Sources */,
@@ -584,6 +594,7 @@
 				591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */,
 				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
 				59FA9D1B1E8ED46900A96B57 /* FontParser.cpp in Sources */,
+				59FA9D521E910D9900A96B57 /* GXText.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,6 +607,7 @@
 				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
 				59FA9D031E8ED3B800A96B57 /* Display.cpp in Sources */,
+				59FA9D551E910D9900A96B57 /* GXText.cpp in Sources */,
 				59FA9D041E8ED3B800A96B57 /* StringOperations.cpp in Sources */,
 				59FA9D051E8ED3B800A96B57 /* AbstractDisplayImpl.cpp in Sources */,
 				59FA9D061E8ED3B800A96B57 /* GXGeometry.cpp in Sources */,
