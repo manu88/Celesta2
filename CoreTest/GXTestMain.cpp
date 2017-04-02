@@ -110,6 +110,8 @@ public:
         win1.addChild(&child2);
         
         cursor.setZPos(40);
+        cursor.setBounds(makeRect(0 , 0, 20, 20));
+        
         cursor.setBackgroundColor(makeColor(0, 0, 0));
         mainElement.addChild(&cursor);
         
@@ -141,6 +143,14 @@ public:
         _mouse.callback = [&](const TCPMouseMsg &msg)
         {
             //printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
+            if(msg.button == 0)
+            {
+                cursor.setBackgroundColor(makeColor(0, 0, 0));
+            }
+            else
+            {
+                cursor.setBackgroundColor(makeColor(200, 200, 200));
+            }
             cursor.moveTo(msg.x, msg.y);
             cursor.setNeedsDisplay();
         };

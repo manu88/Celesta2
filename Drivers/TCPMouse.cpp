@@ -53,6 +53,12 @@ bool TCPMouse::addToRunLoop(GB::RunLoop &runLoop)
             //
         }
     }
+    else if( notification == GBRunLoopSourceErrorRead)
+    {
+        GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
+        
+        GBRunLoopRemoveSource(runloop, source);
+    }
     else
     {
         printf("Got CLient notification %i\n" , notification);
