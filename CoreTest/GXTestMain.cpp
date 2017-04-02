@@ -28,7 +28,8 @@ class MyAppDelegate  : public CLApplicationDelegate
 {
 public:
     MyAppDelegate():
-    _mouse(11000)
+    _mouse(11000),
+    input(STDIN_FILENO)
     {
         
     }
@@ -137,9 +138,22 @@ public:
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
-        input =  GBFDSourceInitWithFD(STDIN_FILENO, inputCallback);
-        GBRunLoopSourceSetUserContext(input, this);
-        
+        input.notification = [&]( GBRunLoopSourceNotification notif)
+        {
+            if( notif == GBRunLoopSourceCanRead)
+            {
+                static char buf[64];
+                memset(buf, 0, 64);
+                if(input.read(buf, 64))//  GBRunLoopSourceRead(source, buf, 64))
+                {
+                    const std::string cmds = StringOperations::reduce( buf , "" , "\n");
+                    
+                    parseCommands(cmds);
+                    return;
+                }
+            }
+        };
+
         _mouse.callback = [&](const TCPMouseMsg &msg)
         {
             //printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
@@ -176,12 +190,7 @@ public:
 
         
     }
-    static void inputCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
-    {
-        MyAppDelegate* self =  static_cast<MyAppDelegate*>( GBRunLoopSourceGetUserContext(source) );
-        assert(self);
-        self->termCallback(source, notification);
-    }
+
     void termCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
     {
         if( notification == GBRunLoopSourceCanRead)
@@ -208,7 +217,7 @@ public:
     void didStop()
     {
         std::cout << "App did end " << std::endl;
-        GBRelease(input);
+        
         
         
     }
@@ -357,7 +366,7 @@ private:
     std::map<const std::string, CLElement*> _elements;
     
     TCPMouse _mouse;
-    GBFDSource* input;
+    GB::FDSource input;
     
     GXLayer mainElement;
     GXLayer win1;
