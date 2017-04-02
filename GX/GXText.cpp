@@ -132,7 +132,8 @@ void GXText::prepare()
     if( tempWidth > size.width )
         size.width = tempWidth;
     
-    setSize(makeSize( size.width, -size.height) );
+    setSize(makeSize( size.width, size.height) );
+    printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -144,8 +145,9 @@ void GXText::drawCharAtPositionWithSize( const GXGlyph *glyph , const GXPoint &p
     {
         return static_cast<int>( ceilf( val) );
     };
+
     
-    
+    printf("\t Glyph num segs %zi size %f \n", glyph->getNumSegments() , size);
     
     for ( size_t i = 0 ; i < glyph->getNumSegments() ; i++)
     {
