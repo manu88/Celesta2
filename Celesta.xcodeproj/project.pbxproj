@@ -206,6 +206,7 @@
 		59FA9D511E910D9900A96B57 /* GXText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GXText.hpp; path = GX/GXText.hpp; sourceTree = "<group>"; };
 		59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPMouse.cpp; sourceTree = "<group>"; };
 		59FA9D601E9158E600A96B57 /* TCPMouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPMouse.hpp; sourceTree = "<group>"; };
+		59FA9D651E9160EF00A96B57 /* TCPMouseDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCPMouseDefs.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +407,7 @@
 			children = (
 				59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */,
 				59FA9D601E9158E600A96B57 /* TCPMouse.hpp */,
+				59FA9D651E9160EF00A96B57 /* TCPMouseDefs.h */,
 			);
 			path = Drivers;
 			sourceTree = "<group>";

@@ -9,7 +9,7 @@
 //#include <GBRunLoop.h>
 #include <GBRunLoop.hpp>
 #include "TCPMouse.hpp"
-
+#include "TCPMouseDefs.h"
 
 TCPMouse::TCPMouse( int port) :
 CLElement("TCPMouse")
@@ -34,13 +34,14 @@ bool TCPMouse::addToRunLoop(GB::RunLoop &runLoop)
 {
     if( notification == GBRunLoopSourceCanRead)
     {
-        static int32_t buf[2];
-        const GBSize sizeToRead = sizeof(int32_t ) * 2;
+        static TCPMouseMsg msg;
         
-        if( GBRunLoopSourceRead(source, buf, sizeToRead))
+        
+        
+        if( GBRunLoopSourceRead(source,&msg, sizeof(msg) ))
         {
             
-            printf("Did read %i %i \n" , buf[0] , buf[1]);
+            printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
         }
     }
     else
