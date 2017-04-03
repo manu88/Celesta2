@@ -3,7 +3,7 @@ CXX = g++
 LDFLAGS  = -L/usr/local/lib/ -lGroundBase -lGroundBase-cpp
 CXXFLAGS = -g -std=c++11 -I/usr/local/include/GroundBase/ -I/usr/include/freetype2/ -ICore/ -IGX/ -IDisplay/ -IData -IFonts
 
-CXXFLAGS+= -DTARGET_RASPBERRY_PI -DHAVE_EGL -I/opt/vc/include/
+CXXFLAGS+= -DDEBUG -DTARGET_RASPBERRY_PI -DHAVE_EGL -I/opt/vc/include/
 LDFLAGS+= -L/opt/vc/lib/ -lOpenVG  -lGLESv2 -lEGL -lbcm_host -lfreetype
 
 
