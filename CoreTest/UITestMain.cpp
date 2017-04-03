@@ -24,6 +24,8 @@
 #include "GXText.hpp"
 #include "../Drivers/TCPMouse.hpp"
 
+#include "UIView.hpp"
+
 class MyAppDelegate  : public CLApplicationDelegate
 {
 public:
@@ -46,19 +48,8 @@ public:
         }
         
         
-        getApp()->registerSelector("move", [&]( const GB::Variant &vars )
-        {
-            win1.moveOf(50, 50);
-            win1.setNeedsDisplay();
-            return GB::Variant::null();
-        });
         
-        getApp()->registerSelector("save", [&]( const GB::Variant &vars )
-                                   {
-                                       
-                                       return saveUI(vars.toString());
-                                   });
-        
+                
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
         //loadUI("file.xml");
@@ -82,56 +73,18 @@ public:
         mainElement.setBounds( b );
         assert(mainElement.getBounds() == b);
         
-        
-        win1.setBounds(  makeRect(100, 50, 200, 150) );
-        win1.setZPos(0);
-        win1.setBackgroundColor(makeColor(0,255,0));
-        
-        
-        win3.setBounds(  makeRect(100, 50, 200, 150) );
-        win3.setZPos(3);
-        win3.setBackgroundColor(makeColor(127,0,127 , 127));
-        mainElement.addChild(&win3);
-        
-        
-        text4.setBounds(  makeRect(600, 60, 600, 10) );
-        text4.setZPos(4);
-        text4.setBackgroundColor(makeColor(0,100,127 ));
-        mainElement.addChild( &text4 );
-        
-        
-        child2.setBounds(  makeRect(0, 0, 170, 100) );
-        child2.setZPos(1);
-        child2.setBackgroundColor(makeColor(0,0,255));
-        
-        mainElement.addChild(&win1);
-        win1.addChild(&child2);
-        
-        cursor.setZPos(40);
-        cursor.setBounds(makeRect(0 , 0, 20, 20));
-        
-        cursor.setBackgroundColor(makeColor(0, 0, 0));
-        mainElement.addChild(&cursor);
-        
+
         disp.setDisplayedElement(&mainElement);
-        
-        text4.setText("Hello World");
-        
+
         mainElement.setIdentifier("main");
-        win1.setIdentifier("win1");
-        child2.setIdentifier("child2");
-        win3.setIdentifier("win3");
-        text4.setIdentifier("text4");
         disp.setIdentifier("disp");
+        view1.setIdentifier("view1");
         
         
         _elements.push_back( getApp() );
         _elements.push_back( &mainElement);
-        _elements.push_back( &win1);
-        _elements.push_back( &child2);
-        _elements.push_back( &win3);
-        _elements.push_back( &text4);
         _elements.push_back( &disp);
+        _elements.push_back( &view1);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -148,34 +101,6 @@ public:
     {
         printf("Mouse %i %i Event %i Buttons %i\n" , msg.x , msg.y , msg.event , msg.button);
         return;
-        if(msg.button == 0)
-        {
-            cursor.setBackgroundColor(makeColor(0, 0, 0));
-        }
-        else
-        {
-            cursor.setBackgroundColor(makeColor(200, 200, 200));
-            
-            const GXPoint pos = makePoint(msg.x, msg.y);
-            
-            for(GXElement* el : mainElement.getChildren())
-            {
-                if( rectContainsPoint(el->getBounds(), pos))
-                {
-                    
-                    printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
-                    
-                    if( !el->getIdentifier().empty())
-                    {
-                        el->moveTo(pos);
-                    }
-                    break;
-                }
-            }
-            
-        }
-        cursor.moveTo(msg.x, msg.y);
-        cursor.setNeedsDisplay();
     }
     
     void keyInput( GBRunLoopSourceNotification notif)
@@ -336,71 +261,21 @@ public:
         }
     }
 
-    bool saveUI( const std::string &file)
-    {
-        GB::Variant children((GB::VariantList()));
-        
-        for(const GXElement* el : mainElement.getChildren())
-        {
-            const GB::Variant prop = el->serialize();
-            
-            children.getList().push_back(prop);
-            
-            
-        }
-        _doc.addValueForKey( children, "Children");
-        
-        return _doc.save(file);
-    }
-    
-    bool loadUI( const std::string &file)
-    {
-        GB::XMLDocument doc(file);
-        
-        if( !doc.isValid())
-            return false;
-        
-        std::cout << "parse file " << file << std::endl;
-        
-        const GB::Variant &children = doc.getValueForKey("Children");
-        
-        assert(children.isList());
-        
-        std::cout << "Got " << children.getList().size() << " children" << std::endl;
-        
-        for (const GB::Variant &child  : children.getList())
-        {
-            assert(child.isMap());
-            const GB::Variant id = child.getMap().at("Identifier");
-            assert(id.isString());
-            std::cout << "\t id : " << id  << std::endl;
-            
-        }
-        
-        return false;
-    }
 private:
-    
-    
-    GB::XMLDocument _doc;
-    std::list<CLElement*> _elements;
-    
+    Display disp;
     TCPMouse _mouse;
     GB::FDSource input;
     
+    std::list<CLElement*> _elements;
+    
     GXLayer mainElement;
-    GXLayer win1;
-    GXLayer child2;
-    Display disp;
+
+    UIView view1;
     
-    GXLayer win3;
-    GXText text4;
+
     
-    GXLayer cursor;
-    /*
-    GB::Timer timer;
-    GB::RunLoop runLoop;
-     */
+
+
     
 };
 

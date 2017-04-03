@@ -10,11 +10,21 @@
 #define TCPMouseDefs_h
 
 
+typedef enum
+{
+    NoEvent  = 0,
+    Pressed  = 1,
+    Moved    = 2,
+    Released = 3
+
+} MouseEvent;
+
 typedef struct
 {
     int32_t x;
     int32_t y;
     int32_t button;
+    int32_t event;
     
 } TCPMouseMsg;
 

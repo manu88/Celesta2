@@ -96,6 +96,35 @@
 		59FA9DA41E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
 		59FA9DA51E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
 		59FA9DA61E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
+		59FA9DB21E928D4300A96B57 /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DB01E928D4300A96B57 /* UIView.cpp */; };
+		59FA9DB31E928D4300A96B57 /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DB01E928D4300A96B57 /* UIView.cpp */; };
+		59FA9DB41E928D4300A96B57 /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DB01E928D4300A96B57 /* UIView.cpp */; };
+		59FA9DB51E928D4300A96B57 /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DB01E928D4300A96B57 /* UIView.cpp */; };
+		59FA9DB81E928D6500A96B57 /* GXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9CE91E8C176B00A96B57 /* GXLayer.cpp */; };
+		59FA9DB91E928D6500A96B57 /* GXRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4F71E855E77009279BA /* GXRenderer.cpp */; };
+		59FA9DBA1E928D6500A96B57 /* DisplayImplDum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50E1E8599DE009279BA /* DisplayImplDum.cpp */; };
+		59FA9DBB1E928D6500A96B57 /* FontParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D191E8ED46900A96B57 /* FontParser.cpp */; };
+		59FA9DBC1E928D6500A96B57 /* GXFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D211E8F941100A96B57 /* GXFont.cpp */; };
+		59FA9DBD1E928D6500A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
+		59FA9DBE1E928D6500A96B57 /* CLElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4D81E855A67009279BA /* CLElement.cpp */; };
+		59FA9DBF1E928D6500A96B57 /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF5031E857260009279BA /* Display.cpp */; };
+		59FA9DC01E928D6500A96B57 /* StringOperations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8C21E82C99C00587675 /* StringOperations.cpp */; };
+		59FA9DC11E928D6500A96B57 /* AbstractDisplayImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF50B1E859578009279BA /* AbstractDisplayImpl.cpp */; };
+		59FA9DC21E928D6500A96B57 /* LayoutManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D271E8FAAFD00A96B57 /* LayoutManager.cpp */; };
+		59FA9DC31E928D6500A96B57 /* GXGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DE1E855B78009279BA /* GXGeometry.cpp */; };
+		59FA9DC41E928D6500A96B57 /* UIView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DB01E928D4300A96B57 /* UIView.cpp */; };
+		59FA9DC61E928D6500A96B57 /* GXPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FB1E8568E8009279BA /* GXPath.cpp */; };
+		59FA9DC71E928D6500A96B57 /* GXText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D501E910D9900A96B57 /* GXText.cpp */; };
+		59FA9DC81E928D6500A96B57 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8BF1E82C96E00587675 /* FileSystem.cpp */; };
+		59FA9DC91E928D6500A96B57 /* CLApplicationDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8B91E82C3C400587675 /* CLApplicationDelegate.cpp */; };
+		59FA9DCA1E928D6500A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
+		59FA9DCB1E928D6500A96B57 /* GXColors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4FE1E856914009279BA /* GXColors.cpp */; };
+		59FA9DCC1E928D6500A96B57 /* GXElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 591CF4DA1E855AFE009279BA /* GXElement.cpp */; };
+		59FA9DCD1E928D6500A96B57 /* CLApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5923E8A81E82C0A400587675 /* CLApplication.cpp */; };
+		59FA9DCF1E928D6500A96B57 /* libGroundBase-cpp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A21E82C05200587675 /* libGroundBase-cpp.dylib */; };
+		59FA9DD01E928D6500A96B57 /* libGroundBase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5923E8A31E82C05200587675 /* libGroundBase.dylib */; };
+		59FA9DD11E928D6500A96B57 /* libfreetype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 59FA9D1F1E8ED65000A96B57 /* libfreetype.dylib */; };
+		59FA9DD81E928D9400A96B57 /* UITestMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DD71E928D9400A96B57 /* UITestMain.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +173,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		59FA9D111E8ED3B800A96B57 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		59FA9DD21E928D6500A96B57 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -213,6 +251,10 @@
 		59FA9D651E9160EF00A96B57 /* TCPMouseDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCPMouseDefs.h; sourceTree = "<group>"; };
 		59FA9DA11E9236CE00A96B57 /* FontManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontManager.cpp; sourceTree = "<group>"; };
 		59FA9DA21E9236CE00A96B57 /* FontManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FontManager.hpp; sourceTree = "<group>"; };
+		59FA9DB01E928D4300A96B57 /* UIView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIView.cpp; sourceTree = "<group>"; };
+		59FA9DB11E928D4300A96B57 /* UIView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIView.hpp; sourceTree = "<group>"; };
+		59FA9DD61E928D6500A96B57 /* UITest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UITest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59FA9DD71E928D9400A96B57 /* UITestMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITestMain.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,12 +296,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		59FA9DCE1E928D6500A96B57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59FA9DCF1E928D6500A96B57 /* libGroundBase-cpp.dylib in Frameworks */,
+				59FA9DD01E928D6500A96B57 /* libGroundBase.dylib in Frameworks */,
+				59FA9DD11E928D6500A96B57 /* libfreetype.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		591CF4D21E85530C009279BA /* CoreTest */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9DD71E928D9400A96B57 /* UITestMain.cpp */,
 				591CF4F31E855D23009279BA /* GXTestMain.cpp */,
 				59221BFA1E87D82F006C09FE /* TestSelector.cpp */,
 				591CF4D31E85530C009279BA /* main.cpp */,
@@ -333,6 +386,7 @@
 				591CF5061E857267009279BA /* Display */,
 				5923E8891E82B94300587675 /* Core */,
 				591CF4DD1E855B02009279BA /* GX */,
+				59FA9DAF1E928D4300A96B57 /* UI */,
 				591CF4D21E85530C009279BA /* CoreTest */,
 				5923E8801E82B91F00587675 /* Products */,
 				5923E8971E82B97300587675 /* Frameworks */,
@@ -346,6 +400,7 @@
 				591CF4F21E855D06009279BA /* GXTest */,
 				59221BF91E87D80D006C09FE /* TestSelector */,
 				59FA9D151E8ED3B800A96B57 /* TestFonts */,
+				59FA9DD61E928D6500A96B57 /* UITest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -420,6 +475,15 @@
 			path = Drivers;
 			sourceTree = "<group>";
 		};
+		59FA9DAF1E928D4300A96B57 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				59FA9DB01E928D4300A96B57 /* UIView.cpp */,
+				59FA9DB11E928D4300A96B57 /* UIView.hpp */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,6 +555,23 @@
 			productReference = 59FA9D151E8ED3B800A96B57 /* TestFonts */;
 			productType = "com.apple.product-type.tool";
 		};
+		59FA9DB61E928D6500A96B57 /* UITest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 59FA9DD31E928D6500A96B57 /* Build configuration list for PBXNativeTarget "UITest" */;
+			buildPhases = (
+				59FA9DB71E928D6500A96B57 /* Sources */,
+				59FA9DCE1E928D6500A96B57 /* Frameworks */,
+				59FA9DD21E928D6500A96B57 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UITest;
+			productName = Celesta;
+			productReference = 59FA9DD61E928D6500A96B57 /* UITest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -528,6 +609,7 @@
 				591CF4E11E855D06009279BA /* GXTest */,
 				59221BE21E87D80D006C09FE /* TestSelector */,
 				59FA9CFE1E8ED3B800A96B57 /* TestFonts */,
+				59FA9DB61E928D6500A96B57 /* UITest */,
 			);
 		};
 /* End PBXProject section */
@@ -566,6 +648,7 @@
 				591CF50D1E859578009279BA /* AbstractDisplayImpl.cpp in Sources */,
 				59FA9D2A1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 				591CF4E51E855D06009279BA /* GXGeometry.cpp in Sources */,
+				59FA9DB31E928D4300A96B57 /* UIView.cpp in Sources */,
 				591CF4F61E855D33009279BA /* GXTestMain.cpp in Sources */,
 				591CF4FD1E8568E8009279BA /* GXPath.cpp in Sources */,
 				59FA9D531E910D9900A96B57 /* GXText.cpp in Sources */,
@@ -598,6 +681,7 @@
 				59FA9D1D1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59221BED1E87D80D006C09FE /* FileSystem.cpp in Sources */,
 				59221BEE1E87D80D006C09FE /* CLApplicationDelegate.cpp in Sources */,
+				59FA9DB41E928D4300A96B57 /* UIView.cpp in Sources */,
 				59221BEF1E87D80D006C09FE /* GXColors.cpp in Sources */,
 				59221BF01E87D80D006C09FE /* GXElement.cpp in Sources */,
 				59221BF11E87D80D006C09FE /* CLApplication.cpp in Sources */,
@@ -613,6 +697,7 @@
 				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
 				591CF4F51E855D2D009279BA /* main.cpp in Sources */,
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
+				59FA9DB21E928D4300A96B57 /* UIView.cpp in Sources */,
 				59FA9D611E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
 				59FA9D231E8F941100A96B57 /* GXFont.cpp in Sources */,
@@ -650,10 +735,40 @@
 				59FA9D1E1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59FA9D091E8ED3B800A96B57 /* FileSystem.cpp in Sources */,
 				59FA9D0A1E8ED3B800A96B57 /* CLApplicationDelegate.cpp in Sources */,
+				59FA9DB51E928D4300A96B57 /* UIView.cpp in Sources */,
 				59FA9D0B1E8ED3B800A96B57 /* GXColors.cpp in Sources */,
 				59FA9D0C1E8ED3B800A96B57 /* GXElement.cpp in Sources */,
 				59FA9D0D1E8ED3B800A96B57 /* CLApplication.cpp in Sources */,
 				59FA9D2C1E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		59FA9DB71E928D6500A96B57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59FA9DB81E928D6500A96B57 /* GXLayer.cpp in Sources */,
+				59FA9DB91E928D6500A96B57 /* GXRenderer.cpp in Sources */,
+				59FA9DBA1E928D6500A96B57 /* DisplayImplDum.cpp in Sources */,
+				59FA9DBB1E928D6500A96B57 /* FontParser.cpp in Sources */,
+				59FA9DBC1E928D6500A96B57 /* GXFont.cpp in Sources */,
+				59FA9DBD1E928D6500A96B57 /* TCPMouse.cpp in Sources */,
+				59FA9DBE1E928D6500A96B57 /* CLElement.cpp in Sources */,
+				59FA9DBF1E928D6500A96B57 /* Display.cpp in Sources */,
+				59FA9DC01E928D6500A96B57 /* StringOperations.cpp in Sources */,
+				59FA9DC11E928D6500A96B57 /* AbstractDisplayImpl.cpp in Sources */,
+				59FA9DC21E928D6500A96B57 /* LayoutManager.cpp in Sources */,
+				59FA9DD81E928D9400A96B57 /* UITestMain.cpp in Sources */,
+				59FA9DC31E928D6500A96B57 /* GXGeometry.cpp in Sources */,
+				59FA9DC41E928D6500A96B57 /* UIView.cpp in Sources */,
+				59FA9DC61E928D6500A96B57 /* GXPath.cpp in Sources */,
+				59FA9DC71E928D6500A96B57 /* GXText.cpp in Sources */,
+				59FA9DC81E928D6500A96B57 /* FileSystem.cpp in Sources */,
+				59FA9DC91E928D6500A96B57 /* CLApplicationDelegate.cpp in Sources */,
+				59FA9DCA1E928D6500A96B57 /* FontManager.cpp in Sources */,
+				59FA9DCB1E928D6500A96B57 /* GXColors.cpp in Sources */,
+				59FA9DCC1E928D6500A96B57 /* GXElement.cpp in Sources */,
+				59FA9DCD1E928D6500A96B57 /* CLApplication.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +928,20 @@
 			};
 			name = Release;
 		};
+		59FA9DD41E928D6500A96B57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		59FA9DD51E928D6500A96B57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -857,6 +986,15 @@
 			buildConfigurations = (
 				59FA9D131E8ED3B800A96B57 /* Debug */,
 				59FA9D141E8ED3B800A96B57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		59FA9DD31E928D6500A96B57 /* Build configuration list for PBXNativeTarget "UITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				59FA9DD41E928D6500A96B57 /* Debug */,
+				59FA9DD51E928D6500A96B57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
