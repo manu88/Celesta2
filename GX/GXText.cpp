@@ -89,7 +89,7 @@ void GXText::setText(const std::string &text) noexcept
     _text = text;
     
     //prepare();
-    setNeedsDisplay();
+    //setNeedsDisplay();
 }
 
 void GXText::setTextSize( float size) noexcept
@@ -97,7 +97,7 @@ void GXText::setTextSize( float size) noexcept
     if( _size != size)
     {
         _size = size;
-        setNeedsDisplay();
+        //setNeedsDisplay();
     }
     
 }
@@ -108,7 +108,7 @@ void GXText::setFont(const GXFont *font) noexcept
     if( font != _font )
     {
         _font = font;
-        setNeedsDisplay();
+        //setNeedsDisplay();
     }
 }
 
@@ -119,7 +119,7 @@ void GXText::setTextColor(const GXColor &color) noexcept
 
 void GXText::paint(const GXRect &rect)
 {
-    prepare();
+    prepare(rect);
     
     
     GXPath path( rect);
@@ -140,15 +140,16 @@ void GXText::paint(const GXRect &rect)
     GXElement::paint(rect);
 }
 
-void GXText::prepare()
+void GXText::prepare(const GXRect &rect)
 {
     DEBUG_ASSERT(_font);
     
     if ( _textPath == nullptr)
-        _textPath = new GXPath(makeRectNULL());
+        _textPath = new GXPath(rect);
     
     
     DEBUG_ASSERT(_textPath);
+    _textPath->setBounds(rect);
     
     _textPath->clear();
     

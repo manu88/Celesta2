@@ -53,7 +53,7 @@ public:
     
 private:
     
-    void prepare();
+    void prepare(const GXRect &rect);
     void drawCharAtPositionWithSize( const GXGlyph *glyph , const GXPoint &pos , float size );
     
     std::string _text;

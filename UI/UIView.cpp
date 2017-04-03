@@ -21,8 +21,10 @@ CLElement("UIView")
     
     _winTitle->setText("Hello");
     _winTitle->setTextSize(10);
-    
+    _winTitle->setTextColor(makeColor(0, 0, 0));
     addChild(_winTitle);
+    
+    
 
     
 }
@@ -61,6 +63,7 @@ void UIView::paint(const GXRect &rect)
     path.fill();
     
     _winTitle->setBounds(makeRect(makePoint(80, rect.size.height - 15), makeSizeNULL()));
+    
     _winTitle->setNeedsDisplay(rect);
     // red rgb(255, 093, 090)
     // yellow rgb(255, 192, 078)
@@ -69,5 +72,5 @@ void UIView::paint(const GXRect &rect)
     
     
     
-    GXElement::paint(rect);
+    GXElement::paint(getBounds());
 }
