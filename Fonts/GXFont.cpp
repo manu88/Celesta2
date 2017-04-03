@@ -41,7 +41,8 @@ std::unordered_set<GXFont*> GXFont::s_fontsAtlas;
 GXFont::GXFont() :
 m_fontName      ( "" ),
 m_lineSpace     ( 0  ),
-m_fileName      ( "" )
+m_fileName      ( "" ),
+ftFace      (nullptr)
 {
 
     
@@ -69,7 +70,9 @@ const GXFont* const GXFont::loadFont( const std::string &fileName)
     GXFont *f = new GXFont();
         
     if ( p.parseFontFile( f , fileName ) )
+    { 
         s_fontsAtlas.insert( f );
+    }
     else
     {
         delete f;

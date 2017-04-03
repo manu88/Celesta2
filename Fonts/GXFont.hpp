@@ -131,6 +131,11 @@ public:
         return nullptr;
     }
     
+    
+    void* getFT_Face() const noexcept
+    {
+        return ftFace;
+    }
 
 protected:
     
@@ -167,6 +172,8 @@ private:
     private:
         char _char;
     };
+    
+    void* ftFace; // Ptr to FT_Face
     
     // font atlas
     static std::unordered_set<GXFont*> s_fontsAtlas;

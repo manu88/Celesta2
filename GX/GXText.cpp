@@ -6,6 +6,11 @@
 //  Copyright © 2017 Unlimited Development. All rights reserved.
 //
 
+// ft TEMP for debug
+#include <ft2build.h>
+#include FT_FREETYPE_H
+#include FT_OUTLINE_H
+
 #include "GXText.hpp"
 #include "GXFont.hpp"
 #include "GXPath.hpp"
@@ -17,7 +22,6 @@ _textColor(makeColor(255, 255, 255)),
 _font(nullptr),
 _textPath(nullptr)
 {
-    _sizeCoef = 1.0f/3000.f; // ?
     _size  = 10.f;
     _textLengthInPix = -1;
     
@@ -126,11 +130,14 @@ void GXText::prepare()
     DEBUG_ASSERT(_textPath);
     
     _textPath->clear();
+    
+    FT_Face face = static_cast<FT_Face>( _font->getFT_Face() );
+    printf("yMax %li \n" , face->bbox.xMax);
  
-    const float realSize = static_cast<float>( _size* _sizeCoef );
+    const float realSize = _size * 1.0f/face->bbox.xMax;
     
     /**/
-    const int lineJump =  static_cast<int>(_font->getLineSpace()* FUCKING_SCALE_CONV_ * realSize  );
+    const int lineJump =  static_cast<int>(_font->getLineSpace() * realSize  );
     
     _textPath->setStrokeColor( _textColor );
     _textPath->setFillColor  ( _textColor );
@@ -186,7 +193,7 @@ void GXText::prepare()
     if( tempWidth > size.width )
         size.width = tempWidth;
     
-    setSize(makeSize( size.width, size.height) );
+    //setSize(makeSize( size.width, size.height) );
     //printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 

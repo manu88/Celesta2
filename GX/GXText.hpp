@@ -42,7 +42,7 @@ public:
     void paint(const GXRect &rect) override ;
     
     
-    enum { FUCKING_SCALE_CONV_ = 8};
+    
     
 private:
     
@@ -55,7 +55,6 @@ private:
     GXPath*     _textPath;
     
     float _size;
-    float _sizeCoef;
     int _textLengthInPix;
 };
 

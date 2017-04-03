@@ -100,7 +100,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
         return false;
     }
 
-    
+    font->ftFace = face;
     font->m_fileName = filename;
     
     if (face->family_name != NULL)
@@ -119,7 +119,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
     FT_Set_Char_Size(
                      face,     
                      0 ,                              /* char_width in 1/64th of points  */
-                     128*128,                           /* char_height in 1/64th of points */
+                     64*64,                           /* char_height in 1/64th of points */
                      HorizontalDeviceResolution ,     /* horizontal device resolution    */
                      VerticalDeviceResolution         /* vertical device resolution      */
                      );
