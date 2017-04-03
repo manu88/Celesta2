@@ -14,23 +14,36 @@
 #include "GXFont.hpp"
 #include "FontParser.hpp"
 #include "LayoutManager.hpp"
+#include "FontManager.hpp"
+
+void printFaceInfo( const FT_Face face)
+{
+    printf("Face %s %s \n" , face->family_name , face->style_name);
+    printf("yMax %li \n" , face->bbox.yMax);
+    
+}
 
 int main(int argc, const char * argv[])
 {
-    const GXFont *font = GXFont::loadFont("SourceSansPro-Black.ttf");
+    FontManager manager;
     
-    
-    assert(font);
-    
-    
-    std::cout << "parsed font : " << font->getName()
-              << " line space " << font->getLineSpace()
-              << " num glyphes " << font->getNumGlyphes()
-              <<  std::endl;
-    
-    LayoutManager manager;
-    
-    
-    
+    FT_Face f1 = manager.contains("SourceSansPro-Black.ttf");
+    if(!f1)
+    {
+        std::cout << "Face not found " << std::endl;
+    }
+    else
+    {
+        printFaceInfo(f1);
+    }
+    FT_Face f2 = manager.contains("SourceSansPro-ExtraLight.ttf");
+    if(!f2)
+    {
+        std::cout << "Face not found " << std::endl;
+    }
+    else
+    {
+        printFaceInfo(f2);
+    }
     return 0;
 }

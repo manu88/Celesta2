@@ -92,6 +92,10 @@
 		59FA9D621E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
 		59FA9D631E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
 		59FA9D641E9158E600A96B57 /* TCPMouse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */; };
+		59FA9DA31E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
+		59FA9DA41E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
+		59FA9DA51E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
+		59FA9DA61E9236CE00A96B57 /* FontManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DA11E9236CE00A96B57 /* FontManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +211,8 @@
 		59FA9D5F1E9158E600A96B57 /* TCPMouse.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPMouse.cpp; sourceTree = "<group>"; };
 		59FA9D601E9158E600A96B57 /* TCPMouse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TCPMouse.hpp; sourceTree = "<group>"; };
 		59FA9D651E9160EF00A96B57 /* TCPMouseDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCPMouseDefs.h; sourceTree = "<group>"; };
+		59FA9DA11E9236CE00A96B57 /* FontManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FontManager.cpp; sourceTree = "<group>"; };
+		59FA9DA21E9236CE00A96B57 /* FontManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FontManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +404,8 @@
 				59FA9D221E8F941100A96B57 /* GXFont.hpp */,
 				59FA9D191E8ED46900A96B57 /* FontParser.cpp */,
 				59FA9D1A1E8ED46900A96B57 /* FontParser.hpp */,
+				59FA9DA11E9236CE00A96B57 /* FontManager.cpp */,
+				59FA9DA21E9236CE00A96B57 /* FontManager.hpp */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -563,6 +571,7 @@
 				59FA9D531E910D9900A96B57 /* GXText.cpp in Sources */,
 				591CF4E61E855D06009279BA /* FileSystem.cpp in Sources */,
 				591CF4E71E855D06009279BA /* CLApplicationDelegate.cpp in Sources */,
+				59FA9DA41E9236CE00A96B57 /* FontManager.cpp in Sources */,
 				591CF5001E856914009279BA /* GXColors.cpp in Sources */,
 				591CF4E81E855D06009279BA /* GXElement.cpp in Sources */,
 				591CF4EA1E855D06009279BA /* CLApplication.cpp in Sources */,
@@ -575,6 +584,7 @@
 			files = (
 				59221BE41E87D80D006C09FE /* GXRenderer.cpp in Sources */,
 				59FA9D251E8F941100A96B57 /* GXFont.cpp in Sources */,
+				59FA9DA51E9236CE00A96B57 /* FontManager.cpp in Sources */,
 				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
 				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
 				59FA9D631E9158E600A96B57 /* TCPMouse.cpp in Sources */,
@@ -613,6 +623,7 @@
 				59221BDD1E87D7E5006C09FE /* GXColors.cpp in Sources */,
 				5923E8BB1E82C3C400587675 /* CLApplicationDelegate.cpp in Sources */,
 				591CF4DC1E855AFE009279BA /* GXElement.cpp in Sources */,
+				59FA9DA31E9236CE00A96B57 /* FontManager.cpp in Sources */,
 				5923E8AA1E82C0A400587675 /* CLApplication.cpp in Sources */,
 				59FA9D1B1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59FA9D521E910D9900A96B57 /* GXText.cpp in Sources */,
@@ -625,6 +636,7 @@
 			files = (
 				59FA9D001E8ED3B800A96B57 /* GXRenderer.cpp in Sources */,
 				59FA9D261E8F941100A96B57 /* GXFont.cpp in Sources */,
+				59FA9DA61E9236CE00A96B57 /* FontManager.cpp in Sources */,
 				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
 				59FA9D641E9158E600A96B57 /* TCPMouse.cpp in Sources */,

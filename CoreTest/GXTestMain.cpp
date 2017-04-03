@@ -61,11 +61,8 @@ public:
         
         disp.setBounds(  makeRect(0, 0, 1920, 1080) );
         
-        
         //loadUI("file.xml");
-        
-        
-        
+
         const GB::Variant serializeTest = getApp()->serialize();
         
         
@@ -128,67 +125,71 @@ public:
         disp.setIdentifier("disp");
         
         
-        _elements.insert(std::make_pair("app", getApp() ) );
-        _elements.insert(std::make_pair(mainElement.getIdentifier(), &mainElement));
-        _elements.insert(std::make_pair(win1.getIdentifier(), &win1));
-        _elements.insert(std::make_pair(child2.getIdentifier(), &child2));
-        _elements.insert(std::make_pair(win3.getIdentifier(), &win3));
-        _elements.insert(std::make_pair(win4.getIdentifier(), &win4));
-        _elements.insert(std::make_pair(disp.getIdentifier(), &disp));
+        _elements.push_back( getApp() );
+        _elements.push_back( &mainElement);
+        _elements.push_back( &win1);
+        _elements.push_back( &child2);
+        _elements.push_back( &win3);
+        _elements.push_back( &win4);
+        _elements.push_back( &disp);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
-        input.notification = [&]( GBRunLoopSourceNotification notif)
-        {
-            if( notif == GBRunLoopSourceCanRead)
-            {
-                static char buf[64];
-                memset(buf, 0, 64);
-                if(input.read(buf, 64))//  GBRunLoopSourceRead(source, buf, 64))
-                {
-                    const std::string cmds = StringOperations::reduce( buf , "" , "\n");
-                    
-                    parseCommands(cmds);
-                    return;
-                }
-            }
-        };
+        input.notification = std::bind(&MyAppDelegate::keyInput, this , std::placeholders::_1);
+        _mouse.callback = std::bind(&MyAppDelegate::mouseInput, this , std::placeholders::_1);
 
-        _mouse.callback = [&](const TCPMouseMsg &msg)
-        {
-            //printf("Did read %i %i Button %i\n" , msg.x , msg.y , msg.button);
-            if(msg.button == 0)
-            {
-                cursor.setBackgroundColor(makeColor(0, 0, 0));
-            }
-            else
-            {
-                cursor.setBackgroundColor(makeColor(200, 200, 200));
-                
-                const GXPoint pos = makePoint(msg.x, msg.y);
-                
-                for(const GXElement* el : mainElement.getChildren())
-                {
-                    if( rectContainsPoint(el->getBounds(), pos))
-                    {
-                        
-                        printf("Find intersection \n");
-                        break;
-                    }
-                }
-                
-            }
-            
-            
-            
-            cursor.moveTo(msg.x, msg.y);
-            cursor.setNeedsDisplay();
-        };
-        
         assert(_mouse.addToRunLoop(getApp()->getRunLoop()) );
         getApp()->getRunLoop().addSource(input);
 
         
+    }
+    
+    void mouseInput( const TCPMouseMsg &msg)
+    {
+        if(msg.button == 0)
+        {
+            cursor.setBackgroundColor(makeColor(0, 0, 0));
+        }
+        else
+        {
+            cursor.setBackgroundColor(makeColor(200, 200, 200));
+            
+            const GXPoint pos = makePoint(msg.x, msg.y);
+            
+            for(GXElement* el : mainElement.getChildren())
+            {
+                if( rectContainsPoint(el->getBounds(), pos))
+                {
+                    
+                    printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
+                    
+                    if( !el->getIdentifier().empty())
+                    {
+                        el->moveTo(pos);
+                    }
+                    break;
+                }
+            }
+            
+        }
+        cursor.moveTo(msg.x, msg.y);
+        cursor.setNeedsDisplay();
+    }
+    
+    void keyInput( GBRunLoopSourceNotification notif)
+    {
+        if( notif == GBRunLoopSourceCanRead)
+        {
+            static char buf[64];
+            memset(buf, 0, 64);
+            if(input.read(buf, 64))//  GBRunLoopSourceRead(source, buf, 64))
+            {
+                const std::string cmds = StringOperations::reduce( buf , "" , "\n");
+                
+                parseCommands(cmds);
+                return;
+            }
+        }
     }
 
     void termCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
@@ -238,9 +239,9 @@ public:
         {
             printf("%zi Elements : \n" , _elements.size());
             
-            for (auto const &el : _elements)
+            for (auto const el : _elements)
             {
-                printf("\t'%s' %s \n" ,el.first.c_str() , el.second->getClassName().c_str());
+                printf("\t'%s' %s \n" ,el->getIdentifier().c_str() , el->getClassName().c_str() );
             }
         }
         else if( args.size() > 1)
@@ -248,12 +249,21 @@ public:
             if( args.at(0) == "sels")
             {
                 const std::string targetName = args[1];
-                if( _elements.count(targetName) == 0)
+                
+                auto iter = std::find_if(_elements.cbegin(),_elements.cend(), [targetName]( const CLElement* el)
+                {
+                    if( el->getIdentifier() == targetName)
+                        return true;
+                    
+                    return false;
+                });
+                
+                if( iter == _elements.end())
                 {
                     printf("Target '%s' not found \n" , targetName.c_str() );
                     return;
                 }
-                CLElement* target =  _elements.find(targetName)->second;
+                CLElement* target =  *iter;
                 
                 if( target)
                 {
@@ -272,12 +282,20 @@ public:
                 const CLElement::Selector sel = args[0];
                 const std::string targetName = args[1];
                 
-                if( _elements.count(targetName) == 0)
+                auto iter = std::find_if(_elements.cbegin(),_elements.cend(), [targetName]( const CLElement* el)
+                                         {
+                                             if( el->getIdentifier() == targetName)
+                                                 return true;
+                                             
+                                             return false;
+                                         });
+                
+                if( iter == _elements.end())
                 {
                     printf("Target '%s' not found \n" , targetName.c_str() );
                     return;
                 }
-                CLElement* target =  _elements.find(targetName)->second;
+                CLElement* target =  *iter;
                 if( !target)
                 {
                     return;
@@ -363,7 +381,7 @@ private:
     
     
     GB::XMLDocument _doc;
-    std::map<const std::string, CLElement*> _elements;
+    std::list<CLElement*> _elements;
     
     TCPMouse _mouse;
     GB::FDSource input;
@@ -389,7 +407,7 @@ int main(int argc, const char * argv[])
 {
     GB::ObjectWrapper::enableInvalidReleaseDebug(true);
     {
-        CLApplication app("com.myApp");
+        CLApplication app("app");
         MyAppDelegate delegate;
         
         app.setDelegate(&delegate);
