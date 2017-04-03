@@ -28,6 +28,8 @@ public:
     virtual bool touchesBegan( const GXTouch &touches );
     virtual bool touchesMoved( const GXTouch &touches );
     virtual bool touchesEnded( const GXTouch &touches );
+    
+    
 };
 
 #endif /* UITouch_hpp */

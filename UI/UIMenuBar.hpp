@@ -19,8 +19,14 @@ public:
     UIMenuBar();
     ~UIMenuBar();
     
+    bool touchesBegan( const GXTouch &touches ) override;
+    bool touchesMoved( const GXTouch &touches ) override;
+    bool touchesEnded( const GXTouch &touches ) override;
+    
 private:
     void paint(const GXRect &rect) override;
+    
+    GXText* _appTitle;
 };
 
 #endif /* UIMenuBar_hpp */

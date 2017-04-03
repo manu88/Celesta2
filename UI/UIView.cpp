@@ -17,7 +17,7 @@ CLElement("UIView")
     setBackgroundColor(makeColor(150 ,150, 150));
 
     _winTitle = new GXText();
-    _winTitle->setFont(GXFont::loadFont("SourceSansPro-ExtraLight.ttf"));
+    _winTitle->setFont(GXFont::loadFont("LucidaGrandeRegular.ttf"));
     
     _winTitle->setText("Hello");
     _winTitle->setTextSize(14);
@@ -85,7 +85,6 @@ void UIView::paint(const GXRect &rect)
     
     _winTitle->setBounds(makeRect(makePoint(rect.size.width/2, rect.size.height - 15), makeSizeNULL()));
     
-    _winTitle->setNeedsDisplay(rect);
     // red rgb(255, 093, 090)
     // yellow rgb(255, 192, 078)
     // green rgb(000, 207, 089)

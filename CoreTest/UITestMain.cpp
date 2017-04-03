@@ -97,8 +97,8 @@ public:
         view2->setIdentifier("view2");
         
         
-        _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 15),
-                                    makeSize(mainElement.getBounds().size.width, 15)));
+        _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 25),
+                                    makeSize(mainElement.getBounds().size.width, 25)));
         _menuBar.setZPos(39);
         cursor.setZPos(40);
         cursor.setBounds(makeRect(0 , 0, 20, 20));
@@ -179,7 +179,7 @@ public:
             }
             if( rectContainsPoint(el->getBounds(), point))
             {
-                UIView* view = reinterpret_cast<UIView*>(el);
+                UITouchDelegate* view = dynamic_cast<UITouchDelegate*>(el);
                 
                 if( view)
                 {
@@ -227,9 +227,7 @@ public:
         
         printf("New pos view1 %i view2 %i \n" , view1->getZPos()  , view2->getZPos());
         
-        view1->moveOf(0, 0);
         view1->setNeedsDisplay();
-        view2->moveOf(0, 0);
         view2->setNeedsDisplay();
     }
     

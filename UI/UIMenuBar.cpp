@@ -8,10 +8,25 @@
 
 #include "UIMenuBar.hpp"
 #include "GXPath.hpp"
+#include "GXText.hpp"
+#include "GXFont.hpp"
 
 UIMenuBar::UIMenuBar():CLElement("UIMenuBar")
 {
     setBackgroundColor(makeColor(150 ,150, 150));
+    
+    _appTitle = new GXText();
+    
+    _appTitle->setFont(GXFont::loadFont("LucidaGrandeRegular.ttf"));
+    _appTitle->setText("Hello");
+    _appTitle->setTextSize(20);
+    _appTitle->setTextColor(makeColor(0, 0, 0));
+    addChild(_appTitle);
+    
+    
+    registerSelector("setAppTitle", _appTitle->getSelectors().at("setText"));
+    registerSelector("getAppTitle", _appTitle->getSelectors().at("getText"));
+    
 }
 
 UIMenuBar::~UIMenuBar()
@@ -26,5 +41,22 @@ void UIMenuBar::paint(const GXRect &rect)
     path.setFillColor( getBackgroundColor() );
     path.fill();
     
+    _appTitle->setBounds(makeRect(makePoint(30, rect.size.height - 10), makeSizeNULL()));
+    
     GXElement::paint(getBounds());
+}
+
+bool UIMenuBar::touchesBegan( const GXTouch &touches )
+{
+    return false;
+}
+
+bool UIMenuBar::touchesMoved( const GXTouch &touches )
+{
+    return false;
+}
+
+bool UIMenuBar::touchesEnded( const GXTouch &touches )
+{
+    return false;
 }
