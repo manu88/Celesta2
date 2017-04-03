@@ -78,10 +78,11 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
         else
         {
             printf("Connection accepted \n");
-            
+            DEBUG_ASSERT(_client);
             DEBUG_ASSERT(_runLoop);
+            printf("BEFORE Got %zi sources \n" , _runLoop->getNumSources());
             DEBUG_ASSERT(_runLoop->addSource(*_client));
-            
+            printf("AFTER Got %zi sources \n" , _runLoop->getNumSources());
             _client->notification = std::bind(&TCPMouse::onClient, this , std::placeholders::_1);
             
         }
