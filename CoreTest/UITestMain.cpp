@@ -138,7 +138,6 @@ public:
     
     void touchBegan( const GXPoint &point)
     {
-        //printf("TouchBegan %i %i \n" , point.x , point.y);
         
         for(GXElement* el : mainElement.getChildren())
         {
@@ -161,35 +160,33 @@ public:
     }
     void touchMoved( const GXPoint &point , bool pressed)
     {
-        //printf("TouchMoved %i %i Pressed %i \n" , point.x , point.y , pressed);
         cursor.moveTo(point);
+        cursor.setNeedsDisplay();
         
-        
-        if(pressed)
+        for(GXElement* el : mainElement.getChildren())
         {
-            for(GXElement* el : mainElement.getChildren())
+            if( rectContainsPoint(el->getBounds(), point))
             {
-                if( rectContainsPoint(el->getBounds(), point))
+                UIView* view = reinterpret_cast<UIView*>(el);
+                
+                if( el)
                 {
+                    GXTouch t;
+                    t.center = point;
+                    t.id = 1;
+                    t.touchState  = 1;
                     
-                    //printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
+                    if( view->touchesMoved(t))
+                        break;
                     
-                     if( !el->getIdentifier().empty())
-                     {
-                     el->moveTo(point);
-                     }
-                    
-                    setFocus(el);
-                    
-                    break;
                 }
+                
             }
         }
-        cursor.setNeedsDisplay();
     }
     void touchEnded( const GXPoint &point)
     {
-        //printf("TouchEnded %i %i \n" , point.x , point.y);
+        
     }
     
     void setFocus( GXElement *view)

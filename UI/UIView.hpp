@@ -10,9 +10,10 @@
 #define UIView_hpp
 
 #include "GXElement.hpp"
+#include "UITouch.hpp"
 
 class GXText;
-class UIView : public GXElement
+class UIView : public GXElement , public UITouchDelegate
 {
 public:
     UIView( );
@@ -20,6 +21,10 @@ public:
     
     void setWindowTitle( const std::string &title) noexcept;
     const std::string& getWindowTitle() const noexcept;
+    
+    bool touchesBegan( const GXTouch &touches ) override;
+    bool touchesMoved( const GXTouch &touches ) override;
+    bool touchesEnded( const GXTouch &touches ) override;
     
 protected:
     void paint(const GXRect &rect) override;

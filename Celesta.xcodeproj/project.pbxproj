@@ -130,6 +130,11 @@
 		59FA9DDF1E92B1BA00A96B57 /* UICursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */; };
 		59FA9DE01E92B1BA00A96B57 /* UICursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */; };
 		59FA9DE11E92B1BA00A96B57 /* UICursor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */; };
+		59FA9DE61E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
+		59FA9DE71E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
+		59FA9DE81E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
+		59FA9DE91E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
+		59FA9DEA1E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +267,8 @@
 		59FA9DD71E928D9400A96B57 /* UITestMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITestMain.cpp; sourceTree = "<group>"; };
 		59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UICursor.cpp; sourceTree = "<group>"; };
 		59FA9DDC1E92B1BA00A96B57 /* UICursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UICursor.hpp; sourceTree = "<group>"; };
+		59FA9DE41E92B36E00A96B57 /* UITouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouch.cpp; sourceTree = "<group>"; };
+		59FA9DE51E92B36E00A96B57 /* UITouch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITouch.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +492,8 @@
 		59FA9DAF1E928D4300A96B57 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9DE41E92B36E00A96B57 /* UITouch.cpp */,
+				59FA9DE51E92B36E00A96B57 /* UITouch.hpp */,
 				59FA9DB01E928D4300A96B57 /* UIView.cpp */,
 				59FA9DB11E928D4300A96B57 /* UIView.hpp */,
 				59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */,
@@ -650,6 +659,7 @@
 				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
 				59FA9D1C1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59FA9D241E8F941100A96B57 /* GXFont.cpp in Sources */,
+				59FA9DE71E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59FA9D621E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				591CF4E31E855D06009279BA /* CLElement.cpp in Sources */,
 				591CF5051E857260009279BA /* Display.cpp in Sources */,
@@ -678,6 +688,7 @@
 				59221BE41E87D80D006C09FE /* GXRenderer.cpp in Sources */,
 				59FA9D251E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59FA9DA51E9236CE00A96B57 /* FontManager.cpp in Sources */,
+				59FA9DE81E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
 				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
 				59FA9DDF1E92B1BA00A96B57 /* UICursor.cpp in Sources */,
@@ -706,6 +717,7 @@
 			files = (
 				591CF4D91E855A67009279BA /* CLElement.cpp in Sources */,
 				5923E8C41E82C99C00587675 /* StringOperations.cpp in Sources */,
+				59FA9DE61E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				591CF4F51E855D2D009279BA /* main.cpp in Sources */,
 				591CF4E01E855B78009279BA /* GXGeometry.cpp in Sources */,
 				59FA9DB21E928D4300A96B57 /* UIView.cpp in Sources */,
@@ -734,6 +746,7 @@
 				59FA9D001E8ED3B800A96B57 /* GXRenderer.cpp in Sources */,
 				59FA9D261E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59FA9DA61E9236CE00A96B57 /* FontManager.cpp in Sources */,
+				59FA9DE91E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
 				59FA9DE01E92B1BA00A96B57 /* UICursor.cpp in Sources */,
@@ -765,6 +778,7 @@
 				59FA9DBA1E928D6500A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9DBB1E928D6500A96B57 /* FontParser.cpp in Sources */,
 				59FA9DBC1E928D6500A96B57 /* GXFont.cpp in Sources */,
+				59FA9DEA1E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59FA9DBD1E928D6500A96B57 /* TCPMouse.cpp in Sources */,
 				59FA9DBE1E928D6500A96B57 /* CLElement.cpp in Sources */,
 				59FA9DBF1E928D6500A96B57 /* Display.cpp in Sources */,

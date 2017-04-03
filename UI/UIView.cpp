@@ -84,3 +84,20 @@ void UIView::paint(const GXRect &rect)
     
     GXElement::paint(getBounds());
 }
+
+bool UIView::touchesBegan( const GXTouch &touches )
+{
+    return false;
+}
+
+bool UIView::touchesMoved( const GXTouch &touches )
+{
+    printf("TouchesMoved in UIView %s\n" , getIdentifier().c_str());
+    return false;
+}
+
+bool UIView::touchesEnded( const GXTouch &touches )
+{
+    return false;
+}
+
