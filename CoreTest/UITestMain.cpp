@@ -75,6 +75,12 @@ public:
         
 
         disp.setDisplayedElement(&mainElement);
+        
+        
+        view1.setBounds(makeRect(100, 100, 800, 600));
+        
+        mainElement.addChild(&view1);
+        
 
         mainElement.setIdentifier("main");
         disp.setIdentifier("disp");
