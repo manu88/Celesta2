@@ -58,7 +58,8 @@ public:
         const GB::Variant serializeTest = getApp()->serialize();
         
         
-        
+        view1 = new UIView();
+        view2 = new UIView();
         
     }
     
@@ -78,21 +79,21 @@ public:
         
         
         
-        view1.setBounds(makeRect(100, 100, 800, 600));
-        view2.setBounds(makeRect(700, 500, 800, 300));
+        view1->setBounds(makeRect(100, 100, 800, 600));
+        view2->setBounds(makeRect(700, 500, 800, 300));
         
-        view1.setWindowTitle("Application 1");
-        view2.setWindowTitle("Application 2");
+        view1->setWindowTitle("Application 1");
+        view2->setWindowTitle("Application 2");
         
-        mainElement.addChild(&view1);
-        mainElement.addChild(&view2);
+        mainElement.addChild( view1 );
+        mainElement.addChild( view2 );
         disp.setDisplayedElement(&mainElement);
         
 
         mainElement.setIdentifier("main");
         disp.setIdentifier("disp");
-        view1.setIdentifier("view1");
-        view2.setIdentifier("view2");
+        view1->setIdentifier("view1");
+        view2->setIdentifier("view2");
         
         cursor.setZPos(40);
         cursor.setBounds(makeRect(0 , 0, 20, 20));
@@ -104,8 +105,8 @@ public:
         _elements.push_back( getApp() );
         _elements.push_back( &mainElement);
         _elements.push_back( &disp);
-        _elements.push_back( &view1);
-        _elements.push_back( &view2);
+        _elements.push_back( view1);
+        _elements.push_back( view2);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -195,34 +196,34 @@ public:
     
     void setFocus( GXElement *view)
     {
-        if( view->getIdentifier() == view1.getIdentifier())
+        if( view->getIdentifier() == view1->getIdentifier())
         {
             printf("Set view1 in front of view2 \n");
             //if( view1.getZPos() < view2.getZPos())
             {
-                view1.setZPos( 1 );
-                view2.setZPos(0);
+                view1->setZPos( 1 );
+                view2->setZPos(0);
                 
                 
             }
         }
-        if( view->getIdentifier() == view2.getIdentifier())
+        if( view->getIdentifier() == view2->getIdentifier())
         {
             printf("Set view2 in front of view1 \n");
             //if( view2.getZPos() < view2.getZPos())
             {
                 
-                view2.setZPos( 1);
-                view1.setZPos(0);
+                view2->setZPos( 1);
+                view1->setZPos(0);
             }
         }
         
-        printf("New pos view1 %i view2 %i \n" , view1.getZPos()  , view2.getZPos());
+        printf("New pos view1 %i view2 %i \n" , view1->getZPos()  , view2->getZPos());
         
-        view1.moveOf(0, 0);
-        view1.setNeedsDisplay();
-        view2.moveOf(0, 0);
-        view2.setNeedsDisplay();
+        view1->moveOf(0, 0);
+        view1->setNeedsDisplay();
+        view2->moveOf(0, 0);
+        view2->setNeedsDisplay();
     }
     
     void keyInput( GBRunLoopSourceNotification notif)
@@ -392,8 +393,8 @@ private:
     
     GXLayer mainElement;
 
-    UIView view1;
-    UIView view2;
+    UIView *view1;
+    UIView *view2;
     
     UICursor cursor;
 
