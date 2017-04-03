@@ -68,7 +68,7 @@ void GXElement::initSelectors()
     registerSelector("getBackgroundColor", [&]( const GB::Variant &l)
     {
         const GXColor &c = getBackgroundColor();
-        printf("will return color %i %i %i %i \n" , c.r , c.g , c.b , c.a);
+        //printf("will return color %i %i %i %i \n" , c.r , c.g , c.b , c.a);
         return GXColorGetVariant(c);
     });
     

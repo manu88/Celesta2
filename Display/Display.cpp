@@ -116,7 +116,7 @@ void Display::startGUI()
                 break;
             }
             
-            std::cout << "DISP Update " << std::endl;
+            //std::cout << "DISP Update " << std::endl;
             update();
         }
     }

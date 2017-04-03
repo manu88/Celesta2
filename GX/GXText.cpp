@@ -104,7 +104,7 @@ void GXText::paint(const GXRect &rect)
     
     if( _textPath)
     {
-        printf("Paint GXText\n");
+        //printf("Paint GXText\n");
         _textPath->setBounds(rect);
         _textPath->setFillColor( _textColor );
         _textPath->setStrokeColor( _textColor );
@@ -168,7 +168,7 @@ void GXText::prepare()
         else
         {
             
-            printf("Draw %c at %i %i \n" , c , pt.x , pt.y);
+            //printf("Draw %c at %i %i \n" , c , pt.x , pt.y);
             const GXGlyph *glyph =  _font->getCharacter( c );
             
             drawCharAtPositionWithSize( glyph, pt , realSize );
@@ -186,7 +186,7 @@ void GXText::prepare()
         size.width = tempWidth;
     
     //setSize(makeSize( size.width, size.height) );
-    printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
+    //printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */
@@ -200,7 +200,7 @@ void GXText::drawCharAtPositionWithSize( const GXGlyph *glyph , const GXPoint &p
     };
 
     
-    printf("\t Glyph num segs %zi size %f \n", glyph->getNumSegments() , size);
+    //printf("\t Glyph num segs %zi size %f \n", glyph->getNumSegments() , size);
     
     for ( size_t i = 0 ; i < glyph->getNumSegments() ; i++)
     {

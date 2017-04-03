@@ -49,7 +49,7 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
         static TCPMouseMsg msg;
         if( _client->read(&msg, sizeof(TCPMouseMsg)))
         {
-            printf("GOT MOUSE POS \n");
+            //printf("GOT MOUSE POS \n");
             if( callback)
             {
                 callback(msg);
@@ -58,12 +58,12 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
     }
     else
     {
-        printf("Client : other notif %i \n" , notification);
+        //printf("Client : other notif %i \n" , notification);
     }
 }
 void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
 {
-    printf("NOTIFICATION %i\n"  , notification);
+    //printf("NOTIFICATION %i\n"  , notification);
     DEBUG_ASSERT(_client == nullptr);
     
     if( notification == GBRunLoopSourceCanRead)
@@ -77,19 +77,22 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
         }
         else
         {
-            printf("Connection accepted \n");
+            //printf("Connection accepted \n");
             DEBUG_ASSERT(_client);
             DEBUG_ASSERT(_runLoop);
-            printf("BEFORE Got %zi sources \n" , _runLoop->getNumSources());
-            DEBUG_ASSERT(_runLoop->addSource(*_client));
-            printf("AFTER Got %zi sources \n" , _runLoop->getNumSources());
+            //printf("BEFORE Got %zi sources \n" , _runLoop->getNumSources());
+            if( !_runLoop->addSource(*_client))
+            {
+                DEBUG_ASSERT(0);
+            }
+            //printf("AFTER Got %zi sources \n" , _runLoop->getNumSources());
             _client->notification = std::bind(&TCPMouse::onClient, this , std::placeholders::_1);
             
         }
     }
     else
     {
-        printf("Listened : other notif %i \n" , notification);
+        //printf("Listened : other notif %i \n" , notification);
     }
 }
 
@@ -114,47 +117,14 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
     }
     else if( notification == GBRunLoopSourceErrorRead)
     {
-        printf("GBRunLoopSourceErrorRead \n");
+        //printf("GBRunLoopSourceErrorRead \n");
         GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
         
         GBRunLoopRemoveSource(runloop, source);
     }
     else
     {
-        printf("Got CLient notification %i\n" , notification);
+        //printf("Got CLient notification %i\n" , notification);
     }
 }
-/*
-void TCPMouse::listenerCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
-{
-    TCPMouse* self = static_cast<TCPMouse*>(  GBRunLoopSourceGetUserContext(source) );
-    DEBUG_ASSERT(self);
-    
-    if( notification == GBRunLoopSourceCanRead)
-    {
-        printf("Connection request \n");
-        GBSocket* cSock = static_cast<GBSocket* >(source);
-        GBSocket* client = GBSocketCreate(GBSocketGetType(cSock), clientCallback);
-        
-        GBRunLoopSourceSetUserContext(client, self);
-        if(GBSocketAccept(cSock, client))
-        {
-            GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
-            if(GBRunLoopAddSource(runloop, client) == 0)
-            {
-                GBRelease(client);
-                DEBUG_ASSERT(0);
-            }
-            
-        }
-        else
-        {
-            DEBUG_ASSERT(0);
-        }
-    }
-    else
-    {
-        printf("Got Listener notification %i\n" , notification);
-    }
-}
- */
+
