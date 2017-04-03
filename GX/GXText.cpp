@@ -14,6 +14,7 @@
 #include "GXText.hpp"
 #include "GXFont.hpp"
 #include "GXPath.hpp"
+#include "FontParser.hpp"
 
 
 GXText::GXText():
@@ -22,7 +23,7 @@ _textColor(makeColor(255, 255, 255)),
 _font(nullptr),
 _textPath(nullptr)
 {
-    _size  = 10.f;
+    _size  = 40.f;
     _textLengthInPix = -1;
     
     _font = GXFont::loadFont("SourceSansPro-Black.ttf");
@@ -132,25 +133,31 @@ void GXText::prepare()
     _textPath->clear();
     
     FT_Face face = static_cast<FT_Face>( _font->getFT_Face() );
-    printf("yMax %li \n" , face->bbox.xMax);
+    DEBUG_ASSERT(face);
+    
+    printf("yMax %li \n" , face->bbox.yMax);
+    printf("xMax %li \n" , face->bbox.xMax);
+    printf("height %hi \n" , face->height);
  
-    const float realSize = _size * 1.0f/face->bbox.xMax;
+    
+    const float coef = 1.0f/(FontParser::VerticalDeviceResolution*64.f);
+    const float realSize = _size *coef ;// 2000.f;//face->bbox.yMax;
     
     /**/
-    const int lineJump =  static_cast<int>(_font->getLineSpace() * realSize  );
+    //const int lineJump =  static_cast<int>(_font->getLineSpace() * realSize  );
     
     _textPath->setStrokeColor( _textColor );
     _textPath->setFillColor  ( _textColor );
     
     
-    const GXPoint carret = makePoint(0,/* getBounds().origin.x, getBounds().origin.y*/
-                                     100 - lineJump
+    const GXPoint carret = makePoint(10,/* getBounds().origin.x, getBounds().origin.y*/
+                                     _size/4// 100 - lineJump
                                      );
     
     GXPoint pt  = carret;
     GXSize size = makeSizeNULL();
-    
-    size.height = lineJump;
+    size.width = 10;
+    size.height = _size;
     
     int tempWidth = 0;
     
@@ -163,8 +170,8 @@ void GXText::prepare()
         if ( c == '\n')
         {
             pt.x = carret.x;
-            pt.y -= lineJump;
-            size.height += lineJump;
+            pt.y -= realSize;
+            size.height += realSize;
             
             if( tempWidth > size.width )
             {
@@ -182,7 +189,16 @@ void GXText::prepare()
             drawCharAtPositionWithSize( glyph, pt , realSize );
             
             pt.x += (int ) glyph->getAdvanceX() * realSize;
-            tempWidth += (int ) glyph->getAdvanceX() * realSize;
+            size.width += (int ) glyph->getAdvanceX() * realSize;
+            
+            /*
+            const int h = (int) glyph->getAdvanceY() * realSize;
+            printf("H %f \n" , glyph->getAdvanceY());
+            if( h > size.height)
+            {
+                size.height = h;
+            }
+             */
             
         }
     }
@@ -193,8 +209,8 @@ void GXText::prepare()
     if( tempWidth > size.width )
         size.width = tempWidth;
     
-    //setSize(makeSize( size.width, size.height) );
-    //printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
+    setSize(makeSize( size.width, size.height) );
+    printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */

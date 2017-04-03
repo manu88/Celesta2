@@ -94,10 +94,10 @@ public:
         mainElement.addChild(&win3);
         
         
-        win4.setBounds(  makeRect(600, 60, 600, 500) );
-        win4.setZPos(4);
-        win4.setBackgroundColor(makeColor(0,100,127 ));
-        mainElement.addChild(&win4);
+        text4.setBounds(  makeRect(600, 60, 600, 10) );
+        text4.setZPos(4);
+        text4.setBackgroundColor(makeColor(0,100,127 ));
+        mainElement.addChild( &text4 );
         
         
         child2.setBounds(  makeRect(0, 0, 170, 100) );
@@ -115,13 +115,13 @@ public:
         
         disp.setDisplayedElement(&mainElement);
         
-        win4.setText("Hello");
+        text4.setText("Hello World");
         
         mainElement.setIdentifier("main");
         win1.setIdentifier("win1");
         child2.setIdentifier("child2");
         win3.setIdentifier("win3");
-        win4.setIdentifier("win4");
+        text4.setIdentifier("text4");
         disp.setIdentifier("disp");
         
         
@@ -130,7 +130,7 @@ public:
         _elements.push_back( &win1);
         _elements.push_back( &child2);
         _elements.push_back( &win3);
-        _elements.push_back( &win4);
+        _elements.push_back( &text4);
         _elements.push_back( &disp);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
@@ -392,7 +392,7 @@ private:
     Display disp;
     
     GXLayer win3;
-    GXText win4;
+    GXText text4;
     
     GXLayer cursor;
     /*

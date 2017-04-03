@@ -101,6 +101,7 @@ bool FontParser::parseFontFile(GXFont *font ,  const std::string &filename )
     }
 
     font->ftFace = face;
+    
     font->m_fileName = filename;
     
     if (face->family_name != NULL)
