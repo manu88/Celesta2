@@ -56,6 +56,10 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
             }
         }
     }
+    else
+    {
+        printf("Client : other notif %i \n" , notification);
+    }
 }
 void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
 {
@@ -82,6 +86,10 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
             
         }
     }
+    else
+    {
+        printf("Listened : other notif %i \n" , notification);
+    }
 }
 
 /*static*/ void TCPMouse::clientCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
@@ -105,6 +113,7 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
     }
     else if( notification == GBRunLoopSourceErrorRead)
     {
+        printf("GBRunLoopSourceErrorRead \n");
         GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
         
         GBRunLoopRemoveSource(runloop, source);
