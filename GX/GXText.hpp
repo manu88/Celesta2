@@ -39,6 +39,13 @@ public:
     {
         return _size;
     }
+    
+    void setTextColor(const GXColor &) noexcept;
+    
+    const GXColor &getTextColor() const noexcept
+    {
+        return _textColor;
+    }
     void paint(const GXRect &rect) override ;
     
     

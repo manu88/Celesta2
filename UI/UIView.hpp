@@ -10,13 +10,19 @@
 #define UIView_hpp
 
 #include "GXElement.hpp"
+
+class GXText;
 class UIView : public GXElement
 {
 public:
     UIView();
     ~UIView();
     
+protected:
+    void paint(const GXRect &rect);
     
+private:
+    GXText* _winTitle;
 };
 
 #endif /* UIView_hpp */

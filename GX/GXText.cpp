@@ -62,6 +62,21 @@ _textPath(nullptr)
                      {
                          return _font->getName();
                      });
+    
+    
+    registerSelector("getTextColor", [&]( const GB::Variant &l)
+                     {
+                         const GXColor &c = getTextColor();
+                         //printf("will return color %i %i %i %i \n" , c.r , c.g , c.b , c.a);
+                         return GXColorGetVariant(c);
+                     });
+    
+    registerSelector("setTextColor", [&]( const GB::Variant &l)
+                     {
+                         
+                         setTextColor( VariantGetGXColor(l));
+                         return GB::Variant::null();
+                     });
 
 }
 GXText::~GXText()
@@ -95,6 +110,11 @@ void GXText::setFont(const GXFont *font) noexcept
         _font = font;
         setNeedsDisplay();
     }
+}
+
+void GXText::setTextColor(const GXColor &color) noexcept
+{
+    _textColor = color;
 }
 
 void GXText::paint(const GXRect &rect)

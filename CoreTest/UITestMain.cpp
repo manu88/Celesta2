@@ -74,12 +74,14 @@ public:
         assert(mainElement.getBounds() == b);
         
 
-        disp.setDisplayedElement(&mainElement);
+        
         
         
         view1.setBounds(makeRect(100, 100, 800, 600));
         
         mainElement.addChild(&view1);
+        
+        disp.setDisplayedElement(&mainElement);
         
 
         mainElement.setIdentifier("main");
