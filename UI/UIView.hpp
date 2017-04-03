@@ -22,7 +22,7 @@ public:
     const std::string& getWindowTitle() const noexcept;
     
 protected:
-    void paint(const GXRect &rect);
+    void paint(const GXRect &rect) override;
     
 private:
     GXText* _winTitle;

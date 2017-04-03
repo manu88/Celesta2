@@ -25,6 +25,7 @@
 #include "../Drivers/TCPMouse.hpp"
 
 #include "UIView.hpp"
+#include "UICursor.hpp"
 
 class MyAppDelegate  : public CLApplicationDelegate
 {
@@ -393,7 +394,7 @@ private:
     UIView view1;
     UIView view2;
     
-    GXLayer cursor;
+    UICursor cursor;
 
     
 
