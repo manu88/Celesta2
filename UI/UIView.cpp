@@ -58,15 +58,18 @@ void UIView::paint(const GXRect &rect)
     
     path.clear();
     
+    // close icon
     path.addEllipse(makeRect( makePoint(10, rect.size.height - 15), makeSize(10, 10) ) );
     path.setFillColor( makeColor(255, 93, 90) );
     path.fill();
     
+    // reduce icon
     path.clear();
     path.addEllipse(makeRect( makePoint(30, rect.size.height - 15), makeSize(10, 10) ) );
     path.setFillColor( makeColor(255, 192, 78) );
     path.fill();
     
+    // fullscreen icon
     path.clear();
     path.addEllipse(makeRect( makePoint(50, rect.size.height - 15), makeSize(10, 10) ) );
     path.setFillColor( makeColor(000, 207, 89) );
@@ -92,7 +95,19 @@ bool UIView::touchesBegan( const GXTouch &touches )
 
 bool UIView::touchesMoved( const GXTouch &touches )
 {
-    printf("TouchesMoved in UIView %s\n" , getIdentifier().c_str());
+    
+    if( touches.center.y > getBounds().size.height - 20)
+    {
+        if(rectContainsPoint(makeRect( makePoint(10, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
+        {
+            printf("Hovering Close Icon in UIView %s\n" , getIdentifier().c_str() );
+        }
+        else
+        {
+            printf("Touching touch bar in UIView %s\n" , getIdentifier().c_str() );
+        }
+        //printf("TouchesMoved in UIView %s\n" , getIdentifier().c_str() );
+    }
     return false;
 }
 

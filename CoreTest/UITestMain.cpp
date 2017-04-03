@@ -165,16 +165,20 @@ public:
         
         for(GXElement* el : mainElement.getChildren())
         {
+            if (el == &cursor )
+            {
+                continue;
+            }
             if( rectContainsPoint(el->getBounds(), point))
             {
                 UIView* view = reinterpret_cast<UIView*>(el);
                 
-                if( el)
+                if( view)
                 {
                     GXTouch t;
-                    t.center = point;
+                    t.center = point - el->getBounds().origin;
                     t.id = 1;
-                    t.touchState  = 1;
+                    t.touchState  = pressed;
                     
                     if( view->touchesMoved(t))
                         break;
