@@ -19,6 +19,9 @@ public:
     UIMenuBar();
     ~UIMenuBar();
     
+    void setAppTitle( const std::string &title) noexcept;
+    const std::string& getAppTitle() const noexcept;
+    
     bool touchesBegan( const GXTouch &touches ) override;
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
@@ -27,6 +30,8 @@ private:
     void paint(const GXRect &rect) override;
     
     GXText* _appTitle;
+    
+    bool _menuEnabled;
 };
 
 #endif /* UIMenuBar_hpp */

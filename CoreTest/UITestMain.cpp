@@ -164,6 +164,31 @@ public:
             }
         }
         
+        for(GXElement* el : mainElement.getChildren())
+        {
+            if (el == &cursor )
+            {
+                continue;
+            }
+            if( rectContainsPoint(el->getBounds(), point))
+            {
+                UITouchDelegate* view = dynamic_cast<UITouchDelegate*>(el);
+                
+                if( view)
+                {
+                    GXTouch t;
+                    t.center = point - el->getBounds().origin;
+                    t.id = 1;
+                    
+                    if( view->touchesBegan(t))
+                        break;
+                    
+                }
+                
+            }
+        }
+        
+        
     }
     void touchMoved( const GXPoint &point , bool pressed)
     {
@@ -198,7 +223,29 @@ public:
     }
     void touchEnded( const GXPoint &point)
     {
-        
+        for(GXElement* el : mainElement.getChildren())
+        {
+            if (el == &cursor )
+            {
+                continue;
+            }
+            if( rectContainsPoint(el->getBounds(), point))
+            {
+                UITouchDelegate* view = dynamic_cast<UITouchDelegate*>(el);
+                
+                if( view)
+                {
+                    GXTouch t;
+                    t.center = point - el->getBounds().origin;
+                    t.id = 1;
+                    
+                    if( view->touchesEnded(t))
+                        break;
+                    
+                }
+                
+            }
+        }
     }
     
     void setFocus( GXElement *view)
@@ -211,6 +258,7 @@ public:
                 view1->setZPos( 1 );
                 view2->setZPos(0);
                 
+                _menuBar.setAppTitle(view1->getWindowTitle());
                 
             }
         }
@@ -222,6 +270,8 @@ public:
                 
                 view2->setZPos( 1);
                 view1->setZPos(0);
+                
+                _menuBar.setAppTitle(view2->getWindowTitle());
             }
         }
         

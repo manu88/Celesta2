@@ -13,6 +13,7 @@
 
 UIMenuBar::UIMenuBar():CLElement("UIMenuBar")
 {
+    _menuEnabled = false;
     setBackgroundColor(makeColor(150 ,150, 150));
     
     _appTitle = new GXText();
@@ -41,22 +42,73 @@ void UIMenuBar::paint(const GXRect &rect)
     path.setFillColor( getBackgroundColor() );
     path.fill();
     
-    _appTitle->setBounds(makeRect(makePoint(30, rect.size.height - 10), makeSizeNULL()));
+    
+    const GXRect menuB = makeRect(makePoint(30, rect.size.height - 25), makeSizeNULL());
+    
+    if( _menuEnabled)
+    {
+        
+        path.clear();
+        path.addRect(makeRect(30, 0, _appTitle->getBounds().size.width+10, rect.size.height));
+        path.setFillColor(makeColor(51, 57, 246));
+        path.fill();
+        _appTitle->setTextColor(makeColor(255, 255, 255));
+    }
+    else
+    {
+        _appTitle->setTextColor(makeColor(0, 0, 0));
+    }
+    
+    _appTitle->setBounds(menuB);
     
     GXElement::paint(getBounds());
 }
 
 bool UIMenuBar::touchesBegan( const GXTouch &touches )
 {
+    
+    if( rectContainsPoint(_appTitle->getBounds(), touches.center))
+    {
+        if( !_menuEnabled )
+        {
+            _menuEnabled = true;
+            printf("Enable Menu\n");
+        }
+    }
+    
     return false;
 }
 
 bool UIMenuBar::touchesMoved( const GXTouch &touches )
 {
+    if( rectContainsPoint(_appTitle->getBounds(), touches.center))
+    {
+        printf("Touching Menu item\n");
+    }
+    else if( _menuEnabled)
+    {
+        _menuEnabled = false;
+        printf("Disable Menu\n");
+    }
+    
     return false;
 }
 
 bool UIMenuBar::touchesEnded( const GXTouch &touches )
 {
+    if( rectContainsPoint(_appTitle->getBounds(), touches.center))
+    {
+        _menuEnabled = false;
+        printf("Disable Menu\n");
+    }
     return false;
+}
+
+void UIMenuBar::setAppTitle( const std::string &title) noexcept
+{
+    _appTitle->setText(title);
+}
+const std::string& UIMenuBar::getAppTitle() const noexcept
+{
+    return _appTitle->getText();
 }
