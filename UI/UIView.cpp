@@ -13,6 +13,7 @@
 UIView::UIView():
 CLElement("UIView")
 {
+    _hoveringQuit = false;
     setBackgroundColor(makeColor(150 ,150, 150));
 
     _winTitle = new GXText();
@@ -60,7 +61,14 @@ void UIView::paint(const GXRect &rect)
     
     // close icon
     path.addEllipse(makeRect( makePoint(10, rect.size.height - 15), makeSize(10, 10) ) );
-    path.setFillColor( makeColor(255, 93, 90) );
+    if(_hoveringQuit)
+    {
+        path.setFillColor( makeColor(244, 187, 61) );
+    }
+    else
+    {
+        path.setFillColor( makeColor(255, 93, 90) );
+    }
     path.fill();
     
     // reduce icon
@@ -101,12 +109,17 @@ bool UIView::touchesMoved( const GXTouch &touches )
         if(rectContainsPoint(makeRect( makePoint(10, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
         {
             printf("Hovering Close Icon in UIView %s\n" , getIdentifier().c_str() );
+            _hoveringQuit = true;
         }
         else
         {
             printf("Touching touch bar in UIView %s\n" , getIdentifier().c_str() );
         }
         //printf("TouchesMoved in UIView %s\n" , getIdentifier().c_str() );
+    }
+    else
+    {
+        _hoveringQuit = false;
     }
     return false;
 }

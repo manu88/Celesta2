@@ -26,6 +26,7 @@
 
 #include "UIView.hpp"
 #include "UICursor.hpp"
+#include "UIMenuBar.hpp"
 
 class MyAppDelegate  : public CLApplicationDelegate
 {
@@ -95,11 +96,16 @@ public:
         view1->setIdentifier("view1");
         view2->setIdentifier("view2");
         
+        
+        _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 15),
+                                    makeSize(mainElement.getBounds().size.width, 15)));
+        _menuBar.setZPos(39);
         cursor.setZPos(40);
         cursor.setBounds(makeRect(0 , 0, 20, 20));
         
         cursor.setBackgroundColor(makeColor(0, 0, 0));
         mainElement.addChild(&cursor);
+        mainElement.addChild(&_menuBar);
         
         
         _elements.push_back( getApp() );
@@ -161,7 +167,8 @@ public:
     }
     void touchMoved( const GXPoint &point , bool pressed)
     {
-        cursor.moveTo(point);
+        cursor.moveTo(makePoint(point.x-cursor.getBounds().size.width/2, point.y-cursor.getBounds().size.width/2));
+        
         cursor.setNeedsDisplay();
         
         for(GXElement* el : mainElement.getChildren())
@@ -392,6 +399,7 @@ private:
     std::list<CLElement*> _elements;
     
     GXLayer mainElement;
+    UIMenuBar _menuBar;
 
     UIView *view1;
     UIView *view2;

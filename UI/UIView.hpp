@@ -31,6 +31,8 @@ protected:
     
 private:
     GXText* _winTitle;
+    
+    bool _hoveringQuit;
 };
 
 #endif /* UIView_hpp */

@@ -135,6 +135,11 @@
 		59FA9DE81E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
 		59FA9DE91E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
 		59FA9DEA1E92B36E00A96B57 /* UITouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DE41E92B36E00A96B57 /* UITouch.cpp */; };
+		59FA9DED1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
+		59FA9DEE1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
+		59FA9DEF1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
+		59FA9DF01E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
+		59FA9DF11E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +274,8 @@
 		59FA9DDC1E92B1BA00A96B57 /* UICursor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UICursor.hpp; sourceTree = "<group>"; };
 		59FA9DE41E92B36E00A96B57 /* UITouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITouch.cpp; sourceTree = "<group>"; };
 		59FA9DE51E92B36E00A96B57 /* UITouch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITouch.hpp; sourceTree = "<group>"; };
+		59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIMenuBar.cpp; sourceTree = "<group>"; };
+		59FA9DEC1E92BE9300A96B57 /* UIMenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIMenuBar.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,8 +501,10 @@
 			children = (
 				59FA9DE41E92B36E00A96B57 /* UITouch.cpp */,
 				59FA9DE51E92B36E00A96B57 /* UITouch.hpp */,
-				59FA9DB01E928D4300A96B57 /* UIView.cpp */,
+				59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */,
+				59FA9DEC1E92BE9300A96B57 /* UIMenuBar.hpp */,
 				59FA9DB11E928D4300A96B57 /* UIView.hpp */,
+				59FA9DB01E928D4300A96B57 /* UIView.cpp */,
 				59FA9DDB1E92B1BA00A96B57 /* UICursor.cpp */,
 				59FA9DDC1E92B1BA00A96B57 /* UICursor.hpp */,
 			);
@@ -656,6 +665,7 @@
 			files = (
 				59FA9CEC1E8C176B00A96B57 /* GXLayer.cpp in Sources */,
 				591CF4FA1E855EF0009279BA /* GXRenderer.cpp in Sources */,
+				59FA9DEE1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */,
 				591CF5101E8599DE009279BA /* DisplayImplDum.cpp in Sources */,
 				59FA9D1C1E8ED46900A96B57 /* FontParser.cpp in Sources */,
 				59FA9D241E8F941100A96B57 /* GXFont.cpp in Sources */,
@@ -691,6 +701,7 @@
 				59FA9DE81E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59221BE51E87D80D006C09FE /* DisplayImplDum.cpp in Sources */,
 				59221BE61E87D80D006C09FE /* CLElement.cpp in Sources */,
+				59FA9DEF1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */,
 				59FA9DDF1E92B1BA00A96B57 /* UICursor.cpp in Sources */,
 				59FA9D631E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				59221BE71E87D80D006C09FE /* Display.cpp in Sources */,
@@ -723,6 +734,7 @@
 				59FA9DB21E928D4300A96B57 /* UIView.cpp in Sources */,
 				59FA9D611E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				5923E8C11E82C96E00587675 /* FileSystem.cpp in Sources */,
+				59FA9DED1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */,
 				59FA9D231E8F941100A96B57 /* GXFont.cpp in Sources */,
 				59FA9D291E8FAAFD00A96B57 /* LayoutManager.cpp in Sources */,
 				59221BE11E87D7F1006C09FE /* GXRenderer.cpp in Sources */,
@@ -749,6 +761,7 @@
 				59FA9DE91E92B36E00A96B57 /* UITouch.cpp in Sources */,
 				59FA9D011E8ED3B800A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9D021E8ED3B800A96B57 /* CLElement.cpp in Sources */,
+				59FA9DF01E92BE9300A96B57 /* UIMenuBar.cpp in Sources */,
 				59FA9DE01E92B1BA00A96B57 /* UICursor.cpp in Sources */,
 				59FA9D641E9158E600A96B57 /* TCPMouse.cpp in Sources */,
 				59FA9D031E8ED3B800A96B57 /* Display.cpp in Sources */,
@@ -775,6 +788,7 @@
 			files = (
 				59FA9DB81E928D6500A96B57 /* GXLayer.cpp in Sources */,
 				59FA9DB91E928D6500A96B57 /* GXRenderer.cpp in Sources */,
+				59FA9DF11E92BE9300A96B57 /* UIMenuBar.cpp in Sources */,
 				59FA9DBA1E928D6500A96B57 /* DisplayImplDum.cpp in Sources */,
 				59FA9DBB1E928D6500A96B57 /* FontParser.cpp in Sources */,
 				59FA9DBC1E928D6500A96B57 /* GXFont.cpp in Sources */,
