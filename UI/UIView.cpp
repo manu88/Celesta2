@@ -14,19 +14,29 @@ UIView::UIView():
 CLElement("UIView")
 {
     setBackgroundColor(makeColor(150 ,150, 150));
-    
-    
+
     _winTitle = new GXText();
     _winTitle->setFont(GXFont::loadFont("SourceSansPro-ExtraLight.ttf"));
     
     _winTitle->setText("Hello");
-    _winTitle->setTextSize(10);
+    _winTitle->setTextSize(14);
     _winTitle->setTextColor(makeColor(0, 0, 0));
     addChild(_winTitle);
     
-    
 
+    registerSelector("setWindowTitle", _winTitle->getSelectors().at("setText"));
+    registerSelector("getWindowTitle", _winTitle->getSelectors().at("getText"));
     
+}
+
+void UIView::setWindowTitle( const std::string &title) noexcept
+{
+    _winTitle->setText(title);
+}
+
+const std::string& UIView::getWindowTitle() const noexcept
+{
+    return _winTitle->getText();
 }
 
 UIView::~UIView()
@@ -62,7 +72,7 @@ void UIView::paint(const GXRect &rect)
     path.setFillColor( makeColor(000, 207, 89) );
     path.fill();
     
-    _winTitle->setBounds(makeRect(makePoint(80, rect.size.height - 15), makeSizeNULL()));
+    _winTitle->setBounds(makeRect(makePoint(rect.size.width/2, rect.size.height - 15), makeSizeNULL()));
     
     _winTitle->setNeedsDisplay(rect);
     // red rgb(255, 093, 090)

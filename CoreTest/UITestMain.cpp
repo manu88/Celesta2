@@ -78,21 +78,33 @@ public:
         
         
         view1.setBounds(makeRect(100, 100, 800, 600));
+        view2.setBounds(makeRect(700, 500, 800, 300));
+        
+        view1.setWindowTitle("Application 1");
+        view2.setWindowTitle("Application 2");
         
         mainElement.addChild(&view1);
-        
+        mainElement.addChild(&view2);
         disp.setDisplayedElement(&mainElement);
         
 
         mainElement.setIdentifier("main");
         disp.setIdentifier("disp");
         view1.setIdentifier("view1");
+        view2.setIdentifier("view2");
+        
+        cursor.setZPos(40);
+        cursor.setBounds(makeRect(0 , 0, 20, 20));
+        
+        cursor.setBackgroundColor(makeColor(0, 0, 0));
+        mainElement.addChild(&cursor);
         
         
         _elements.push_back( getApp() );
         _elements.push_back( &mainElement);
         _elements.push_back( &disp);
         _elements.push_back( &view1);
+        _elements.push_back( &view2);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -107,8 +119,108 @@ public:
     
     void mouseInput( const TCPMouseMsg &msg)
     {
-        printf("Mouse %i %i Event %i Buttons %i\n" , msg.x , msg.y , msg.event , msg.button);
+        if( msg.event == Pressed)
+        {
+            touchBegan(makePoint(msg.x, msg.y));
+        }
+        else if( msg.event == Moved)
+        {
+            touchMoved(makePoint(msg.x, msg.y) , msg.button > 0);
+        }
+        else if( msg.event == Released)
+        {
+            touchEnded(makePoint(msg.x, msg.y));
+        }
+        
         return;
+    }
+    
+    void touchBegan( const GXPoint &point)
+    {
+        //printf("TouchBegan %i %i \n" , point.x , point.y);
+        
+        for(GXElement* el : mainElement.getChildren())
+        {
+            if( rectContainsPoint(el->getBounds(), point))
+            {
+                
+                printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
+                /*
+                if( !el->getIdentifier().empty())
+                {
+                    el->moveTo(pos);
+                }
+                 */
+                setFocus(el);
+                
+                break;
+            }
+        }
+        
+    }
+    void touchMoved( const GXPoint &point , bool pressed)
+    {
+        //printf("TouchMoved %i %i Pressed %i \n" , point.x , point.y , pressed);
+        cursor.moveTo(point);
+        
+        
+        if(pressed)
+        {
+            for(GXElement* el : mainElement.getChildren())
+            {
+                if( rectContainsPoint(el->getBounds(), point))
+                {
+                    
+                    //printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
+                    
+                     if( !el->getIdentifier().empty())
+                     {
+                     el->moveTo(point);
+                     }
+                    
+                    setFocus(el);
+                    
+                    break;
+                }
+            }
+        }
+        cursor.setNeedsDisplay();
+    }
+    void touchEnded( const GXPoint &point)
+    {
+        //printf("TouchEnded %i %i \n" , point.x , point.y);
+    }
+    
+    void setFocus( GXElement *view)
+    {
+        if( view->getIdentifier() == view1.getIdentifier())
+        {
+            printf("Set view1 in front of view2 \n");
+            //if( view1.getZPos() < view2.getZPos())
+            {
+                view1.setZPos( 1 );
+                view2.setZPos(0);
+                
+                
+            }
+        }
+        if( view->getIdentifier() == view2.getIdentifier())
+        {
+            printf("Set view2 in front of view1 \n");
+            //if( view2.getZPos() < view2.getZPos())
+            {
+                
+                view2.setZPos( 1);
+                view1.setZPos(0);
+            }
+        }
+        
+        printf("New pos view1 %i view2 %i \n" , view1.getZPos()  , view2.getZPos());
+        
+        view1.moveOf(0, 0);
+        view1.setNeedsDisplay();
+        view2.moveOf(0, 0);
+        view2.setNeedsDisplay();
     }
     
     void keyInput( GBRunLoopSourceNotification notif)
@@ -279,7 +391,9 @@ private:
     GXLayer mainElement;
 
     UIView view1;
+    UIView view2;
     
+    GXLayer cursor;
 
     
 

@@ -41,7 +41,7 @@ public:
     }
     
     // 1 atop 0
-    bool setZPos( int );
+    void setZPos( int );
     int  getZPos() const;
     
     /**/
@@ -77,6 +77,7 @@ protected:
     GXElement(); // Public is temp. for tests
     
     virtual void needsDisplay();
+    virtual void needsReorder();
     virtual void paint(const GXRect &rect); // should go pure virtual
     //GXElement();
     

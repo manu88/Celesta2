@@ -15,8 +15,11 @@ class GXText;
 class UIView : public GXElement
 {
 public:
-    UIView();
+    UIView( );
     ~UIView();
+    
+    void setWindowTitle( const std::string &title) noexcept;
+    const std::string& getWindowTitle() const noexcept;
     
 protected:
     void paint(const GXRect &rect);

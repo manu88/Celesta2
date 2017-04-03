@@ -137,10 +137,17 @@ void GXElement::setSize( const GXSize &size)
     setBounds( makeRect(_bounds.origin, size ) );
 }
 
-bool GXElement::setZPos( int z)
+void GXElement::setZPos( int z)
 {
-    _zOrder = z;
-    return true;
+    if( _zOrder != z)
+    {
+        _zOrder = z;
+        if( _parent)
+        {
+            _parent->needsReorder();
+        }
+    }
+
 }
 
 int GXElement::getZPos() const
@@ -246,6 +253,11 @@ void GXElement::setNeedsDisplay( const GXRect &rect )
 
 void GXElement::needsDisplay()
 {    
+}
+
+void GXElement::needsReorder()
+{
+    sortChildren();
 }
 
 void GXElement::paint(const GXRect &rect)

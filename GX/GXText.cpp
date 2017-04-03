@@ -155,11 +155,11 @@ void GXText::prepare(const GXRect &rect)
     
     FT_Face face = static_cast<FT_Face>( _font->getFT_Face() );
     DEBUG_ASSERT(face);
-    
+    /*
     printf("yMax %li \n" , face->bbox.yMax);
     printf("xMax %li \n" , face->bbox.xMax);
     printf("height %hi \n" , face->height);
- 
+     */
     
     const float coef = 1.0f/(FontParser::VerticalDeviceResolution*64.f);
     const float realSize = _size *coef ;// 2000.f;//face->bbox.yMax;
@@ -231,7 +231,7 @@ void GXText::prepare(const GXRect &rect)
         size.width = tempWidth;
     
     setSize(makeSize( size.width, size.height) );
-    printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
+    //printf("GXTExt bounds %i %i %i %i\n" , getBounds().origin.x , getBounds().origin.y , getBounds().size.width ,getBounds().size.height);
 }
 
 /* **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** */
