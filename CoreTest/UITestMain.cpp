@@ -36,9 +36,25 @@ public:
     input(STDIN_FILENO)
     {
         
+        
+        
     }
     void willStart()
     {
+        getApp()->registerSelector("addView", [&]( const GB::Variant &v)
+                                   {
+                                       UIView* view = new UIView();
+                                       
+                                       view->setWindowTitle(v.toString());
+                                       view->setIdentifier(v.toString());
+                                       view->setBounds(makeRect(100,100,700,400));
+                                       mainElement.addChild(view);
+                                       _elements.push_back(view);
+                                       
+                                       
+                                       return GB::Variant::null();
+                                   });
+        
         std::cout << "App will Start" << std::endl;
         if(disp.init())
         {
@@ -70,16 +86,12 @@ public:
         
         std::cout << "App did Start" << std::endl;
         
-        mainElement.setBackgroundColor(makeColor(255,0,0));
+        mainElement.setBackgroundColor(makeColor(100,127,110));
         
         const GXRect b = makeRect(0, 0, 1920, 1080);
         mainElement.setBounds( b );
         assert(mainElement.getBounds() == b);
-        
 
-        
-        
-        
         view1->setBounds(makeRect(100, 100, 800, 600));
         view2->setBounds(makeRect(700, 500, 800, 300));
         
@@ -100,8 +112,13 @@ public:
         _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 25),
                                     makeSize(mainElement.getBounds().size.width, 25)));
         _menuBar.setZPos(39);
+        
+        _menuBar.setIdentifier("menu");
+        cursor.setIdentifier("cursor");
+        
         cursor.setZPos(40);
-        cursor.setBounds(makeRect(0 , 0, 20, 20));
+        cursor.setBounds(makeRect(0 , 0, 20, 30));
+        cursor.moveTo( makePoint(mainElement.getBounds().size.width / 2, mainElement.getBounds().size.height / 2) );
         
         cursor.setBackgroundColor(makeColor(0, 0, 0));
         mainElement.addChild(&cursor);
@@ -113,6 +130,8 @@ public:
         _elements.push_back( &disp);
         _elements.push_back( view1);
         _elements.push_back( view2);
+        _elements.push_back( &_menuBar);
+        _elements.push_back(&cursor);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -192,7 +211,7 @@ public:
     }
     void touchMoved( const GXPoint &point , bool pressed)
     {
-        cursor.moveTo(makePoint(point.x-cursor.getBounds().size.width/2, point.y-cursor.getBounds().size.width/2));
+        cursor.moveTo(makePoint(point.x, point.y-cursor.getBounds().size.height));
         
         cursor.setNeedsDisplay();
         
@@ -448,6 +467,7 @@ private:
     
     GXLayer mainElement;
     UIMenuBar _menuBar;
+    GXLayer windows;
 
     UIView *view1;
     UIView *view2;

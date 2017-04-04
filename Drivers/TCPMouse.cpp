@@ -46,24 +46,37 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
 {
     if( notification == GBRunLoopSourceCanRead)
     {
-        static TCPMouseMsg msg;
-        if( _client->read(&msg, sizeof(TCPMouseMsg)))
+        TCPEventHeader header;
+        memset(&header, 0, sizeof(TCPEventHeader));
+        
+        if( _client->read(&header, sizeof(TCPEventHeader)))
         {
-            //printf("GOT MOUSE POS \n");
-            if( callback)
+            printf("Got TCPEvent %i %i \n" , header.code , header.size);
+            
+            if( header.code == TypeMouse )
             {
-                callback(msg);
+                TCPMouseMsg msg;
+                
+                if( _client->read(&msg , sizeof(TCPMouseMsg)))
+                {
+                    if( callback)
+                    {
+                        callback(msg);
+                    }
+                }
             }
+            
         }
+        
+        
     }
     else
     {
-        //printf("Client : other notif %i \n" , notification);
+        printf("Client : other notif %i \n" , notification);
     }
 }
 void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
 {
-    //printf("NOTIFICATION %i\n"  , notification);
     DEBUG_ASSERT(_client == nullptr);
     
     if( notification == GBRunLoopSourceCanRead)
@@ -77,54 +90,22 @@ void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)
         }
         else
         {
-            //printf("Connection accepted \n");
             DEBUG_ASSERT(_client);
             DEBUG_ASSERT(_runLoop);
-            //printf("BEFORE Got %zi sources \n" , _runLoop->getNumSources());
             if( !_runLoop->addSource(*_client))
             {
                 DEBUG_ASSERT(0);
             }
-            //printf("AFTER Got %zi sources \n" , _runLoop->getNumSources());
+
             _client->notification = std::bind(&TCPMouse::onClient, this , std::placeholders::_1);
             
         }
     }
     else
     {
-        //printf("Listened : other notif %i \n" , notification);
+        printf("Listened : other notif %i \n" , notification);
     }
 }
 
-/*static*/ void TCPMouse::clientCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
-{
-    TCPMouse* self = static_cast<TCPMouse*>(  GBRunLoopSourceGetUserContext(source) );
-    DEBUG_ASSERT(self);
-    if( notification == GBRunLoopSourceCanRead)
-    {
-        static TCPMouseMsg msg;
 
-        if( GBRunLoopSourceRead(source,&msg, sizeof(msg) ))
-        {
-            
-            if( self->callback)
-            {
-                self->callback(msg);
-            }
-            
-            //
-        }
-    }
-    else if( notification == GBRunLoopSourceErrorRead)
-    {
-        //printf("GBRunLoopSourceErrorRead \n");
-        GBRunLoop* runloop = static_cast<GBRunLoop*>( const_cast<void*>( GBRunLoopSourceGetRunLoop(source)));
-        
-        GBRunLoopRemoveSource(runloop, source);
-    }
-    else
-    {
-        //printf("Got CLient notification %i\n" , notification);
-    }
-}
 

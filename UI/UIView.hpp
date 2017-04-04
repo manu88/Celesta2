@@ -33,6 +33,7 @@ private:
     GXText* _winTitle;
     
     bool _hoveringQuit;
+    bool _hoveringMaximize;
 };
 
 #endif /* UIView_hpp */

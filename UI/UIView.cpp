@@ -14,6 +14,8 @@ UIView::UIView():
 CLElement("UIView")
 {
     _hoveringQuit = false;
+    _hoveringMaximize = false;
+    
     setBackgroundColor(makeColor(150 ,150, 150));
 
     _winTitle = new GXText();
@@ -63,7 +65,7 @@ void UIView::paint(const GXRect &rect)
     path.addEllipse(makeRect( makePoint(10, rect.size.height - 15), makeSize(10, 10) ) );
     if(_hoveringQuit)
     {
-        path.setFillColor( makeColor(244, 187, 61) );
+        path.setFillColor( makeColor(255, 10, 10) );
     }
     else
     {
@@ -80,7 +82,14 @@ void UIView::paint(const GXRect &rect)
     // fullscreen icon
     path.clear();
     path.addEllipse(makeRect( makePoint(50, rect.size.height - 15), makeSize(10, 10) ) );
-    path.setFillColor( makeColor(000, 207, 89) );
+    if( _hoveringMaximize)
+    {
+        path.setFillColor( makeColor(0, 255, 0) );
+    }
+    else
+    {
+        path.setFillColor( makeColor( 0, 207, 89) );
+    }
     path.fill();
     
     _winTitle->setBounds(makeRect(makePoint(rect.size.width/2, rect.size.height - 15), makeSizeNULL()));
@@ -107,18 +116,22 @@ bool UIView::touchesMoved( const GXTouch &touches )
     {
         if(rectContainsPoint(makeRect( makePoint(10, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
         {
-            printf("Hovering Close Icon in UIView %s\n" , getIdentifier().c_str() );
             _hoveringQuit = true;
+        }
+        else if(rectContainsPoint(makeRect( makePoint(50, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
+        {
+            _hoveringMaximize = true;
         }
         else
         {
-            printf("Touching touch bar in UIView %s\n" , getIdentifier().c_str() );
+
         }
-        //printf("TouchesMoved in UIView %s\n" , getIdentifier().c_str() );
+
     }
     else
     {
         _hoveringQuit = false;
+        _hoveringMaximize = false;
     }
     return false;
 }

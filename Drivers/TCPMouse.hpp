@@ -37,7 +37,7 @@ private:
     
     void listenerCallback( GBRunLoopSourceNotification notification);
     void onClient( GBRunLoopSourceNotification notification);
-    static void clientCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification);
+    
     
     GB::Socket _listener;
     GB::Socket *_client;
