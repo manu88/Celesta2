@@ -18,7 +18,7 @@ Base_src = $(CORE_SRC) $(GX_SRC) $(DISPLAY_SRC) $(FONT_SRC) $(DRIVERS_SRC) $(UI_
 GX_src =  CoreTest/GXTestMain.cpp
 Selector_TEST =  CoreTest/TestSelector.cpp
 Font_src = CoreTest/TestFonts.cpp
-UI_TEST = CoreTest/UITestMain.cpp
+UI_TEST = CoreTest/UITestMain.cpp CoreTest/UITerm.cpp
 
 GX_obj = $(Base_src:.cpp=.o) $(GX_src:.cpp=.o)
 SEL_obj = $(Base_src:.cpp=.o) $(Selector_TEST:.cpp=.o)
