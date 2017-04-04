@@ -12,7 +12,7 @@
 #include "GXFont.hpp"
 UIView::UIView():
 CLElement("UIView"),
-_runLoop(nullptr)
+_application(nullptr)
 {
     _hoveringQuit = false;
     _hoveringMaximize = false;

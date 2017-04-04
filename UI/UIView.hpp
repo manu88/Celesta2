@@ -13,8 +13,9 @@
 #include "UITouch.hpp"
 
 class GXText;
+class CLApplication;
 
-namespace GB { class RunLoop; }
+
 
 class UIView : public GXElement , public UITouchDelegate ,public UIKeyDelegate
 {
@@ -31,23 +32,23 @@ public:
     
     //bool keyPressed( const GXKey &key ) override;
     
-    void setRunLoop( GB::RunLoop* runloop)
+    void setApplication( CLApplication *app)
     {
-        _runLoop = runloop;
+        _application = app;
     }
     
 protected:
     
-    GB::RunLoop* getRunLoop() const
+    CLApplication* getApplication() const
     {
-        return _runLoop;
+        return _application;
     }
     
     virtual void paintContent( const GXRect &rect);
     
 private:
     
-    GB::RunLoop *_runLoop;
+    CLApplication *_application;
     
     void paint(const GXRect &rect) override final ;
     GXText* _winTitle;
