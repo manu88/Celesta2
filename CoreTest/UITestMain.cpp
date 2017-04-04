@@ -185,7 +185,11 @@ public:
         GXKey k;
         k.code = msg.keyCode;
         k.keyState = KeyReleased;
-        term->keyPressed(k);
+        
+        if( windows.getActiveView())
+        {
+            windows.getActiveView()->keyPressed(k);
+        }
         
         
     }

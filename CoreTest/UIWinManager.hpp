@@ -21,12 +21,19 @@ public:
     void changeFocusedView( UIView *view);
     
     bool addWindow( UIView* view);
+    
+    UIView* getActiveView() const
+    {
+        return _activeView;
+    }
 private:
     
     bool touchesBegan( const GXTouch &touches ) override;
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
     
+    
+    UIView* _activeView;
 };
 
 #endif /* UIWinManager_hpp */

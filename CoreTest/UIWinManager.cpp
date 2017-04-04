@@ -9,7 +9,7 @@
 #include "UIWinManager.hpp"
 #include "UIView.hpp"
 
-UIWinManager::UIWinManager() : CLElement("UIWinManager")
+UIWinManager::UIWinManager() : CLElement("UIWinManager"), _activeView(nullptr)
 {
     
 }
@@ -123,11 +123,11 @@ void UIWinManager::changeFocusedView( UIView *view)
             v->setZPos(focus--);
         }
     }
-    
+    /*
     for(const GXElement* el : getChildren())
     {
         printf("ZPos %i : %s %s \n" , el->getZPos() , el->getIdentifier().c_str() , el->getClassName().c_str());
     }
-    
-    
+    */
+    _activeView = view;
 }
