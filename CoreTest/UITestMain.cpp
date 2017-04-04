@@ -78,6 +78,8 @@ public:
         
         term = new UITerm(getApp());
         view2 = new UIView(getApp());
+        
+        _menuBar.setApplication(getApp());
 
     }
     

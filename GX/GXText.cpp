@@ -121,12 +121,12 @@ void GXText::paint(const GXRect &rect)
 {
     prepare(rect);
     
-    
+    /*
     GXPath path( rect);
     path.addRect(makeRect(makePointNULL(), rect.size));
     path.setStrokeColor( makeColor(0, 0, 0) );
     path.stroke();
-    
+    */
     if( _textPath)
     {
         //printf("Paint GXText\n");

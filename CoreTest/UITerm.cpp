@@ -21,7 +21,9 @@ CLElement("UITerm")
     _drawCarret = false;
     
     setWindowTitle("Terminal");
+
     
+    setBackgroundColor(makeColor(10, 10, 10 , 230));
     _text = new GXText();
     _text->setFont(GXFont::loadFont("LucidaGrandeRegular.ttf"));
     
@@ -57,7 +59,7 @@ void UITerm::paintContent( const GXRect &rect)
 {
     GXPath pathC( rect);
     pathC.addRoundedRect(makeRect(makePointNULL(), rect.size), 5.f, 5.f);
-    pathC.setFillColor( makeColor(10, 10, 10) );
+    pathC.setFillColor( getBackgroundColor() );
     pathC.fill();
     
     pathC.clear();

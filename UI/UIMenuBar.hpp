@@ -13,12 +13,18 @@
 #include "UITouch.hpp"
 
 class GXText;
+class CLApplication;
+
 class UIMenuBar : public GXElement , public UITouchDelegate
 {
 public:
     UIMenuBar();
     ~UIMenuBar();
     
+    void setApplication(CLApplication* app)
+    {
+        _app = app;
+    }
     void setAppTitle( const std::string &title) noexcept;
     const std::string& getAppTitle() const noexcept;
     
@@ -29,6 +35,7 @@ public:
 private:
     void paint(const GXRect &rect) override;
     
+    CLApplication* _app;
     GXText* _appTitle;
     
     bool _menuEnabled;

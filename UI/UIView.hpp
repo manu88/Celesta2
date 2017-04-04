@@ -59,6 +59,8 @@ private:
     bool _hasFocus;
     bool _hoveringQuit;
     bool _hoveringMaximize;
+    
+    GXColor barColor;
 };
 
 #endif /* UIView_hpp */

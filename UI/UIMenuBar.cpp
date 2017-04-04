@@ -10,8 +10,9 @@
 #include "GXPath.hpp"
 #include "GXText.hpp"
 #include "GXFont.hpp"
+#include "CLApplication.hpp"
 
-UIMenuBar::UIMenuBar():CLElement("UIMenuBar")
+UIMenuBar::UIMenuBar():CLElement("UIMenuBar") , _app(nullptr)
 {
     _menuEnabled = false;
     setBackgroundColor(makeColor(150 ,150, 150));
@@ -73,6 +74,13 @@ bool UIMenuBar::touchesBegan( const GXTouch &touches )
         {
             _menuEnabled = true;
             printf("Enable Menu\n");
+            
+            _app->getRunLoop().dispatchAsync([ this]()
+            {
+                this->_app->stop();
+            });
+            
+            
         }
     }
     
@@ -83,7 +91,7 @@ bool UIMenuBar::touchesMoved( const GXTouch &touches )
 {
     if( rectContainsPoint(_appTitle->getBounds(), touches.center))
     {
-        printf("Touching Menu item\n");
+
     }
     else if( _menuEnabled)
     {

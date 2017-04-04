@@ -21,7 +21,8 @@ _hasFocus(false)
     _hoveringQuit = false;
     _hoveringMaximize = false;
     
-    setBackgroundColor(makeColor(150 ,150, 150));
+    barColor = makeColor(150 ,150, 150 , 127);
+    setBackgroundColor(makeColor(190, 190, 190));
 
     _winTitle = new GXText();
     _winTitle->setFont(GXFont::loadFont("LucidaGrandeRegular.ttf"));
@@ -66,7 +67,7 @@ void UIView::paint(const GXRect &rect)
 {
     GXPath path( rect);
     path.addRoundedRect(makeRect(makePointNULL(), rect.size), 10.f, 10.f);
-    path.setFillColor( getBackgroundColor() );
+    path.setFillColor( barColor );
     path.fill();
     //path.clear();
     
