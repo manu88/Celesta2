@@ -169,9 +169,6 @@ public:
         {
             accum.push_back(key);
             
-            _menuBar.setAppTitle(accum);
-            _menuBar.setNeedsDisplay();
-            
         }
         GXKey k;
         k.code = msg.keyCode;

@@ -26,7 +26,8 @@ public:
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
     
-    bool keyPressed( const GXKey &key ) override;
+    //bool keyPressed( const GXKey &key ) override;
+    
     
 protected:
     
