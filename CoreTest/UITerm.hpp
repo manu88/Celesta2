@@ -10,6 +10,7 @@
 #define UITerm_hpp
 
 #include <string>
+#include <GBTimer.hpp>
 #include "UIView.hpp"
 
 class GXText;
@@ -21,12 +22,17 @@ public:
     ~UITerm();
     
 private:
+    void focusChanged() override;
     void paintContent( const GXRect &rect) override;
     
     bool keyPressed( const GXKey &key ) override;
     
+    
+    void onTime(GB::Timer &timer);
+    GB::Timer _timer;
     GXText* _text;
     
+    bool _drawCarret;
     std::string _currentCmd;
     
 };

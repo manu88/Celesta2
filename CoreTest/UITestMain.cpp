@@ -311,6 +311,8 @@ public:
                 view2->setZPos(0);
                 
                 _menuBar.setAppTitle(term->getWindowTitle());
+                term->setFocus(true);
+                view2->setFocus(false);
                 
             }
         }
@@ -324,6 +326,9 @@ public:
                 term->setZPos(0);
                 
                 _menuBar.setAppTitle(view2->getWindowTitle());
+                
+                term->setFocus(false);
+                view2->setFocus(true);
             }
         }
         

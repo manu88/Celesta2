@@ -10,11 +10,15 @@
 #include "GXPath.hpp"
 #include "GXText.hpp"
 #include "GXFont.hpp"
+#include "CLApplication.hpp"
+#include <GBRunLoopSource.hpp>
 
 UITerm::UITerm(CLApplication *app):
 UIView(app),
 CLElement("UITerm")
 {
+    
+    _drawCarret = false;
     
     setWindowTitle("Terminal");
     
@@ -25,15 +29,30 @@ CLElement("UITerm")
     _text->setTextSize(14);
     _text->setTextColor(makeColor(0, 254, 82));
     
-    
     addChild(_text);
+    
+    _timer.setInterval(1000);
+    _timer.setCallback( std::bind(&UITerm::onTime, this , std::placeholders::_1));
+    
+    getApplication()->getRunLoop().addSource(_timer);
+    
+    
 }
 UITerm::~UITerm()
 {
+    
     delete _text;
 }
 
 
+void UITerm::onTime(GB::Timer &timer)
+{
+    
+    _drawCarret = ! _drawCarret;
+    setNeedsDisplay();
+    
+    
+}
 void UITerm::paintContent( const GXRect &rect)
 {
     GXPath pathC( rect);
@@ -41,7 +60,30 @@ void UITerm::paintContent( const GXRect &rect)
     pathC.setFillColor( makeColor(10, 10, 10) );
     pathC.fill();
     
-    _text->setBounds(makeRect(makePoint(10, rect.size.height - 20), makeSizeNULL()));
+    pathC.clear();
+    
+    _text->setBounds(makeRect(makePoint(10, rect.size.height - 20), _text->getBounds().size));
+    
+    if( _drawCarret)
+    {
+        //printf("Text W = %i \n" , _text->getBounds().size.width);
+        
+        pathC.addRect( makeRect( _text->getBounds().size.width + 10 , rect.size.height - 20 , 10 , 15));
+        pathC.setFillColor(makeColor(0, 254, 82));
+        pathC.fill();
+    }
+    
+    
+    
+    
+}
+
+void UITerm::focusChanged()
+{
+    printf("Term focus changed to %i\n" , hasFocus());
+    
+    
+    _timer.setActive( hasFocus() );
     
     
 }

@@ -32,7 +32,16 @@ public:
     
     
     
+    bool hasFocus() const noexcept
+    {
+        return _hasFocus;
+    }
+    
+    void setFocus(bool focus) noexcept;
+    
 protected:
+    
+    virtual void focusChanged();
     
     CLApplication* getApplication() const
     {
@@ -47,7 +56,7 @@ private:
     
     void paint(const GXRect &rect) override final ;
     GXText* _winTitle;
-    
+    bool _hasFocus;
     bool _hoveringQuit;
     bool _hoveringMaximize;
 };

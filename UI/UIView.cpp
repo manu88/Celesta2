@@ -13,7 +13,8 @@
 
 UIView::UIView( CLApplication *app ):
 CLElement("UIView"),
-_application(app)
+_application(app),
+_hasFocus(false)
 {
     DEBUG_ASSERT(app);
     
@@ -119,6 +120,15 @@ void UIView::paint(const GXRect &rect)
     GXElement::paint(getBounds());
 }
 
+void UIView::setFocus(bool focus) noexcept
+{
+    if( focus != _hasFocus)
+    {
+        _hasFocus = focus;
+        focusChanged();
+    }
+}
+
 bool UIView::touchesBegan( const GXTouch &touches )
 {
     return false;
@@ -174,5 +184,10 @@ bool UIView::touchesMoved( const GXTouch &touches )
 bool UIView::touchesEnded( const GXTouch &touches )
 {
     return false;
+}
+
+void UIView::focusChanged()
+{
+    
 }
 
