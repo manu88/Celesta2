@@ -62,6 +62,9 @@ public:
         return _parent;
     }
     
+    /*
+      Children are stored from ZPos+ to ZPos-.
+     */
     const GXChildList &getChildren() const noexcept
     {
         return _children;

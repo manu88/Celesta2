@@ -339,9 +339,9 @@
 		591CF4D21E85530C009279BA /* CoreTest */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9DD71E928D9400A96B57 /* UITestMain.cpp */,
 				59FA9DF21E93950500A96B57 /* UITerm.cpp */,
 				59FA9DF31E93950500A96B57 /* UITerm.hpp */,
-				59FA9DD71E928D9400A96B57 /* UITestMain.cpp */,
 				59FA9DF51E93CF4700A96B57 /* UIWinManager.cpp */,
 				59FA9DF61E93CF4700A96B57 /* UIWinManager.hpp */,
 				591CF4F31E855D23009279BA /* GXTestMain.cpp */,

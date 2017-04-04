@@ -51,7 +51,7 @@ public:
                                        view->setWindowTitle(v.toString());
                                        view->setIdentifier(v.toString());
                                        view->setBounds(makeRect(100,100,700,400));
-                                       mainElement.addChild(view);
+                                       windows.addWindow(view);
                                        _elements.push_back(view);
                                        
                                        
@@ -117,8 +117,8 @@ public:
         
         view2->setWindowTitle("Application 2");
         mainElement.addChild(&windows);
-        windows.addChild( term );
-        windows.addChild( view2 );
+        windows.addWindow( term );
+        windows.addWindow( view2 );
         disp.setDisplayedElement(&mainElement);
         
 

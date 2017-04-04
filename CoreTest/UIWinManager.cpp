@@ -41,7 +41,6 @@ bool UIWinManager::touchesBegan( const GXTouch &touches )
         
         if (view && rectContainsPoint(el->getBounds(), touches.center))
         {
-            printf("UIWinManager : forward touchesBegan to '%s' '%s'\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
             if(view->touchesBegan(touches))
             {
                 return true;
@@ -91,18 +90,43 @@ bool UIWinManager::touchesEnded( const GXTouch &touches )
     return false;
 }
 
+
+bool UIWinManager::addWindow( UIView* view)
+{
+    if( !view)
+        return false;
+    int maxZ = -1;
+    for(const GXElement* el : getChildren())
+    {
+        if( el->getZPos() > maxZ )
+        {
+            maxZ = el->getZPos();
+        }
+    }
+    
+    view->setZPos(maxZ +1);
+    return addChild(view);
+}
 void UIWinManager::changeFocusedView( UIView *view)
 {
     printf("Find intersection with %s %s\n" , view->getIdentifier().c_str() , view->getClassName().c_str());
-    view->setFocus(true);
     
+    int focus =(int) getChildren().size();
+    view->setFocus(true);
+    view->setZPos(focus--);
     for(GXElement* el : getChildren())
     {
         UIView* v = dynamic_cast<UIView*>(el);
         if( v != view)
         {
             v->setFocus(false);
+            v->setZPos(focus--);
         }
+    }
+    
+    for(const GXElement* el : getChildren())
+    {
+        printf("ZPos %i : %s %s \n" , el->getZPos() , el->getIdentifier().c_str() , el->getClassName().c_str());
     }
     
     

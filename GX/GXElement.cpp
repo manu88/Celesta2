@@ -221,7 +221,7 @@ struct layer_comparor
 {
     bool operator() (const GXElement* lhs, const GXElement* rhs) const
     {
-        return lhs->getZPos() <= rhs->getZPos();
+        return lhs->getZPos() > rhs->getZPos();
     }
 };
 
@@ -274,8 +274,11 @@ void GXElement::paint(const GXRect &rect)
     
     if( !_children.empty())
     {
-        for (auto const child : _children)
+        auto rit = _children.rbegin();
+        for (; rit!= _children.rend(); ++rit)
+        //for (auto const child : _children)
         {
+            GXElement* child  =  (*rit);
             DEBUG_ASSERT(child);
             
             if( child && child->isVisible())

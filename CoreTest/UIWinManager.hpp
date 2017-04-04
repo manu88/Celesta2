@@ -19,6 +19,8 @@ public:
     ~UIWinManager();
     
     void changeFocusedView( UIView *view);
+    
+    bool addWindow( UIView* view);
 private:
     
     bool touchesBegan( const GXTouch &touches ) override;
