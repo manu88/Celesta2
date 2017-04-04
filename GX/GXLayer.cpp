@@ -11,7 +11,8 @@
 
 
 GXLayer::GXLayer():
-CLElement("GXLayout")
+CLElement("GXLayout"),
+_transparent(true)
 {
     
 }
@@ -20,14 +21,19 @@ GXLayer::~GXLayer()
     
 }
 
+void GXLayer::setTransparent( bool transparent ) noexcept
+{
+    _transparent = transparent;
+}
+
 void GXLayer::paint(const GXRect &rect)
 {
-    /*
-    GXPath path( rect);
-    path.addRoundedRect(makeRect(makePointNULL(), rect.size), 25.f, 25.f);
-    path.setFillColor( getBackgroundColor() );
-    path.fill();
-    path.clear();
-    */
+    if( !_transparent)
+    {
+        GXPath path( rect);
+        path.addRect(makeRect(makePointNULL(), rect.size) );
+        path.setFillColor( getBackgroundColor() );
+        path.fill();
+    }
     GXElement::paint(rect);
 }

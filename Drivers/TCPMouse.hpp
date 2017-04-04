@@ -31,7 +31,7 @@ public:
     
     bool addToRunLoop(GB::RunLoop &);
     
-    MouseCallBack callback;
+    MouseCallBack mouseCallback;
     
 private:
     

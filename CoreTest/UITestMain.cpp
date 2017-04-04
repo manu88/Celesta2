@@ -136,7 +136,7 @@ public:
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
         input.notification = std::bind(&MyAppDelegate::keyInput, this , std::placeholders::_1);
-        _mouse.callback = std::bind(&MyAppDelegate::mouseInput, this , std::placeholders::_1);
+        _mouse.mouseCallback = std::bind(&MyAppDelegate::mouseInput, this , std::placeholders::_1);
 
         assert(_mouse.addToRunLoop(getApp()->getRunLoop()) );
         getApp()->getRunLoop().addSource(input);

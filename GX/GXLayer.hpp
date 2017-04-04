@@ -16,8 +16,21 @@ class GXLayer : public GXElement
 public:
     GXLayer();
     ~GXLayer();
+    
+    bool isTransparent() const noexcept
+    {
+        return _transparent;
+    }
+    
+    bool isOpaque() const noexcept
+    {
+        return !_transparent;
+    }
+    
+    void setTransparent( bool) noexcept;
 private:
     
+    bool _transparent;
     void paint(const GXRect &rect) override ;
 };
 

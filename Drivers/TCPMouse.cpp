@@ -59,9 +59,9 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
                 
                 if( _client->read(&msg , sizeof(TCPMouseMsg)))
                 {
-                    if( callback)
+                    if( mouseCallback)
                     {
-                        callback(msg);
+                        mouseCallback(msg);
                     }
                 }
             }
