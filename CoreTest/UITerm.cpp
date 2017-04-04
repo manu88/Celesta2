@@ -61,6 +61,8 @@ bool UITerm::keyPressed( const GXKey &key )
     else if( key.code == 127) // backspace
     {
         _currentCmd.erase(_currentCmd.size() -1);
+        _text->setText(_currentCmd);
+        _text->setNeedsDisplay();
     }
     else
     {

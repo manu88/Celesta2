@@ -11,7 +11,8 @@
 #include "GXText.hpp"
 #include "GXFont.hpp"
 UIView::UIView():
-CLElement("UIView")
+CLElement("UIView"),
+_runLoop(nullptr)
 {
     _hoveringQuit = false;
     _hoveringMaximize = false;
