@@ -29,6 +29,8 @@
 #include "UIMenuBar.hpp"
 #include "UITerm.hpp"
 
+#include "UIWinManager.hpp"
+
 class MyAppDelegate  : public CLApplicationDelegate
 {
 public:
@@ -96,14 +98,27 @@ public:
         mainElement.setBounds( b );
         assert(mainElement.getBounds() == b);
 
+        _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 25),
+                                    makeSize(mainElement.getBounds().size.width, 25)));
+        _menuBar.setZPos(39);
+        
+        _menuBar.setIdentifier("menu");
+        cursor.setIdentifier("cursor");
+        
+        windows.setBounds(makeRect(mainElement.getBounds().origin,
+                                   makeSize(
+                                            mainElement.getBounds().size.width, mainElement.getBounds().size.height-25)
+                                   )
+                          );
+        
         term->setBounds(makeRect(100, 100, 800, 600));
         view2->setBounds(makeRect(700, 500, 800, 300));
         
         
         view2->setWindowTitle("Application 2");
-        
-        mainElement.addChild( term );
-        mainElement.addChild( view2 );
+        mainElement.addChild(&windows);
+        windows.addChild( term );
+        windows.addChild( view2 );
         disp.setDisplayedElement(&mainElement);
         
 
@@ -113,12 +128,7 @@ public:
         view2->setIdentifier("view2");
         
         
-        _menuBar.setBounds(makeRect(makePoint(0, mainElement.getBounds().size.height - 25),
-                                    makeSize(mainElement.getBounds().size.width, 25)));
-        _menuBar.setZPos(39);
         
-        _menuBar.setIdentifier("menu");
-        cursor.setIdentifier("cursor");
         
         cursor.setZPos(40);
         cursor.setBounds(makeRect(0 , 0, 20, 30));
@@ -507,7 +517,9 @@ private:
     
     GXLayer mainElement;
     UIMenuBar _menuBar;
-    GXLayer windows;
+    
+    
+    UIWinManager windows;
 
     UIView *term;
     UIView *view2;
