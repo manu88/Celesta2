@@ -33,6 +33,9 @@ public:
     {
         _menuBar = bar;
     }
+    
+    void removeWindow(UIView* view);
+    void removeAllWindows();
 private:
     
     bool touchesBegan( const GXTouch &touches ) override;

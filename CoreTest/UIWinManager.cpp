@@ -103,6 +103,7 @@ bool UIWinManager::addWindow( UIView* view)
             maxZ = el->getZPos();
         }
     }
+    view->viewDidLoad();
     
     view->setZPos(maxZ +1);
     if( addChild(view))
@@ -137,4 +138,30 @@ void UIWinManager::changeFocusedView( UIView *view)
     */
     _menuBar->setAppTitle( view->getWindowTitle() );
     _activeView = view;
+}
+
+
+void UIWinManager::removeWindow(UIView* view)
+{
+    if( view == nullptr)
+        return;
+    
+    if( contains(view))
+    {
+        if( removeChild(view))
+        {
+            view->viewDidUnload();
+        }
+    }
+}
+void UIWinManager::removeAllWindows()
+{
+    for(auto el : getChildren())
+    {
+        UIView* view = dynamic_cast<UIView*>(el);
+        if( view)
+        {
+            removeWindow(view);
+        }
+    }
 }

@@ -66,6 +66,9 @@ void UITerm::paintContent( const GXRect &rect)
     
     _text->setBounds(makeRect(makePoint(10, rect.size.height - 20), _text->getBounds().size));
     
+    if( !hasFocus())
+        _drawCarret = false;
+    
     if( _drawCarret)
     {
         //printf("Text W = %i \n" , _text->getBounds().size.width);

@@ -31,6 +31,8 @@ public:
     bool touchesEnded( const GXTouch &touches ) override;
     
     
+    virtual void viewDidLoad();
+    virtual void viewDidUnload();
     
     bool hasFocus() const noexcept
     {

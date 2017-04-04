@@ -178,3 +178,13 @@ void UIView::focusChanged()
     
 }
 
+void UIView::viewDidLoad()
+{
+    
+}
+
+void UIView::viewDidUnload()
+{
+    
+}
+

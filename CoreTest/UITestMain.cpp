@@ -337,6 +337,7 @@ public:
     
     void willStop()
     {
+        windows.removeAllWindows();
         std::cout << "App will end " << std::endl;
         disp.stop();
     }
