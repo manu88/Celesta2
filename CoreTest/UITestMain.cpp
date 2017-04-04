@@ -173,6 +173,11 @@ public:
             _menuBar.setNeedsDisplay();
             
         }
+        GXKey k;
+        k.code = msg.keyCode;
+        k.keyState = KeyReleased;
+        term->keyPressed(k);
+        
         
     }
     void mouseInput( const TCPMouseMsg &msg)

@@ -22,3 +22,9 @@ bool UITouchDelegate::touchesEnded( const GXTouch &touches )
 {
     return false;
 }
+
+
+bool UIKeyDelegate::keyPressed( const GXKey &key )
+{
+    return false;
+}

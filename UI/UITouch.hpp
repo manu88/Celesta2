@@ -32,4 +32,24 @@ public:
     
 };
 
+typedef enum
+{
+    KeyPressed = 0,
+    KeyReleased = 1
+} GXKeyState;
+typedef struct
+{
+    int        code;
+    GXKeyState keyState;
+} GXKey;
+
+class UIKeyDelegate
+{
+public:
+    virtual ~UIKeyDelegate()
+    {}
+    
+    virtual bool keyPressed( const GXKey &key );
+};
+
 #endif /* UITouch_hpp */

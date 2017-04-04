@@ -13,7 +13,7 @@
 #include "UITouch.hpp"
 
 class GXText;
-class UIView : public GXElement , public UITouchDelegate
+class UIView : public GXElement , public UITouchDelegate ,public UIKeyDelegate
 {
 public:
     UIView( );
@@ -25,6 +25,8 @@ public:
     bool touchesBegan( const GXTouch &touches ) override;
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
+    
+    bool keyPressed( const GXKey &key ) override;
     
 protected:
     

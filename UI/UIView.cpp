@@ -167,6 +167,11 @@ bool UIView::touchesMoved( const GXTouch &touches )
     return false;
 }
 
+bool UIView::keyPressed( const GXKey &key )
+{
+    return false;
+}
+
 bool UIView::touchesEnded( const GXTouch &touches )
 {
     return false;

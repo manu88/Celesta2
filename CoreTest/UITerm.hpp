@@ -9,9 +9,12 @@
 #ifndef UITerm_hpp
 #define UITerm_hpp
 
+#include <string>
 #include "UIView.hpp"
 
-class UITerm : public UIView
+class GXText;
+
+class UITerm : public UIView 
 {
 public:
     UITerm();
@@ -19,6 +22,12 @@ public:
     
 private:
     void paintContent( const GXRect &rect) override;
+    
+    bool keyPressed( const GXKey &key ) override;
+    
+    GXText* _text;
+    
+    std::string _currentCmd;
     
 };
 
