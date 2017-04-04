@@ -112,8 +112,11 @@ bool UIMenuBar::touchesMoved( const GXTouch &touches )
     else if( _menuEnabled)
     {
         _menuEnabled = false;
+        
         printf("Disable Menu\n");
         removeChild(menu);
+        
+        
         
     }
     

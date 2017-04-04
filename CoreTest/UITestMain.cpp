@@ -82,6 +82,8 @@ public:
         view2 = new UIView(getApp());
         
         _menuBar.setApplication(getApp());
+        
+        windows.setMenuBar(&_menuBar);
 
     }
     

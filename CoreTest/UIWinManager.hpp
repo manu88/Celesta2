@@ -12,6 +12,8 @@
 #include "GXElement.hpp"
 #include "UITouch.hpp"
 class UIView;
+class UIMenuBar;
+
 class UIWinManager : public GXElement, public UITouchDelegate ,public UIKeyDelegate
 {
 public:
@@ -26,13 +28,18 @@ public:
     {
         return _activeView;
     }
+    
+    void setMenuBar( UIMenuBar* bar)
+    {
+        _menuBar = bar;
+    }
 private:
     
     bool touchesBegan( const GXTouch &touches ) override;
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
     
-    
+    UIMenuBar* _menuBar;
     UIView* _activeView;
 };
 

@@ -8,8 +8,8 @@
 
 #include "UIWinManager.hpp"
 #include "UIView.hpp"
-
-UIWinManager::UIWinManager() : CLElement("UIWinManager"), _activeView(nullptr)
+#include "UIMenuBar.hpp"
+UIWinManager::UIWinManager() : CLElement("UIWinManager"),_menuBar(nullptr), _activeView(nullptr)
 {
     
 }
@@ -105,7 +105,13 @@ bool UIWinManager::addWindow( UIView* view)
     }
     
     view->setZPos(maxZ +1);
-    return addChild(view);
+    if( addChild(view))
+    {
+        changeFocusedView(view);
+        view->setNeedsDisplay();
+        return true;
+    }
+    return false;
 }
 void UIWinManager::changeFocusedView( UIView *view)
 {
@@ -129,5 +135,6 @@ void UIWinManager::changeFocusedView( UIView *view)
         printf("ZPos %i : %s %s \n" , el->getZPos() , el->getIdentifier().c_str() , el->getClassName().c_str());
     }
     */
+    _menuBar->setAppTitle( view->getWindowTitle() );
     _activeView = view;
 }
