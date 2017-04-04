@@ -23,7 +23,7 @@ UIMenuBar::UIMenuBar():CLElement("UIMenuBar") , _app(nullptr)
     _appTitle = new GXText();
     
     _appTitle->setFont(GXFont::loadFont("LucidaGrandeRegular.ttf"));
-    _appTitle->setText("Hello");
+    
     _appTitle->setTextSize(20);
     _appTitle->setTextColor(makeColor(0, 0, 0));
     addChild(_appTitle);

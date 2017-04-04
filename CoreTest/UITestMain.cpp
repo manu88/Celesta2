@@ -209,25 +209,7 @@ public:
     
     void touchBegan( const GXPoint &point)
     {
-        
-        for(GXElement* el : mainElement.getChildren())
-        {
-            if( rectContainsPoint(el->getBounds(), point))
-            {
-                
-                printf("Find intersection with %s %s\n" , el->getIdentifier().c_str() , el->getClassName().c_str());
-                /*
-                if( !el->getIdentifier().empty())
-                {
-                    el->moveTo(pos);
-                }
-                 */
-                setFocus(el);
-                
-                break;
-            }
-        }
-        
+
         for(GXElement* el : mainElement.getChildren())
         {
             if (el == &cursor )
@@ -312,43 +294,7 @@ public:
         }
     }
     
-    void setFocus( GXElement *view)
-    {
-        if( view->getIdentifier() == term->getIdentifier())
-        {
-            printf("Set view1 in front of view2 \n");
-            //if( view1.getZPos() < view2.getZPos())
-            {
-                term->setZPos( 1 );
-                view2->setZPos(0);
-                
-                _menuBar.setAppTitle(term->getWindowTitle());
-                term->setFocus(true);
-                view2->setFocus(false);
-                
-            }
-        }
-        if( view->getIdentifier() == view2->getIdentifier())
-        {
-            printf("Set view2 in front of view1 \n");
-            //if( view2.getZPos() < view2.getZPos())
-            {
-                
-                view2->setZPos( 1);
-                term->setZPos(0);
-                
-                _menuBar.setAppTitle(view2->getWindowTitle());
-                
-                term->setFocus(false);
-                view2->setFocus(true);
-            }
-        }
-        
-        printf("New pos view1 %i view2 %i \n" , term->getZPos()  , view2->getZPos());
-        
-        term->setNeedsDisplay();
-        view2->setNeedsDisplay();
-    }
+
     
     void keyInput( GBRunLoopSourceNotification notif)
     {

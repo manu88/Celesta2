@@ -11,11 +11,14 @@
 
 #include "GXElement.hpp"
 #include "UITouch.hpp"
+class UIView;
 class UIWinManager : public GXElement, public UITouchDelegate ,public UIKeyDelegate
 {
 public:
     UIWinManager();
     ~UIWinManager();
+    
+    void changeFocusedView( UIView *view);
 private:
     
     bool touchesBegan( const GXTouch &touches ) override;
