@@ -27,6 +27,7 @@
 #include "UIView.hpp"
 #include "UICursor.hpp"
 #include "UIMenuBar.hpp"
+#include "UITerm.hpp"
 
 class MyAppDelegate  : public CLApplicationDelegate
 {
@@ -75,7 +76,7 @@ public:
         const GB::Variant serializeTest = getApp()->serialize();
         
         
-        view1 = new UIView();
+        view1 = new UITerm();
         view2 = new UIView();
         
     }
@@ -148,7 +149,31 @@ public:
     
     void keyboardInput( const TCPKeyMsg &msg)
     {
-        printf("Key %c %i\n" , (char) msg.keyCode , msg.keyCode);
+        static std::string accum ="";
+        
+        const char key = (char) msg.keyCode;
+        if( msg.keyCode == 13) // enter
+        {
+            printf("Str : '%s' \n" , accum.c_str());
+            
+            parseCommands(accum);
+            accum = "";
+            
+            
+        }
+        else if( msg.keyCode == 127) // backspace
+        {
+            accum.erase(accum.size() -1);
+        }
+        else
+        {
+            accum.push_back(key);
+            
+            _menuBar.setAppTitle(accum);
+            _menuBar.setNeedsDisplay();
+            
+        }
+        
     }
     void mouseInput( const TCPMouseMsg &msg)
     {

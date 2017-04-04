@@ -140,6 +140,7 @@
 		59FA9DEF1E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
 		59FA9DF01E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
 		59FA9DF11E92BE9300A96B57 /* UIMenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */; };
+		59FA9DF41E93950500A96B57 /* UITerm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 59FA9DF21E93950500A96B57 /* UITerm.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,8 @@
 		59FA9DE51E92B36E00A96B57 /* UITouch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITouch.hpp; sourceTree = "<group>"; };
 		59FA9DEB1E92BE9300A96B57 /* UIMenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIMenuBar.cpp; sourceTree = "<group>"; };
 		59FA9DEC1E92BE9300A96B57 /* UIMenuBar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UIMenuBar.hpp; sourceTree = "<group>"; };
+		59FA9DF21E93950500A96B57 /* UITerm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UITerm.cpp; sourceTree = "<group>"; };
+		59FA9DF31E93950500A96B57 /* UITerm.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UITerm.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +336,8 @@
 		591CF4D21E85530C009279BA /* CoreTest */ = {
 			isa = PBXGroup;
 			children = (
+				59FA9DF21E93950500A96B57 /* UITerm.cpp */,
+				59FA9DF31E93950500A96B57 /* UITerm.hpp */,
 				59FA9DD71E928D9400A96B57 /* UITestMain.cpp */,
 				591CF4F31E855D23009279BA /* GXTestMain.cpp */,
 				59221BFA1E87D82F006C09FE /* TestSelector.cpp */,
@@ -807,6 +812,7 @@
 				59FA9DC71E928D6500A96B57 /* GXText.cpp in Sources */,
 				59FA9DC81E928D6500A96B57 /* FileSystem.cpp in Sources */,
 				59FA9DC91E928D6500A96B57 /* CLApplicationDelegate.cpp in Sources */,
+				59FA9DF41E93950500A96B57 /* UITerm.cpp in Sources */,
 				59FA9DCA1E928D6500A96B57 /* FontManager.cpp in Sources */,
 				59FA9DCB1E928D6500A96B57 /* GXColors.cpp in Sources */,
 				59FA9DCC1E928D6500A96B57 /* GXElement.cpp in Sources */,
