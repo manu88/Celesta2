@@ -86,6 +86,7 @@ public:
         
         std::cout << "App did Start" << std::endl;
         
+        mainElement.setTransparent(false);
         mainElement.setBackgroundColor(makeColor(100,127,110));
         
         const GXRect b = makeRect(0, 0, 1920, 1080);
@@ -137,6 +138,7 @@ public:
         
         input.notification = std::bind(&MyAppDelegate::keyInput, this , std::placeholders::_1);
         _mouse.mouseCallback = std::bind(&MyAppDelegate::mouseInput, this , std::placeholders::_1);
+        _mouse.keyCallback = std::bind(&MyAppDelegate::keyboardInput, this , std::placeholders::_1);
 
         assert(_mouse.addToRunLoop(getApp()->getRunLoop()) );
         getApp()->getRunLoop().addSource(input);
@@ -144,6 +146,10 @@ public:
         
     }
     
+    void keyboardInput( const TCPKeyMsg &msg)
+    {
+        printf("Key %c %i\n" , (char) msg.keyCode , msg.keyCode);
+    }
     void mouseInput( const TCPMouseMsg &msg)
     {
         if( msg.event == Pressed)

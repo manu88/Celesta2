@@ -51,7 +51,7 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
         
         if( _client->read(&header, sizeof(TCPEventHeader)))
         {
-            printf("Got TCPEvent %i %i \n" , header.code , header.size);
+            //printf("Got TCPEvent %i %i \n" , header.code , header.size);
             
             if( header.code == TypeMouse )
             {
@@ -65,6 +65,20 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
                     }
                 }
             }
+            else if( header.code == TypeKey)
+            {
+                TCPKeyMsg msg;
+                
+                if( _client->read(&msg , sizeof(TCPKeyMsg)))
+                {
+                    if( keyCallback)
+                    {
+                        keyCallback(msg);
+                    }
+                    
+                }
+                
+            }
             
         }
         
@@ -73,6 +87,10 @@ void TCPMouse::onClient( GBRunLoopSourceNotification notification)
     else
     {
         printf("Client : other notif %i \n" , notification);
+        _runLoop->removeSource( *_client);
+        delete _client;
+        _client = nullptr;
+        
     }
 }
 void TCPMouse::listenerCallback( GBRunLoopSourceNotification notification)

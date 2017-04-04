@@ -124,7 +124,27 @@ bool UIView::touchesMoved( const GXTouch &touches )
         }
         else
         {
-
+            _hoveringQuit = false;
+            _hoveringMaximize = false;
+            
+            if( touches.touchState)
+            {
+                static GXPoint last = makePoint(-1, -1);
+                
+                
+                
+                if( last.x != -1)
+                {
+                    const GXPoint delta =  touches.center - last;
+                    printf("Delta mov %i %i \n" , delta.x , delta.y );
+                    
+                    moveOf(delta.x, delta.y);
+                }
+                
+                last = touches.center;
+                
+                
+            }
         }
 
     }

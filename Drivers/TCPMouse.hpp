@@ -25,6 +25,7 @@ class TCPMouse : public CLElement// , GB::ObjectWrapper
 public:
     
     typedef std::function<void(const TCPMouseMsg& state)> MouseCallBack;
+    typedef std::function<void(const TCPKeyMsg& state)>   KeyCallBack;
     
     TCPMouse( int port);
     ~TCPMouse();
@@ -32,6 +33,7 @@ public:
     bool addToRunLoop(GB::RunLoop &);
     
     MouseCallBack mouseCallback;
+    KeyCallBack   keyCallback;
     
 private:
     
