@@ -40,6 +40,13 @@ CLElement("UITerm")
     
     
 }
+
+void UITerm::viewDidUnload()
+{
+    printf("UITerm::viewDidUnload() \n");
+    
+    getApplication()->getRunLoop().removeSource(_timer);
+}
 UITerm::~UITerm()
 {
     

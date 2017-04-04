@@ -27,6 +27,7 @@ private:
     
     bool keyPressed( const GXKey &key ) override;
     
+    void viewDidUnload() override;
     
     void onTime(GB::Timer &timer);
     GB::Timer _timer;
