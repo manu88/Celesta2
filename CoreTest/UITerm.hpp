@@ -16,6 +16,10 @@ class UITerm : public UIView
 public:
     UITerm();
     ~UITerm();
+    
+private:
+    void paintContent( const GXRect &rect) override;
+    
 };
 
 #endif /* UITerm_hpp */

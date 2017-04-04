@@ -47,6 +47,16 @@ UIView::~UIView()
     delete _winTitle;
 }
 
+
+void UIView::paintContent( const GXRect &rect)
+{
+    GXPath pathC( rect);
+    pathC.addRoundedRect(makeRect(makePointNULL(), rect.size), 5.f, 5.f);
+    pathC.setFillColor( makeColor(190, 190, 190) );
+    pathC.fill();
+    
+}
+
 void UIView::paint(const GXRect &rect)
 {
     GXPath path( rect);
@@ -55,9 +65,10 @@ void UIView::paint(const GXRect &rect)
     path.fill();
     //path.clear();
     
-    path.addRoundedRect(makeRect(makePoint(2, 2), makeSize(rect.size.width-4, rect.size.height - 20)), 5.f, 5.f);
-    path.setFillColor( makeColor(190, 190, 190) );
-    path.fill();
+    const GXRect contentBounds = makeRect(makePoint(2, 2) + rect.origin, makeSize(rect.size.width-4, rect.size.height - 20));
+    
+    paintContent(contentBounds);
+    
     
     path.clear();
     

@@ -76,7 +76,7 @@ public:
         const GB::Variant serializeTest = getApp()->serialize();
         
         
-        view1 = new UITerm();
+        term = new UITerm();
         view2 = new UIView();
         
     }
@@ -94,20 +94,20 @@ public:
         mainElement.setBounds( b );
         assert(mainElement.getBounds() == b);
 
-        view1->setBounds(makeRect(100, 100, 800, 600));
+        term->setBounds(makeRect(100, 100, 800, 600));
         view2->setBounds(makeRect(700, 500, 800, 300));
         
-        view1->setWindowTitle("Application 1");
+        
         view2->setWindowTitle("Application 2");
         
-        mainElement.addChild( view1 );
+        mainElement.addChild( term );
         mainElement.addChild( view2 );
         disp.setDisplayedElement(&mainElement);
         
 
         mainElement.setIdentifier("main");
         disp.setIdentifier("disp");
-        view1->setIdentifier("view1");
+        term->setIdentifier("term");
         view2->setIdentifier("view2");
         
         
@@ -130,7 +130,7 @@ public:
         _elements.push_back( getApp() );
         _elements.push_back( &mainElement);
         _elements.push_back( &disp);
-        _elements.push_back( view1);
+        _elements.push_back( term);
         _elements.push_back( view2);
         _elements.push_back( &_menuBar);
         _elements.push_back(&cursor);
@@ -300,15 +300,15 @@ public:
     
     void setFocus( GXElement *view)
     {
-        if( view->getIdentifier() == view1->getIdentifier())
+        if( view->getIdentifier() == term->getIdentifier())
         {
             printf("Set view1 in front of view2 \n");
             //if( view1.getZPos() < view2.getZPos())
             {
-                view1->setZPos( 1 );
+                term->setZPos( 1 );
                 view2->setZPos(0);
                 
-                _menuBar.setAppTitle(view1->getWindowTitle());
+                _menuBar.setAppTitle(term->getWindowTitle());
                 
             }
         }
@@ -319,15 +319,15 @@ public:
             {
                 
                 view2->setZPos( 1);
-                view1->setZPos(0);
+                term->setZPos(0);
                 
                 _menuBar.setAppTitle(view2->getWindowTitle());
             }
         }
         
-        printf("New pos view1 %i view2 %i \n" , view1->getZPos()  , view2->getZPos());
+        printf("New pos view1 %i view2 %i \n" , term->getZPos()  , view2->getZPos());
         
-        view1->setNeedsDisplay();
+        term->setNeedsDisplay();
         view2->setNeedsDisplay();
     }
     
@@ -500,7 +500,7 @@ private:
     UIMenuBar _menuBar;
     GXLayer windows;
 
-    UIView *view1;
+    UIView *term;
     UIView *view2;
     
     UICursor cursor;

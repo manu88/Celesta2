@@ -7,13 +7,24 @@
 //
 
 #include "UITerm.hpp"
-
+#include "GXPath.hpp"
 
 UITerm::UITerm():CLElement("UITerm")
 {
     
+    setWindowTitle("Terminal");
 }
 UITerm::~UITerm()
 {
+    
+}
+
+
+void UITerm::paintContent( const GXRect &rect)
+{
+    GXPath pathC( rect);
+    pathC.addRoundedRect(makeRect(makePointNULL(), rect.size), 5.f, 5.f);
+    pathC.setFillColor( makeColor(10, 10, 10) );
+    pathC.fill();
     
 }

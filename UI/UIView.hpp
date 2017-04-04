@@ -27,9 +27,11 @@ public:
     bool touchesEnded( const GXTouch &touches ) override;
     
 protected:
-    void paint(const GXRect &rect) override;
+    
+    virtual void paintContent( const GXRect &rect);
     
 private:
+    void paint(const GXRect &rect) override final ;
     GXText* _winTitle;
     
     bool _hoveringQuit;
