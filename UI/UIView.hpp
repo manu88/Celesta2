@@ -20,7 +20,7 @@ class CLApplication;
 class UIView : public GXElement , public UITouchDelegate ,public UIKeyDelegate
 {
 public:
-    UIView( );
+    UIView( CLApplication *app );
     ~UIView();
     
     void setWindowTitle( const std::string &title) noexcept;
@@ -30,12 +30,7 @@ public:
     bool touchesMoved( const GXTouch &touches ) override;
     bool touchesEnded( const GXTouch &touches ) override;
     
-    //bool keyPressed( const GXKey &key ) override;
     
-    void setApplication( CLApplication *app)
-    {
-        _application = app;
-    }
     
 protected:
     

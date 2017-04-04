@@ -11,7 +11,9 @@
 #include "GXText.hpp"
 #include "GXFont.hpp"
 
-UITerm::UITerm():CLElement("UITerm")
+UITerm::UITerm(CLApplication *app):
+UIView(app),
+CLElement("UITerm")
 {
     
     setWindowTitle("Terminal");

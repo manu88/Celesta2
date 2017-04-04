@@ -10,10 +10,13 @@
 #include "GXPath.hpp"
 #include "GXText.hpp"
 #include "GXFont.hpp"
-UIView::UIView():
+
+UIView::UIView( CLApplication *app ):
 CLElement("UIView"),
-_application(nullptr)
+_application(app)
 {
+    DEBUG_ASSERT(app);
+    
     _hoveringQuit = false;
     _hoveringMaximize = false;
     

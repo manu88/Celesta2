@@ -44,7 +44,7 @@ public:
     {
         getApp()->registerSelector("addView", [&]( const GB::Variant &v)
                                    {
-                                       UIView* view = new UIView();
+                                       UIView* view = new UIView(getApp());
                                        
                                        view->setWindowTitle(v.toString());
                                        view->setIdentifier(v.toString());
@@ -76,9 +76,9 @@ public:
         const GB::Variant serializeTest = getApp()->serialize();
         
         
-        term = new UITerm();
-        view2 = new UIView();
-        
+        term = new UITerm(getApp());
+        view2 = new UIView(getApp());
+
     }
     
     void didStart()

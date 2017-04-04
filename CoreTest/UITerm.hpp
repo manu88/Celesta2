@@ -17,7 +17,7 @@ class GXText;
 class UITerm : public UIView 
 {
 public:
-    UITerm();
+    UITerm(CLApplication *app);
     ~UITerm();
     
 private:
