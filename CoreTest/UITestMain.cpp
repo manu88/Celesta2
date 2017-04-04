@@ -52,7 +52,7 @@ public:
                                        view->setIdentifier(v.toString());
                                        view->setBounds(makeRect(100,100,700,400));
                                        windows.addWindow(view);
-                                       _elements.push_back(view);
+                                       getApp()->addElement(view);
                                        
                                        
                                        return GB::Variant::null();
@@ -119,8 +119,9 @@ public:
         
         view2->setWindowTitle("Application 2");
         mainElement.addChild(&windows);
-        windows.addWindow( term );
+        
         windows.addWindow( view2 );
+        windows.addWindow( term );
         disp.setDisplayedElement(&mainElement);
         
 
@@ -141,13 +142,13 @@ public:
         mainElement.addChild(&_menuBar);
         
         
-        _elements.push_back( getApp() );
-        _elements.push_back( &mainElement);
-        _elements.push_back( &disp);
-        _elements.push_back( term);
-        _elements.push_back( view2);
-        _elements.push_back( &_menuBar);
-        _elements.push_back(&cursor);
+        getApp()->addElement( getApp() );
+        getApp()->addElement( &mainElement);
+        getApp()->addElement( &disp);
+        getApp()->addElement( term);
+        getApp()->addElement( view2);
+        getApp()->addElement( &_menuBar);
+        getApp()->addElement( &cursor);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -163,6 +164,7 @@ public:
     
     void keyboardInput( const TCPKeyMsg &msg)
     {
+        /*
         static std::string accum ="";
         
         const char key = (char) msg.keyCode;
@@ -177,13 +179,17 @@ public:
         }
         else if( msg.keyCode == 127) // backspace
         {
-            accum.erase(accum.size() -1);
+            if( accum.size() > 1)
+            {
+                accum.erase(accum.size() -1);
+            }
         }
         else
         {
             accum.push_back(key);
             
         }
+         */
         GXKey k;
         k.code = msg.keyCode;
         k.keyState = KeyReleased;
@@ -317,7 +323,7 @@ public:
             }
         }
     }
-
+     
     void termCallback( GBRunLoopSource* source , GBRunLoopSourceNotification notification)
     {
         if( notification == GBRunLoopSourceCanRead)
@@ -364,9 +370,9 @@ public:
         
         if( args.at(0) == "list")
         {
-            printf("%zi Elements : \n" , _elements.size());
+            printf("%zi Elements : \n" , getApp()->getElements().size());
             
-            for (auto const el : _elements)
+            for (auto const el : getApp()->getElements())
             {
                 printf("\t'%s' %s \n" ,el->getIdentifier().c_str() , el->getClassName().c_str() );
             }
@@ -376,21 +382,7 @@ public:
             if( args.at(0) == "sels")
             {
                 const std::string targetName = args[1];
-                
-                auto iter = std::find_if(_elements.cbegin(),_elements.cend(), [targetName]( const CLElement* el)
-                {
-                    if( el->getIdentifier() == targetName)
-                        return true;
-                    
-                    return false;
-                });
-                
-                if( iter == _elements.end())
-                {
-                    printf("Target '%s' not found \n" , targetName.c_str() );
-                    return;
-                }
-                CLElement* target =  *iter;
+                CLElement* target = getApp()->getElement(targetName);
                 
                 if( target)
                 {
@@ -409,20 +401,8 @@ public:
                 const CLElement::Selector sel = args[0];
                 const std::string targetName = args[1];
                 
-                auto iter = std::find_if(_elements.cbegin(),_elements.cend(), [targetName]( const CLElement* el)
-                                         {
-                                             if( el->getIdentifier() == targetName)
-                                                 return true;
-                                             
-                                             return false;
-                                         });
+                CLElement* target = getApp()->getElement(targetName);
                 
-                if( iter == _elements.end())
-                {
-                    printf("Target '%s' not found \n" , targetName.c_str() );
-                    return;
-                }
-                CLElement* target =  *iter;
                 if( !target)
                 {
                     return;
@@ -466,7 +446,7 @@ private:
     TCPMouse _mouse;
     GB::FDSource input;
     
-    std::list<CLElement*> _elements;
+
     
     GXLayer mainElement;
     UIMenuBar _menuBar;

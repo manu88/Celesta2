@@ -10,10 +10,12 @@
 #define UITerm_hpp
 
 #include <string>
+#include <vector>
 #include <GBTimer.hpp>
 #include "UIView.hpp"
 
 class GXText;
+
 
 class UITerm : public UIView 
 {
@@ -22,6 +24,8 @@ public:
     ~UITerm();
     
 private:
+    void parseCommands( const std::string &cmds);
+    GXText* addLine();
     void focusChanged() override;
     void paintContent( const GXRect &rect) override;
     
@@ -31,10 +35,14 @@ private:
     
     void onTime(GB::Timer &timer);
     GB::Timer _timer;
-    GXText* _text;
+    
+    
+    std::vector<GXText*> _lines;
+    GXText* currentLine;
+    
     
     bool _drawCarret;
-    std::string _currentCmd;
+    
     
 };
 

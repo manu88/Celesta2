@@ -10,7 +10,7 @@
 #define CLApplication_hpp
 
 #include <GroundBase.hpp>
-
+#include <list>
 #include "CLElement.hpp"
 class CLApplicationDelegate;
 
@@ -33,11 +33,21 @@ public:
     
     GB::Variant getValueForKey( const std::string &key) const noexcept;
     
+    void addElement( CLElement*);
+    CLElement* getElement( const std::string &identifier) const;
+    
+    const std::list<CLElement*> getElements() const noexcept
+    {
+        return _elements;
+    }
+    
 private:
 
     GB::RunLoop _runLoop;
     GB::Dictionary _datas;
     CLApplicationDelegate *_delegate;
+    
+    std::list<CLElement*> _elements;
 };
 
 #endif /* CLApplication_hpp */

@@ -55,6 +55,37 @@ void CLApplication::setDelegate( CLApplicationDelegate *delegate)
     }
 }
 
+void CLApplication::addElement( CLElement* element)
+{
+    if( element)
+    {
+        _elements.push_back(element);
+    }
+    else
+    {
+        DEBUG_ASSERT(0);
+    }
+}
+
+CLElement* CLApplication::getElement( const std::string &identifier) const
+{
+
+
+    auto iter = std::find_if(_elements.cbegin(),_elements.cend(), [identifier]( const CLElement* el)
+    {
+        if( el->getIdentifier() == identifier)
+            return true;
+     
+        return false;
+    });
+
+    if( iter == _elements.end())
+    {
+        return nullptr;
+    }
+    return *iter;
+    
+}
 bool CLApplication::start() noexcept
 {
     if( _runLoop.isRunning())
