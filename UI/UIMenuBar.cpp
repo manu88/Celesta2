@@ -10,12 +10,15 @@
 #include "GXPath.hpp"
 #include "GXText.hpp"
 #include "GXFont.hpp"
+#include "GXLayer.hpp"
 #include "CLApplication.hpp"
+
+static const GXColor bColor = makeColor(150 ,150, 150);
 
 UIMenuBar::UIMenuBar():CLElement("UIMenuBar") , _app(nullptr)
 {
     _menuEnabled = false;
-    setBackgroundColor(makeColor(150 ,150, 150));
+    setBackgroundColor( bColor );
     
     _appTitle = new GXText();
     
@@ -29,11 +32,19 @@ UIMenuBar::UIMenuBar():CLElement("UIMenuBar") , _app(nullptr)
     registerSelector("setAppTitle", _appTitle->getSelectors().at("setText"));
     registerSelector("getAppTitle", _appTitle->getSelectors().at("getText"));
     
+    menu = new GXLayer();
+    menu->setTransparent(false);
+    menu->setBackgroundColor( bColor );
+    menu->setBounds(makeRect(40 , -400 , 100 , 400));
+    
+    
+    
+    
 }
 
 UIMenuBar::~UIMenuBar()
 {
-    
+    delete menu;
 }
 
 void UIMenuBar::paint(const GXRect &rect)
@@ -54,6 +65,8 @@ void UIMenuBar::paint(const GXRect &rect)
         path.setFillColor(makeColor(51, 57, 246));
         path.fill();
         _appTitle->setTextColor(makeColor(255, 255, 255));
+        
+        
     }
     else
     {
@@ -61,6 +74,7 @@ void UIMenuBar::paint(const GXRect &rect)
     }
     
     _appTitle->setBounds(menuB);
+    
     
     GXElement::paint(getBounds());
 }
@@ -75,10 +89,12 @@ bool UIMenuBar::touchesBegan( const GXTouch &touches )
             _menuEnabled = true;
             printf("Enable Menu\n");
             
-            _app->getRunLoop().dispatchAsync([ this]()
+            menu->setVisible(true);
+            
+            if( menu->getParent() != this)
             {
-                this->_app->stop();
-            });
+                addChild(menu);
+            }
             
             
         }
@@ -97,6 +113,8 @@ bool UIMenuBar::touchesMoved( const GXTouch &touches )
     {
         _menuEnabled = false;
         printf("Disable Menu\n");
+        removeChild(menu);
+        
     }
     
     return false;

@@ -70,6 +70,8 @@ public:
     bool addChild( GXElement* );
     bool removeChild(GXElement *);
     
+    bool contains(GXElement*) const;
+    
     void printInfos( std::ostream &stream) const;
     
     GB::Variant serialize() const override ;

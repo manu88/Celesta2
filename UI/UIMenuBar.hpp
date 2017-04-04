@@ -13,6 +13,7 @@
 #include "UITouch.hpp"
 
 class GXText;
+class GXLayer;
 class CLApplication;
 
 class UIMenuBar : public GXElement , public UITouchDelegate
@@ -39,6 +40,7 @@ private:
     GXText* _appTitle;
     
     bool _menuEnabled;
+    GXLayer *menu;
 };
 
 #endif /* UIMenuBar_hpp */

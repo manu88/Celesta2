@@ -206,9 +206,15 @@ bool GXElement::removeChild(GXElement *element)
     
     _children.erase(std::remove( _children.begin(), _children.end(), element), _children.end());
 
+    element->_parent = nullptr;
     sortChildren();
     return true;
     
+}
+
+bool GXElement::contains(GXElement* element) const
+{
+    return std::find(_children.begin(), _children.end(), element) == _children.end();
 }
 
 struct layer_comparor
