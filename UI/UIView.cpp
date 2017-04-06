@@ -10,6 +10,7 @@
 #include "GXPath.hpp"
 #include "GXText.hpp"
 #include "GXFont.hpp"
+#include "CLApplication.hpp"
 
 UIView::UIView( CLApplication *app ):
 CLElement("UIView"),
@@ -133,7 +134,8 @@ void UIView::setFocus(bool focus) noexcept
 
 bool UIView::touchesBegan( const GXTouch &touches )
 {
-    return false;
+    
+    return true;
 }
 
 bool UIView::touchesMoved( const GXTouch &touches )
@@ -149,16 +151,6 @@ bool UIView::touchesMoved( const GXTouch &touches )
         {
             _hoveringMaximize = true;
             
-            if( !_maximized)
-            {
-                _maximized = true;
-                printf("Switch to maximized ON \n");
-            }
-            else
-            {
-                _maximized = false;
-                printf("Switch to maximized OFF\n");
-            }
         }
         else
         {
@@ -177,12 +169,41 @@ bool UIView::touchesMoved( const GXTouch &touches )
         _hoveringQuit = false;
         _hoveringMaximize = false;
     }
-    return false;
+    return true;
 }
 
 bool UIView::touchesEnded( const GXTouch &touches )
 {
-    return false;
+    
+    if( touches.center.y > getBounds().size.height - 20)
+    {
+        if(rectContainsPoint(makeRect( makePoint(10, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
+        {
+            //close
+            getApplication()->getRunLoop().dispatchAsync([ this ]()
+            {
+                getApplication()->perform("removeView" , getIdentifier());
+            });
+            
+            
+        }
+        else if(rectContainsPoint(makeRect( makePoint(50, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
+        {
+            if( !_maximized)
+            {
+                _maximized = true;
+                printf("Switch to maximized ON \n");
+            }
+            else
+            {
+                _maximized = false;
+                printf("Switch to maximized OFF\n");
+            }
+        }
+        
+    }
+    
+    return true;
 }
 
 void UIView::focusChanged()

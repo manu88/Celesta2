@@ -11,7 +11,22 @@
 #include "UIMenuBar.hpp"
 UIWinManager::UIWinManager() : CLElement("UIWinManager"),_menuBar(nullptr), _activeView(nullptr)
 {
-    
+    registerSelector("setFocus", [this](const GB::Variant &v)
+    {
+        const std::string& viewId = v.toString();
+        
+        for (GXElement* el : getChildren())
+        {
+            if( el->getIdentifier() == viewId)
+            {
+                UIView* view = dynamic_cast<UIView*>(el);
+                changeFocusedView(view);
+                break;
+            }
+        }
+        
+        return GB::Variant::null();
+    });
 }
 
 UIWinManager::~UIWinManager()
@@ -41,7 +56,9 @@ bool UIWinManager::touchesBegan( const GXTouch &touches )
         
         if (view && rectContainsPoint(el->getBounds(), touches.center))
         {
-            if(view->touchesBegan(touches))
+            GXTouch t = touches;
+            t.center = touches.center - el->getBounds().origin;
+            if(view->touchesBegan(t))
             {
                 return true;
             }
@@ -60,7 +77,6 @@ bool UIWinManager::touchesMoved( const GXTouch &touches )
         if (view && rectContainsPoint(el->getBounds(), touches.center))
         {
             GXTouch t = touches;
-            
             t.center = touches.center - el->getBounds().origin;
             if(view->touchesMoved(t))
             {
@@ -80,7 +96,9 @@ bool UIWinManager::touchesEnded( const GXTouch &touches )
         
         if (view && rectContainsPoint(el->getBounds(), touches.center))
         {
-            if(view->touchesEnded(touches))
+            GXTouch t = touches;
+            t.center = touches.center - el->getBounds().origin;
+            if(view->touchesEnded(t))
             {
                 return true;
             }
@@ -116,7 +134,8 @@ bool UIWinManager::addWindow( UIView* view)
 }
 void UIWinManager::changeFocusedView( UIView *view)
 {
-    printf("Find intersection with %s %s\n" , view->getIdentifier().c_str() , view->getClassName().c_str());
+   if( !view)
+       return ;
     
     int focus =(int) getChildren().size();
     view->setFocus(true);
@@ -130,12 +149,7 @@ void UIWinManager::changeFocusedView( UIView *view)
             v->setZPos(focus--);
         }
     }
-    /*
-    for(const GXElement* el : getChildren())
-    {
-        printf("ZPos %i : %s %s \n" , el->getZPos() , el->getIdentifier().c_str() , el->getClassName().c_str());
-    }
-    */
+    
     _menuBar->setAppTitle( view->getWindowTitle() );
     _activeView = view;
 }

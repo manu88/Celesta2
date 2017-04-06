@@ -44,6 +44,7 @@ public:
     }
     void willStart()
     {
+        windows.setIdentifier("windows");
         getApp()->registerSelector("addView", [&]( const GB::Variant &v)
         {
            UIView* view = new UITerm(getApp());
@@ -168,6 +169,7 @@ public:
         getApp()->addElement( view2);
         getApp()->addElement( &_menuBar);
         getApp()->addElement( &cursor);
+        getApp()->addElement( &windows);
         
         std::cout << "commands type SEL TARGET ARGS .." << std::endl;
         
@@ -183,32 +185,6 @@ public:
     
     void keyboardInput( const TCPKeyMsg &msg)
     {
-        /*
-        static std::string accum ="";
-        
-        const char key = (char) msg.keyCode;
-        if( msg.keyCode == 13) // enter
-        {
-            printf("Str : '%s' \n" , accum.c_str());
-            
-            parseCommands(accum);
-            accum = "";
-            
-            
-        }
-        else if( msg.keyCode == 127) // backspace
-        {
-            if( accum.size() > 1)
-            {
-                accum.erase(accum.size() -1);
-            }
-        }
-        else
-        {
-            accum.push_back(key);
-            
-        }
-         */
         GXKey k;
         k.code = msg.keyCode;
         k.keyState = KeyReleased;

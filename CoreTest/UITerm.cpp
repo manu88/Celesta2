@@ -132,12 +132,8 @@ GXText* UITerm::addLine()
 
 void UITerm::focusChanged()
 {
-    printf("Term focus changed to %i\n" , hasFocus());
-    
-    
     _timer.setActive( hasFocus() );
-    
-    
+   
 }
 
 bool UITerm::keyPressed( const GXKey &key )
