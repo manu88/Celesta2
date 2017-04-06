@@ -60,12 +60,19 @@ public:
         
         getApp()->registerSelector("removeView", [&]( const GB::Variant &v)
         {
-            UIView* view = dynamic_cast<UIView*>( getApp()->getElement(v.toString()));
-            if( view)
+            getApp()->getRunLoop().dispatchAsync([&]()
             {
-                windows.removeWindow(view);
-                delete view;
-            }
+                UIView* view = dynamic_cast<UIView*>( getApp()->getElement(v.toString()));
+                if( view)
+                {
+                    getApp()->removeElement(view);
+                    windows.removeWindow(view);
+                    delete view;
+                }
+                
+            });
+            
+            
             
             return GB::Variant::null();
         });

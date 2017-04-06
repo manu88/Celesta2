@@ -47,6 +47,8 @@ void UITerm::viewDidUnload()
     {
         DEBUG_ASSERT(0);
     }
+    
+    
 }
 
 UITerm::~UITerm()
@@ -156,10 +158,9 @@ bool UITerm::keyPressed( const GXKey &key )
     }
     else if( key.code == 127) // backspace
     {
-        printf("CMD size before erase %zi \n" , currentCmd.size());
+
         if( currentCmd.size() > 2)
         {
-            printf("CMD size after erase %zi \n" , currentCmd.size());
             currentCmd.erase(currentCmd.size() -1);
             currentLine->setText( currentCmd );
             currentLine->setNeedsDisplay();

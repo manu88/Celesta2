@@ -14,7 +14,8 @@
 UIView::UIView( CLApplication *app ):
 CLElement("UIView"),
 _application(app),
-_hasFocus(false)
+_hasFocus(false),
+_maximized(false)
 {
     DEBUG_ASSERT(app);
     
@@ -147,6 +148,17 @@ bool UIView::touchesMoved( const GXTouch &touches )
         else if(rectContainsPoint(makeRect( makePoint(50, getBounds().size.height - 15), makeSize(10, 10)), touches.center) )
         {
             _hoveringMaximize = true;
+            
+            if( !_maximized)
+            {
+                _maximized = true;
+                printf("Switch to maximized ON \n");
+            }
+            else
+            {
+                _maximized = false;
+                printf("Switch to maximized OFF\n");
+            }
         }
         else
         {

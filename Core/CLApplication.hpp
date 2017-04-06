@@ -34,6 +34,7 @@ public:
     GB::Variant getValueForKey( const std::string &key) const noexcept;
     
     void addElement( CLElement*);
+    void removeElement( CLElement*);
     CLElement* getElement( const std::string &identifier) const;
     
     const std::list<CLElement*> getElements() const noexcept

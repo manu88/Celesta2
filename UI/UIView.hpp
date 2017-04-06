@@ -59,6 +59,7 @@ private:
     void paint(const GXRect &rect) override final ;
     GXText* _winTitle;
     bool _hasFocus;
+    bool _maximized;
     bool _hoveringQuit;
     bool _hoveringMaximize;
     

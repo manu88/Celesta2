@@ -68,6 +68,11 @@ void CLApplication::addElement( CLElement* element)
     }
 }
 
+void CLApplication::removeElement( CLElement* element)
+{
+    _elements.erase(std::find(_elements.begin(), _elements.end(), element));
+}
+
 CLElement* CLApplication::getElement( const std::string &identifier) const
 {
 
