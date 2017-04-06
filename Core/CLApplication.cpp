@@ -9,6 +9,7 @@
 #include <iostream>
 #endif
 
+#include <algorithm>
 #include "CLApplication.hpp"
 #include "CLApplicationDelegate.hpp"
 

@@ -24,6 +24,7 @@ public:
     ~UITerm();
     
 private:
+    void clear();
     void parseCommands( const std::string &cmds);
     GXText* addLine();
     void focusChanged() override;

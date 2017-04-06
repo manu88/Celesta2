@@ -45,18 +45,30 @@ public:
     void willStart()
     {
         getApp()->registerSelector("addView", [&]( const GB::Variant &v)
-                                   {
-                                       UIView* view = new UIView(getApp());
-                                       
-                                       view->setWindowTitle(v.toString());
-                                       view->setIdentifier(v.toString());
-                                       view->setBounds(makeRect(100,100,700,400));
-                                       windows.addWindow(view);
-                                       getApp()->addElement(view);
-                                       
-                                       
-                                       return GB::Variant::null();
-                                   });
+        {
+           UIView* view = new UITerm(getApp());
+           
+           view->setWindowTitle(v.toString());
+           view->setIdentifier(v.toString());
+           view->setBounds(makeRect(100,100,700,400));
+           windows.addWindow(view);
+           getApp()->addElement(view);
+           
+           
+           return GB::Variant::null();
+        });
+        
+        getApp()->registerSelector("removeView", [&]( const GB::Variant &v)
+        {
+            UIView* view = dynamic_cast<UIView*>( getApp()->getElement(v.toString()));
+            if( view)
+            {
+                windows.removeChild(view);
+                delete view;
+            }
+            
+            return GB::Variant::null();
+        });
         
         std::cout << "App will Start" << std::endl;
         if(disp.init())

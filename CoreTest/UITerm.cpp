@@ -45,10 +45,18 @@ void UITerm::viewDidUnload()
     
     getApplication()->getRunLoop().removeSource(_timer);
 }
+
 UITerm::~UITerm()
+{
+    clear();
+    
+}
+
+void UITerm::clear()
 {
     for( GXText *text : _lines)
     {
+        removeChild(text);
         delete text;
     }
     
@@ -135,8 +143,10 @@ bool UITerm::keyPressed( const GXKey &key )
     std::string currentCmd = currentLine->getText();
     if( key.code == 13) // enter
     {
+        
+        parseCommands( currentCmd.substr(2) );
         addLine();
-        currentLine->setText(":> ");
+        currentLine->setText(":>");
         
         
         
@@ -144,7 +154,7 @@ bool UITerm::keyPressed( const GXKey &key )
     else if( key.code == 127) // backspace
     {
         printf("CMD size before erase %zi \n" , currentCmd.size());
-        if( currentCmd.size() > 3)
+        if( currentCmd.size() > 2)
         {
             printf("CMD size after erase %zi \n" , currentCmd.size());
             currentCmd.erase(currentCmd.size() -1);
@@ -177,6 +187,14 @@ void UITerm::parseCommands( const std::string &cmds)
     if( args.empty())
         return;
     
+    if( args.size() == 1)
+    {
+        if( args.at(0) == "clear")
+        {
+            printf("Clearing term \n");
+            clear();
+        }
+    }
     if( args.size() > 1)
     {
         if( args.at(0) == "sels")
