@@ -41,11 +41,9 @@ bool UIWinManager::touchesBegan( const GXTouch &touches )
         UIView* view = dynamic_cast<UIView*>(el);
         if(view && rectContainsPoint(el->getBounds(), touches.center))
         {
-
             changeFocusedView(view);
             break;
         }
-        
     }
     
     for (GXElement* el : getChildren())

@@ -193,11 +193,14 @@ bool UIView::touchesEnded( const GXTouch &touches )
             {
                 _maximized = true;
                 printf("Switch to maximized ON \n");
+                _lastGeometry = getBounds();
+                setBounds(getParent()->getBounds());
             }
             else
             {
                 _maximized = false;
                 printf("Switch to maximized OFF\n");
+                setBounds(_lastGeometry);
             }
         }
         

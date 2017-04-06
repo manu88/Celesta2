@@ -63,6 +63,7 @@ private:
     bool _hoveringQuit;
     bool _hoveringMaximize;
     
+    GXRect _lastGeometry;
     GXColor barColor;
 };
 

@@ -31,7 +31,9 @@ void UICursor::paint(const GXRect &rect)
     
     //path.addRoundedRect(makeRect(makePointNULL(), rect.size), 25.f, 25.f);
     path.setFillColor( getBackgroundColor() );
+    path.setStrokeColor(makeColor(255, 255, 255));
     path.fill();
+    path.stroke();
     path.clear();
     
     GXElement::paint(rect);
