@@ -153,6 +153,10 @@ void UIWinManager::removeWindow(UIView* view)
             view->viewDidUnload();
         }
     }
+    else
+    {
+        printf("Does not contains view \n");
+    }
 }
 void UIWinManager::removeAllWindows()
 {

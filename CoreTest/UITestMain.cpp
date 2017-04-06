@@ -63,7 +63,7 @@ public:
             UIView* view = dynamic_cast<UIView*>( getApp()->getElement(v.toString()));
             if( view)
             {
-                windows.removeChild(view);
+                windows.removeWindow(view);
                 delete view;
             }
             

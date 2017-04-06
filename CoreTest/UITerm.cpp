@@ -43,7 +43,10 @@ void UITerm::viewDidUnload()
 {
     printf("UITerm::viewDidUnload() \n");
     
-    getApplication()->getRunLoop().removeSource(_timer);
+    if(!getApplication()->getRunLoop().removeSource(_timer))
+    {
+        DEBUG_ASSERT(0);
+    }
 }
 
 UITerm::~UITerm()

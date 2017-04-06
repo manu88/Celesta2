@@ -214,7 +214,7 @@ bool GXElement::removeChild(GXElement *element)
 
 bool GXElement::contains(GXElement* element) const
 {
-    return std::find(_children.begin(), _children.end(), element) == _children.end();
+    return std::find(_children.begin(), _children.end(), element) != _children.end();
 }
 
 struct layer_comparor
